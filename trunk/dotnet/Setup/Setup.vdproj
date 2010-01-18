@@ -15,26 +15,62 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_C83A928EF3A84653A32B5823482666AF"
+        "MsmKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
+        "OwnerKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
+        "OwnerKey" = "8:_4F4C1E6D4BC34FE7893CFD5644C00B70"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_CA969A676FC15497A4D3C68D0C5C6916"
-        "OwnerKey" = "8:_C83A928EF3A84653A32B5823482666AF"
+        "MsmKey" = "8:_4F4C1E6D4BC34FE7893CFD5644C00B70"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
+        "OwnerKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
+        "OwnerKey" = "8:_4F4C1E6D4BC34FE7893CFD5644C00B70"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C83A928EF3A84653A32B5823482666AF"
+        "OwnerKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CA969A676FC15497A4D3C68D0C5C6916"
+        "OwnerKey" = "8:_4F4C1E6D4BC34FE7893CFD5644C00B70"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -206,20 +242,51 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C83A928EF3A84653A32B5823482666AF"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_12663BFBA5D11E04D2C7910D1B91455C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:YetAnotherPhotoScreenSaver, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:FlickrNet, Version=2.1.5.19851, Culture=neutral, PublicKeyToken=2491df59efa5d132"
                 "ScatterAssemblies"
                 {
-                    "_C83A928EF3A84653A32B5823482666AF"
+                    "_12663BFBA5D11E04D2C7910D1B91455C"
                     {
-                    "Name" = "8:YetAnotherPhotoScreenSaver.scr"
+                    "Name" = "8:FlickrNet.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\bin\\Release\\YetAnotherPhotoScreenSaver.scr"
+            "SourcePath" = "8:FlickrNet.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4FF7D5978A214B34B6A017CAD5C6119C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4F4C1E6D4BC34FE7893CFD5644C00B70"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:YetAnotherPhotoScreenSaverCE, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_4F4C1E6D4BC34FE7893CFD5644C00B70"
+                    {
+                    "Name" = "8:YetAnotherPhotoScreenSaverCE.scr"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\bin\\Release\\YetAnotherPhotoScreenSaverCE.scr"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_41D9B5244DC54C6398016386CF0172A2"
@@ -237,23 +304,23 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CA969A676FC15497A4D3C68D0C5C6916"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9590DDA5C3A2CDEA861AD1BC98F4341C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FlickrNet, Version=2.1.5.19851, Culture=neutral, PublicKeyToken=2491df59efa5d132"
+            "AssemblyAsmDisplayName" = "8:SevenZipSharp, Version=1.0.3537.37869, Culture=neutral, PublicKeyToken=20de82c62b055c88, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_CA969A676FC15497A4D3C68D0C5C6916"
+                    "_9590DDA5C3A2CDEA861AD1BC98F4341C"
                     {
-                    "Name" = "8:FlickrNet.DLL"
+                    "Name" = "8:SevenZipSharp.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:FlickrNet.DLL"
+            "SourcePath" = "8:SevenZipSharp.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_41D9B5244DC54C6398016386CF0172A2"
+            "Folder" = "8:_4FF7D5978A214B34B6A017CAD5C6119C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -334,21 +401,21 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:YetAnotherPhotoScreenSaver"
-        "ProductCode" = "8:{A6598D26-A008-4209-A581-751CF824A907}"
-        "PackageCode" = "8:{6711B9AB-02BC-48C9-8063-5A554BF3C720}"
+        "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
+        "ProductCode" = "8:{5B42F439-19FC-4C6B-AEA5-5433BF097AE5}"
+        "PackageCode" = "8:{40FC21E7-BF41-4CBD-8C6F-8932D37BAD64}"
         "UpgradeCode" = "8:{BC1343B2-BDDB-4454-84CD-CC32A5AA1AE4}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.5.3"
-        "Manufacturer" = "8:Kuhn"
+        "Manufacturer" = "8:clcii"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:YetAnotherPhotoScreenSaver"
+        "Title" = "8:YetAnotherPhotoScreenSaverCE"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Kuhn"
+        "ARPCONTACT" = "8:clcii"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -701,6 +768,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_40E4D3EC573546D887CCAEAAEC619298"
+            {
+            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\obj\\Release\\YetAnotherPhotoScreenSaverCE.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4FF7D5978A214B34B6A017CAD5C6119C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:Release|Any CPU"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{424C7159-5E29-41BE-8FCB-3B724114D029}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
         }
     }
 }

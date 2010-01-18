@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Org.Kuhn.Yapss</RootNamespace>
-    <AssemblyName>YetAnotherPhotoScreenSaver</AssemblyName>
+    <AssemblyName>YetAnotherPhotoScreenSaverCE</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -163,6 +163,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>copy [TargetFileName] YetAnotherPhotoScreenSaver.scr</PostBuildEvent>
+    <PostBuildEvent>move $(TargetPath) YetAnotherPhotoScreenSaverCE.scr
+</PostBuildEvent>
   </PropertyGroup>
 </Project>
