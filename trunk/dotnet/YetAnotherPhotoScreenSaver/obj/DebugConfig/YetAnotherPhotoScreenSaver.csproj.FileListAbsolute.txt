@@ -1,0 +1,9 @@
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\bin\DebugConfig\YetAnotherPhotoScreenSaver.exe
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\bin\DebugConfig\YetAnotherPhotoScreenSaver.pdb
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\bin\DebugConfig\FlickrNet.dll
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\DebugConfig\ResolveAssemblyReference.cache
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\DebugConfig\Org.Kuhn.Yapss.ConfigWindow.resources
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\DebugConfig\Org.Kuhn.Yapss.Properties.Resources.resources
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\DebugConfig\YetAnotherPhotoScreenSaver.csproj.GenerateResource.Cache
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\DebugConfig\YetAnotherPhotoScreenSaver.exe
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\DebugConfig\YetAnotherPhotoScreenSaver.pdb
