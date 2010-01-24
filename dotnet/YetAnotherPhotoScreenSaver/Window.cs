@@ -44,8 +44,9 @@ namespace Org.Kuhn.Yapss {
 
             // draw the start state
             bufferedGraphics.Graphics.FillRectangle(theme == Theme.Dark ? Brushes.Black : Brushes.White, Bounds);
-            string banner = "Yet Another Photo Screen Saver\n";
+            string banner = "Yet Another Photo Screen Saver Comic Edition\n";
             banner += "This software is free and open source\n";
+            banner += "http://code.google.com/p/yetanotherphotoscreensavercomicedition/\n";
             banner += "http://shrinkster.com/sxt";
             using (Font font = new Font("Georgia", 8.25F)) {
                 SizeF sizef = bufferedGraphics.Graphics.MeasureString(banner, font);
