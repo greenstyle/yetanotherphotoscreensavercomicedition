@@ -163,7 +163,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>move $(TargetPath) YetAnotherPhotoScreenSaverCE.scr
+    <PostBuildEvent>copy $(TargetPath) YetAnotherPhotoScreenSaverCE.scr
 </PostBuildEvent>
   </PropertyGroup>
 </Project>
