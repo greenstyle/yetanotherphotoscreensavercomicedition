@@ -27,8 +27,7 @@ namespace Org.Kuhn.Yapss {
             while (image == null)
                 try {
             	nextfile = files[random.Next(files.Length)];
-            	
-            		if (Path.GetExtension(nextfile).Contains("cb"))
+            	if (ComicImager.isComic(nextfile))
             	    {
             			image = ComicImager.GetCover(nextfile);
             	    }
