@@ -52,7 +52,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
+        "OwnerKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,13 +64,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
+        "OwnerKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
+        "OwnerKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -402,14 +402,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
-        "ProductCode" = "8:{5B42F439-19FC-4C6B-AEA5-5433BF097AE5}"
-        "PackageCode" = "8:{40FC21E7-BF41-4CBD-8C6F-8932D37BAD64}"
+        "ProductCode" = "8:{9FD854E1-D9BE-49D5-9EB1-6B98397FE294}"
+        "PackageCode" = "8:{E870E84F-2887-470C-9A78-FAB99FCE8ADE}"
         "UpgradeCode" = "8:{BC1343B2-BDDB-4454-84CD-CC32A5AA1AE4}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.5.3"
+        "ProductVersion" = "8:1.6"
         "Manufacturer" = "8:clcii"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
