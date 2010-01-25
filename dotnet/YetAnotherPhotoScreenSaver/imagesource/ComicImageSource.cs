@@ -101,6 +101,10 @@ namespace Org.Kuhn.Yapss.imagesource
             return answer;
         
         }
+        public System.Collections.ArrayList ComicExtensions()
+            {
+                return comicExtensions;
+            }
 		System.Collections.ArrayList imageExtensions;
         System.Collections.ArrayList comicExtensions;
 	}
