@@ -14,7 +14,7 @@ namespace Org.Kuhn.Yapss {
             if (files == null)
                 try {
             			colFiles.AddRange(Directory.GetFiles(rootPath, "*.jpg", SearchOption.AllDirectories));
-                        foreach (string sExt in ComicImager.ComicExtensions) 
+                        foreach (string sExt in ComicImager.ComicExtensions()) 
                         {
                             colFiles.AddRange(Directory.GetFiles(rootPath, "*"+ sExt, SearchOption.AllDirectories));    
                         }
