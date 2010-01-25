@@ -14,10 +14,12 @@ namespace Org.Kuhn.Yapss {
             if (files == null)
                 try {
             			colFiles.AddRange(Directory.GetFiles(rootPath, "*.jpg", SearchOption.AllDirectories));
-            			colFiles.AddRange(Directory.GetFiles(rootPath, "*.cbr", SearchOption.AllDirectories));
-            			colFiles.AddRange(Directory.GetFiles(rootPath, "*.cbz", SearchOption.AllDirectories));
+                        foreach (string sExt in ComicImager.ComicExtensions) 
+                        {
+                            colFiles.AddRange(Directory.GetFiles(rootPath, "*"+ sExt, SearchOption.AllDirectories));    
+                        }
                     	files = colFiles.ToArray();
-                }
+                    }
                 catch (Exception ex) {
                     throw new ImageSourceFailedException("Failed loading file list", ex);
                 }
