@@ -215,9 +215,9 @@
             this.diskCheckBox.AutoSize = true;
             this.diskCheckBox.Location = new System.Drawing.Point(15, 506);
             this.diskCheckBox.Name = "diskCheckBox";
-            this.diskCheckBox.Size = new System.Drawing.Size(183, 17);
+            this.diskCheckBox.Size = new System.Drawing.Size(240, 17);
             this.diskCheckBox.TabIndex = 13;
-            this.diskCheckBox.Text = "Display photos from the local disk";
+            this.diskCheckBox.Text = "Display photos and comics from the local disk";
             this.diskCheckBox.UseVisualStyleBackColor = true;
             this.diskCheckBox.CheckedChanged += new System.EventHandler(this.diskCheckBox_CheckedChanged);
             // 
@@ -253,9 +253,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 13);
+            this.label5.Size = new System.Drawing.Size(176, 13);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Use photos in the folder";
+            this.label5.Text = "Use photos and comics in the folder";
             // 
             // folderBrowserDialog
             // 
@@ -406,7 +406,7 @@
             this.MinimizeBox = false;
             this.Name = "ConfigWindow";
             this.ShowInTaskbar = false;
-            this.Text = "YetAnotherPhotoScreenSaver --- Configuration";
+            this.Text = "YetAnotherPhotoScreenSaver Comic Edition --- Configuration";
             this.Load += new System.EventHandler(this.ConfigWindow_Load);
             this.flickrPanel.ResumeLayout(false);
             this.flickrPanel.PerformLayout();
