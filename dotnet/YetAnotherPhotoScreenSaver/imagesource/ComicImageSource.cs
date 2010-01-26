@@ -37,40 +37,42 @@ namespace Org.Kuhn.Yapss.imagesource
 			Image oPic;
 			try
 			{
-                //System.IO.File.AppendAllText("ComicInfo.log", DateTime.Now + " " + filename + Environment.NewLine);
                 SevenZipExtractor oExt = new SevenZipExtractor(filename);
 	    		string sname = "";
 		    	int xfile = 0;
                 System.Collections.SortedList filelist = new System.Collections.SortedList();
                 foreach (string newname in oExt.ArchiveFileNames)
                 {
+                    
                     if (IsImage(newname))
                     {
                         filelist.Add(newname, newname);
                     }
                 }
                 if (oExt.ArchiveFileNames.Contains("ComicInfo.xml"))
-                    { 
+                    {
                     MemoryStream xmlStream = new MemoryStream();
                     oExt.ExtractFile("ComicInfo.xml",xmlStream);
                     xmlStream.Position = 0;
-                    xfile = firstimagefromxml(xmlStream);
+                    xfile = coverfromxml(xmlStream);
                     if (xfile == -1)
-
                         {
-                            sname =Convert.ToString( filelist.GetByIndex(0));
+                            sname = Convert.ToString(filelist.GetByIndex(0));
+                        }
+                    else
+                        {
+                            sname = Convert.ToString(filelist.GetByIndex(xfile));
                         }
 
-                }
+                    }
                 else
                     {
                        sname = Convert.ToString(filelist.GetByIndex(0));
                     }
             //sname = oExt.ArchiveFileNames[(xfile)];
-			
 			Stream iStream = new System.IO.MemoryStream();
 			oExt.ExtractFile(sname, iStream);
-			 oPic = System.Drawing.Bitmap.FromStream(iStream);
+			oPic = System.Drawing.Bitmap.FromStream(iStream);
 			}
 			catch(Exception e)
 			{
@@ -89,15 +91,29 @@ namespace Org.Kuhn.Yapss.imagesource
 		}
         public Boolean isComic(string filename)
         { 
-           return comicExtensions.Contains(Path.GetExtension(filename));
+           return comicExtensions.Contains(Path.GetExtension(filename.ToUpper()));
         }
-        public int firstimagefromxml(MemoryStream xmlStream)
+        public int coverfromxml(MemoryStream xmlStream)
         {
-            int answer = -1;
-            System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
-            doc.Load(xmlStream);
-            System.Xml.XmlNode nderoot = doc.SelectSingleNode("Pages");
-            answer = Convert.ToInt16(nderoot.FirstChild.Attributes.GetNamedItem("Image").Value);
+
+            int answer = 0;
+            try
+            {
+                System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+                xmlStream.Position = 0;
+                doc.Load(xmlStream);
+                System.Xml.XmlNode nderoot = doc.SelectSingleNode("/ComicInfo/Pages");
+                if (nderoot.ChildNodes.Count > 1)
+                {
+                    answer = Convert.ToInt16(nderoot.FirstChild.Attributes.GetNamedItem("Image").Value);
+                }
+                answer = MultipleCovers(answer, nderoot);
+            }
+            catch (Exception ex)
+                {
+                    System.IO.File.AppendAllText("ComicInfo.log", DateTime.Now + " XML Error! " + Environment.NewLine);
+                    answer = -1;
+                }
             return answer;
         
         }
@@ -105,6 +121,51 @@ namespace Org.Kuhn.Yapss.imagesource
             {
                 return comicExtensions;
             }
+        private int MultipleCovers(int orig, System.Xml.XmlNode ndePages)
+        {
+            int answer = orig;
+
+            System.Collections.Generic.List<System.Xml.XmlNode> alCovers = new System.Collections.Generic.List<System.Xml.XmlNode>();
+            ComicInfo(Convert.ToString(ndePages.ChildNodes.Count) + " Child Nodes");
+            foreach (System.Xml.XmlNode ndePage in ndePages.ChildNodes)
+            {
+                try
+                {
+                    try
+                    {
+                        if (ndePage.Attributes.GetNamedItem("Type").Value == "FrontCover")
+                        {
+                            alCovers.Add(ndePage);
+                        }
+                    }
+                    catch (Exception exe)
+                    {
+                    }
+                    if (alCovers.Count > 1)
+                    {
+                        Random rndPage = new Random();
+                        System.Xml.XmlNode ansCover = alCovers[rndPage.Next(alCovers.Count)];
+                        answer = Convert.ToUInt16(ansCover.Attributes.GetNamedItem("Image").Value);
+                    }
+                }
+                catch (Exception ex)
+                    {
+                        ComicError(ex.Message);
+                        answer = orig;    
+                    }   
+            }
+            return answer;
+
+        }
+        private void ComicInfo(string message)
+        {
+            System.IO.File.AppendAllText("ComicInfo.log", message + Environment.NewLine);
+        }
+        private void ComicError(string message)
+        {
+            System.IO.File.AppendAllText("ComicError.log", message + Environment.NewLine);
+        }
+
 		System.Collections.ArrayList imageExtensions;
         System.Collections.ArrayList comicExtensions;
 	}
