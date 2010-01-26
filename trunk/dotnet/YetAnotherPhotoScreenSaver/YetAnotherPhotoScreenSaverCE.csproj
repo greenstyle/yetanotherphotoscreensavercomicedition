@@ -162,7 +162,19 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <PostBuildEvent>
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug --- Config' ">
+    <PostBuildEvent>copy $(TargetPath) YetAnotherPhotoScreenSaverCE.scr
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DebugConfig' ">
+    <PostBuildEvent>copy $(TargetPath) YetAnotherPhotoScreenSaverCE.scr
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <PostBuildEvent>copy $(TargetPath) YetAnotherPhotoScreenSaverCE.scr
 </PostBuildEvent>
   </PropertyGroup>
