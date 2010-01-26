@@ -77,7 +77,7 @@ namespace Org.Kuhn.Yapss.imagesource
 			catch(Exception e)
 			{
 				oPic = null;
-				System.IO.File.AppendAllText("ComicError.log", filename + Environment.NewLine + e.Message + Environment.NewLine);
+                Log.Instance.Write(filename + Environment.NewLine + e.Message + Environment.NewLine);
 			}
 		return oPic;
 			
@@ -111,8 +111,7 @@ namespace Org.Kuhn.Yapss.imagesource
             }
             catch (Exception ex)
                 {
-                    System.IO.File.AppendAllText("ComicInfo.log", DateTime.Now + " XML Error! " + Environment.NewLine);
-                    Log.Instance.Write("Failed loading disk image", ex);
+                    Log.Instance.Write("XML Error! ", ex);
                     answer = -1;
                 }
             return answer;
@@ -160,11 +159,11 @@ namespace Org.Kuhn.Yapss.imagesource
         }
         private void ComicInfo(string message)
         {
-            System.IO.File.AppendAllText("ComicInfo.log", message + Environment.NewLine);
+            Log.Instance.Write( message);
         }
         private void ComicError(string message)
         {
-            System.IO.File.AppendAllText("ComicError.log", message + Environment.NewLine);
+            Log.Instance.Write( message);
         }
 
 		System.Collections.ArrayList imageExtensions;

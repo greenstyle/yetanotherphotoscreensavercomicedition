@@ -19,8 +19,8 @@ namespace Org.Kuhn.Yapss {
                             colFiles.AddRange(Directory.GetFiles(rootPath, "*"+ sExt, SearchOption.AllDirectories));    
                         }
                     	files = colFiles.ToArray();
-                        System.IO.File.AppendAllText("ComicInfo.log",DateTime.Now + " " + colFiles.Count + " files" + Environment.NewLine);
-                    }
+                    Log.Instance.Write("Files Loaded = " + Convert.ToString( colFiles.Count));
+                }
                 catch (Exception ex) {
                     throw new ImageSourceFailedException("Failed loading file list", ex);
                 }
