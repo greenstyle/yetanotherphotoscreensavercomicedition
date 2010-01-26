@@ -22,7 +22,13 @@
         "Entry"
         {
         "MsmKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
-        "OwnerKey" = "8:_4F4C1E6D4BC34FE7893CFD5644C00B70"
+        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -33,24 +39,24 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4F4C1E6D4BC34FE7893CFD5644C00B70"
+        "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
+        "OwnerKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
+        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BAAF357CB4A14BEEB57CCF29B76FA106"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
-        "OwnerKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
-        "OwnerKey" = "8:_4F4C1E6D4BC34FE7893CFD5644C00B70"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
         "MsmSig" = "8:_UNDEFINED"
@@ -58,7 +64,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4F4C1E6D4BC34FE7893CFD5644C00B70"
+        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -258,7 +264,7 @@
             "SourcePath" = "8:FlickrNet.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_4FF7D5978A214B34B6A017CAD5C6119C"
+            "Folder" = "8:_41D9B5244DC54C6398016386CF0172A2"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -273,14 +279,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4F4C1E6D4BC34FE7893CFD5644C00B70"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1B3D4C926B4947439DF751D1EAAEA4CB"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:YetAnotherPhotoScreenSaverCE, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_4F4C1E6D4BC34FE7893CFD5644C00B70"
+                    "_1B3D4C926B4947439DF751D1EAAEA4CB"
                     {
                     "Name" = "8:YetAnotherPhotoScreenSaverCE.scr"
                     "Attributes" = "3:512"
@@ -320,7 +326,7 @@
             "SourcePath" = "8:SevenZipSharp.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_4FF7D5978A214B34B6A017CAD5C6119C"
+            "Folder" = "8:_41D9B5244DC54C6398016386CF0172A2"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -333,6 +339,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BAAF357CB4A14BEEB57CCF29B76FA106"
+            {
+            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\7z.dll"
+            "TargetName" = "8:7z.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_41D9B5244DC54C6398016386CF0172A2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -403,7 +429,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
         "ProductCode" = "8:{7885106D-6E8D-4893-8377-CC65E81C207C}"
-        "PackageCode" = "8:{6019C1D0-9A01-4F8A-9C2E-D5072F8139EC}"
+        "PackageCode" = "8:{793E5544-C0F2-41E0-B51F-5960D330298E}"
         "UpgradeCode" = "8:{BC1343B2-BDDB-4454-84CD-CC32A5AA1AE4}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
