@@ -10,9 +10,7 @@ using SevenZip;
  * User: Chad
  * Date: 1/14/2010
  * Time: 11:15 AM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
+
 
 namespace Org.Kuhn.Yapss.imagesource
 {
