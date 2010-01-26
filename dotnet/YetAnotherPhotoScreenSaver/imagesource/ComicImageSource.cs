@@ -112,6 +112,7 @@ namespace Org.Kuhn.Yapss.imagesource
             catch (Exception ex)
                 {
                     System.IO.File.AppendAllText("ComicInfo.log", DateTime.Now + " XML Error! " + Environment.NewLine);
+                    Log.Instance.Write("Failed loading disk image", ex);
                     answer = -1;
                 }
             return answer;
