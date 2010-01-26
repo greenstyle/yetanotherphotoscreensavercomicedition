@@ -10,7 +10,7 @@ using SevenZip;
  * User: Chad
  * Date: 1/14/2010
  * Time: 11:15 AM
-
+ */
 
 namespace Org.Kuhn.Yapss.imagesource
 {
