@@ -21,12 +21,12 @@ namespace Org.Kuhn.Yapss.imagesource
 	{
 		public ComicImageSource()
 		{
-			imageExtensions = new System.Collections.ArrayList();
+            imageExtensions = new System.Collections.Generic.List<string>();
 			imageExtensions.Add(".JPG");
 			imageExtensions.Add(".BMP");
 			imageExtensions.Add(".GIF");
 			imageExtensions.Add(".PNG");
-            comicExtensions = new System.Collections.ArrayList();
+            comicExtensions = new System.Collections.Generic.List<string>();
             comicExtensions.Add(".CBR");
             comicExtensions.Add(".CBZ");
 		 }
@@ -41,33 +41,21 @@ namespace Org.Kuhn.Yapss.imagesource
                 System.Collections.SortedList filelist = new System.Collections.SortedList();
                 foreach (string newname in oExt.ArchiveFileNames)
                 {
-                    
                     if (IsImage(newname))
                     {
                         filelist.Add(newname, newname);
                     }
                 }
+                sname = Convert.ToString(filelist.GetByIndex(0));
                 if (oExt.ArchiveFileNames.Contains("ComicInfo.xml"))
                     {
                     MemoryStream xmlStream = new MemoryStream();
                     oExt.ExtractFile("ComicInfo.xml",xmlStream);
                     xmlStream.Position = 0;
                     xfile = coverfromxml(xmlStream);
-                    if (xfile == -1)
-                        {
-                            sname = Convert.ToString(filelist.GetByIndex(0));
-                        }
-                    else
-                        {
-                            sname = Convert.ToString(filelist.GetByIndex(xfile));
-                        }
-
+                    if (xfile != -1)
+                        {sname = Convert.ToString(filelist.GetByIndex(xfile));}
                     }
-                else
-                    {
-                       sname = Convert.ToString(filelist.GetByIndex(0));
-                    }
-            //sname = oExt.ArchiveFileNames[(xfile)];
 			Stream iStream = new System.IO.MemoryStream();
 			oExt.ExtractFile(sname, iStream);
 			oPic = System.Drawing.Bitmap.FromStream(iStream);
@@ -82,14 +70,24 @@ namespace Org.Kuhn.Yapss.imagesource
 		}
 		private Boolean IsImage(string filename)
 		{
-			Boolean answer = false;
-			string extension = Path.GetExtension(filename).ToUpper();
-			answer = imageExtensions.Contains(extension);
-			return answer;
+            try
+            {
+                return imageExtensions.Contains(Path.GetExtension(filename).ToUpper());
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            
 		}
         public Boolean isComic(string filename)
-        { 
-           return comicExtensions.Contains(Path.GetExtension(filename.ToUpper()));
+        {
+            try
+            {
+                return comicExtensions.Contains(Path.GetExtension(filename.ToUpper()));
+            }
+            catch
+            { return false; }
         }
         public int coverfromxml(MemoryStream xmlStream)
         {
@@ -102,9 +100,7 @@ namespace Org.Kuhn.Yapss.imagesource
                 doc.Load(xmlStream);
                 System.Xml.XmlNode nderoot = doc.SelectSingleNode("/ComicInfo/Pages");
                 if (nderoot.ChildNodes.Count > 1)
-                {
-                    answer = Convert.ToInt16(nderoot.FirstChild.Attributes.GetNamedItem("Image").Value);
-                }
+                {answer = Convert.ToInt16(nderoot.FirstChild.Attributes.GetNamedItem("Image").Value);}
                 answer = MultipleCovers(answer, nderoot);
             }
             catch (Exception ex)
@@ -115,10 +111,6 @@ namespace Org.Kuhn.Yapss.imagesource
             return answer;
         
         }
-        public System.Collections.ArrayList ComicExtensions()
-            {
-                return comicExtensions;
-            }
         private int MultipleCovers(int orig, System.Xml.XmlNode ndePages)
         {
             int answer = orig;
@@ -163,9 +155,10 @@ namespace Org.Kuhn.Yapss.imagesource
         {
             Log.Instance.Write( message);
         }
-
-		System.Collections.ArrayList imageExtensions;
-        System.Collections.ArrayList comicExtensions;
+        public System.Collections.Generic.List<string> ComicExtensions()
+            {return comicExtensions;}
+		System.Collections.Generic.List<string> imageExtensions;
+        System.Collections.Generic.List<string> comicExtensions;
 	}
     
 }
