@@ -101,7 +101,7 @@ namespace Org.Kuhn.Yapss {
         private Theme theme = Theme.Dark;
         private bool isLoggingEnabled = false;
 
-        private static readonly string KEY = "Software\\YetAnotherPhotoScreenSaver";  
+        private static readonly string KEY = "Software\\YetAnotherPhotoScreenSaverCE";  
     }
 
     public enum Theme {

@@ -14,7 +14,7 @@ namespace Org.Kuhn.Yapss {
         static void Main(string[] args) {
             try {
                 foreach (Process process in Process.GetProcesses())
-                    if (process.Id != Process.GetCurrentProcess().Id && process.ProcessName.Equals("YetAnotherPhotoScreenSaver"))
+                    if (process.Id != Process.GetCurrentProcess().Id && process.ProcessName.Equals("YetAnotherPhotoScreenSaverCE"))
                         return;
                 if (args.Length > 0)
                     if (args[0].ToLower().Contains("/p"))

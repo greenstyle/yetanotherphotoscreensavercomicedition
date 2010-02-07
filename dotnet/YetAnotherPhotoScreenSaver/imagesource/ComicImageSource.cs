@@ -32,10 +32,21 @@ namespace Org.Kuhn.Yapss.imagesource
 		 }
 		public Image GetCover(string filename)
 		{
-			Image oPic;
+            ComicInfo("Opening " + filename);
+            currentFile = filename;
+            Image oPic = null;
 			try
 			{
-                SevenZipExtractor oExt = new SevenZipExtractor(filename);
+                try {
+                    oExt = new SevenZipExtractor(filename);
+                }
+                catch(Exception ex)
+                {
+                    ComicError("Connot open " + filename);
+                    ComicError(ex.Message);
+                    return null;
+                }
+                
 	    		string sname = "";
 		    	int xfile = 0;
                 System.Collections.SortedList filelist = new System.Collections.SortedList();
@@ -57,7 +68,16 @@ namespace Org.Kuhn.Yapss.imagesource
                         {sname = Convert.ToString(filelist.GetByIndex(xfile));}
                     }
 			Stream iStream = new System.IO.MemoryStream();
-			oExt.ExtractFile(sname, iStream);
+            try
+            {
+                oExt.ExtractFile(sname, iStream);
+            }
+            catch (Exception ex)
+            {
+                ComicError("Connot open " + filename);
+                ComicError(ex.Message);
+                return null;
+            }
 			oPic = System.Drawing.Bitmap.FromStream(iStream);
 			}
 			catch(Exception e)
@@ -99,9 +119,17 @@ namespace Org.Kuhn.Yapss.imagesource
                 xmlStream.Position = 0;
                 doc.Load(xmlStream);
                 System.Xml.XmlNode nderoot = doc.SelectSingleNode("/ComicInfo/Pages");
-                if (nderoot.ChildNodes.Count > 1)
-                {answer = Convert.ToInt16(nderoot.FirstChild.Attributes.GetNamedItem("Image").Value);}
-                answer = MultipleCovers(answer, nderoot);
+                if (nderoot != null)
+                {
+                    if (nderoot.ChildNodes.Count > 1)
+                    { answer = Convert.ToInt16(nderoot.FirstChild.Attributes.GetNamedItem("Image").Value); }
+                    answer = MultipleCovers(answer, nderoot);
+                }
+                else
+                {
+                    answer = -1;
+                }
+
             }
             catch (Exception ex)
                 {
@@ -116,7 +144,6 @@ namespace Org.Kuhn.Yapss.imagesource
             int answer = orig;
 
             System.Collections.Generic.List<System.Xml.XmlNode> alCovers = new System.Collections.Generic.List<System.Xml.XmlNode>();
-            ComicInfo(Convert.ToString(ndePages.ChildNodes.Count) + " Child Nodes");
             foreach (System.Xml.XmlNode ndePage in ndePages.ChildNodes)
             {
                 try
@@ -153,12 +180,15 @@ namespace Org.Kuhn.Yapss.imagesource
         }
         private void ComicError(string message)
         {
+            Log.Instance.Write(currentFile);
             Log.Instance.Write( message);
         }
         public System.Collections.Generic.List<string> ComicExtensions()
             {return comicExtensions;}
+        SevenZipExtractor oExt;
 		System.Collections.Generic.List<string> imageExtensions;
         System.Collections.Generic.List<string> comicExtensions;
+        string currentFile;
 	}
     
 }
