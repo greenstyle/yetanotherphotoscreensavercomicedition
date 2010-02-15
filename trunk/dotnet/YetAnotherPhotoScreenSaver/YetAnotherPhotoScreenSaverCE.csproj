@@ -91,6 +91,7 @@
     <Compile Include="controller\IMultiController.cs" />
     <Compile Include="imagesource\ColorSquareImageSource.cs" />
     <Compile Include="imagesource\ComicImageSource.cs" />
+    <Compile Include="imagesource\RSSFeedImageSource.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Window.cs">
       <SubType>Form</SubType>
@@ -164,15 +165,17 @@
   -->
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <PostBuildEvent>
-</PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug --- Config' ">
-    <PostBuildEvent>copy $(TargetPath) YetAnotherPhotoScreenSaverCE.scr
-</PostBuildEvent>
+    <StartAction>Project</StartAction>
+    <StartArguments>/c</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'DebugConfig' ">
-    <PostBuildEvent>copy $(TargetPath) YetAnotherPhotoScreenSaverCE.scr
+    <PostBuildEvent>
 </PostBuildEvent>
+    <StartAction>Project</StartAction>
+    <StartArguments>/c</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <PostBuildEvent>copy $(TargetPath) YetAnotherPhotoScreenSaverCE.scr

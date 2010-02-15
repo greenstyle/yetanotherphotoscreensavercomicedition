@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using SevenZip;
+using System.Net;
 /*
  * Created by SharpDevelop.
  * User: Chad
@@ -17,7 +18,7 @@ namespace Org.Kuhn.Yapss.imagesource
 	/// <summary>
 	/// Description of ComicImageSource.
 	/// </summary>
-	public class ComicImageSource
+	public class ComicImageSource 
 	{
 		public ComicImageSource()
 		{
