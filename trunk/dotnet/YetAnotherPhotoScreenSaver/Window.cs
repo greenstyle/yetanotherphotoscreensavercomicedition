@@ -130,8 +130,7 @@ namespace Org.Kuhn.Yapss {
             }
         }
 
-        private int moveCount = 0;
-        private DateTime lastMove = DateTime.Now;
+
         protected override void OnMouseMove(MouseEventArgs e) {
             base.OnMouseMove(e);
             if (DateTime.Now - lastMove > TimeSpan.FromSeconds(1)) {
@@ -163,6 +162,8 @@ namespace Org.Kuhn.Yapss {
 
         public event EventHandler End;
 
+        private int moveCount = 0;
+        private DateTime lastMove = DateTime.Now;       
         private Rectangle bounds;
         private int xSize, ySize, xOff, yOff;
         private Theme theme;
