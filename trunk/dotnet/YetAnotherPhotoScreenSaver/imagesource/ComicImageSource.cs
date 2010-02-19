@@ -95,7 +95,7 @@ namespace Org.Kuhn.Yapss.imagesource
             {
                 return imageExtensions.Contains(Path.GetExtension(filename).ToUpper());
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -156,7 +156,7 @@ namespace Org.Kuhn.Yapss.imagesource
                             alCovers.Add(ndePage);
                         }
                     }
-                    catch (Exception exe)
+                    catch (Exception)
                     {
                     }
                     if (alCovers.Count > 1)
