@@ -85,6 +85,7 @@ namespace Org.Kuhn.Yapss {
             foreach (Window wnd in windows)
                 wnd.Close();
         }
+        
 
         private Config config;
         private IList<Window> windows = new List<Window>();
