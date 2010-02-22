@@ -20,6 +20,7 @@ namespace Org.Kuhn.Yapss {
             flickrImageSourceUserName = (string)reg.GetValue("flickrImageSourceUserName", flickrImageSourceUserName);
             flickrImageSourceText = (string)reg.GetValue("flickrImageSourceText", flickrImageSourceText);
             theme = (Theme)Enum.Parse(typeof(Theme), (string)reg.GetValue("theme", Enum.GetName(typeof(Theme), theme)));
+            comicstyle = (Comicstyle)Enum.Parse(typeof(Comicstyle), (string)reg.GetValue("comicstyle", Enum.GetName(typeof(Comicstyle), comicstyle)));
             isLoggingEnabled = (int)reg.GetValue("isLoggingEnabled", isLoggingEnabled) == 1;
             reg.Close();
         }
@@ -36,6 +37,7 @@ namespace Org.Kuhn.Yapss {
             reg.SetValue("flickrImageSourceUserName", flickrImageSourceUserName, RegistryValueKind.String);
             reg.SetValue("flickrImageSourceText", flickrImageSourceText, RegistryValueKind.String);
             reg.SetValue("theme", Enum.GetName(typeof(Theme), theme), RegistryValueKind.String);
+            reg.SetValue("comicstyle", Enum.GetName(typeof(Comicstyle), Comicstyle), RegistryValueKind.String);
             reg.SetValue("isLoggingEnabled", isLoggingEnabled, RegistryValueKind.DWord);
             reg.Close();
         }
@@ -83,6 +85,10 @@ namespace Org.Kuhn.Yapss {
             get { return theme; }
             set { theme = value; }
         }
+		public Comicstyle Comicstyle{
+			get { return comicstyle;}
+			set { comicstyle = value;}
+		}
         public bool IsLoggingEnabled {
             get { return isLoggingEnabled; }
             set { isLoggingEnabled = value; }
@@ -99,6 +105,7 @@ namespace Org.Kuhn.Yapss {
         private string flickrImageSourceUserName = "";
         private string flickrImageSourceText = "";
         private Theme theme = Theme.Dark;
+        private Comicstyle comicstyle = Comicstyle.CoversOnly;
         private bool isLoggingEnabled = false;
 
         private static readonly string KEY = "Software\\YetAnotherPhotoScreenSaverCE";  
@@ -109,4 +116,9 @@ namespace Org.Kuhn.Yapss {
         Dark,
         Random
     } 
+	public enum Comicstyle{
+		CoversOnly,
+		AnyPage,
+		Entire
+	}
 }

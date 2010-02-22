@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-        	System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigWindow));
         	this.saveButton = new System.Windows.Forms.Button();
         	this.cancelButton = new System.Windows.Forms.Button();
         	this.previewButton = new System.Windows.Forms.Button();
@@ -41,6 +40,8 @@
         	this.label10 = new System.Windows.Forms.Label();
         	this.diskCheckBox = new System.Windows.Forms.CheckBox();
         	this.diskPanel = new System.Windows.Forms.Panel();
+        	this.comicstyleDropDown = new System.Windows.Forms.ComboBox();
+        	this.lblComicStyle = new System.Windows.Forms.Label();
         	this.browseButton = new System.Windows.Forms.Button();
         	this.pathTextBox = new System.Windows.Forms.TextBox();
         	this.label5 = new System.Windows.Forms.Label();
@@ -54,16 +55,14 @@
         	this.linkLabel1 = new System.Windows.Forms.LinkLabel();
         	this.label12 = new System.Windows.Forms.Label();
         	this.themeDropdown = new System.Windows.Forms.ComboBox();
-        	this.pictureBox1 = new System.Windows.Forms.PictureBox();
         	this.flickrPanel.SuspendLayout();
         	this.diskPanel.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.xCountNumUpDown)).BeginInit();
-        	((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
         	this.SuspendLayout();
         	// 
         	// saveButton
         	// 
-        	this.saveButton.Location = new System.Drawing.Point(378, 588);
+        	this.saveButton.Location = new System.Drawing.Point(376, 484);
         	this.saveButton.Name = "saveButton";
         	this.saveButton.Size = new System.Drawing.Size(75, 25);
         	this.saveButton.TabIndex = 0;
@@ -74,7 +73,7 @@
         	// cancelButton
         	// 
         	this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        	this.cancelButton.Location = new System.Drawing.Point(297, 588);
+        	this.cancelButton.Location = new System.Drawing.Point(295, 484);
         	this.cancelButton.Name = "cancelButton";
         	this.cancelButton.Size = new System.Drawing.Size(75, 25);
         	this.cancelButton.TabIndex = 1;
@@ -84,7 +83,7 @@
         	// 
         	// previewButton
         	// 
-        	this.previewButton.Location = new System.Drawing.Point(15, 588);
+        	this.previewButton.Location = new System.Drawing.Point(13, 484);
         	this.previewButton.Name = "previewButton";
         	this.previewButton.Size = new System.Drawing.Size(75, 25);
         	this.previewButton.TabIndex = 2;
@@ -95,7 +94,7 @@
         	// flickrCheckbox
         	// 
         	this.flickrCheckbox.AutoSize = true;
-        	this.flickrCheckbox.Location = new System.Drawing.Point(15, 255);
+        	this.flickrCheckbox.Location = new System.Drawing.Point(6, 117);
         	this.flickrCheckbox.Name = "flickrCheckbox";
         	this.flickrCheckbox.Size = new System.Drawing.Size(207, 17);
         	this.flickrCheckbox.TabIndex = 4;
@@ -167,7 +166,7 @@
         	this.flickrPanel.Controls.Add(this.label4);
         	this.flickrPanel.Controls.Add(this.label2);
         	this.flickrPanel.Controls.Add(this.label3);
-        	this.flickrPanel.Location = new System.Drawing.Point(15, 278);
+        	this.flickrPanel.Location = new System.Drawing.Point(6, 140);
         	this.flickrPanel.Name = "flickrPanel";
         	this.flickrPanel.Size = new System.Drawing.Size(438, 221);
         	this.flickrPanel.TabIndex = 12;
@@ -213,7 +212,7 @@
         	// diskCheckBox
         	// 
         	this.diskCheckBox.AutoSize = true;
-        	this.diskCheckBox.Location = new System.Drawing.Point(15, 506);
+        	this.diskCheckBox.Location = new System.Drawing.Point(6, 368);
         	this.diskCheckBox.Name = "diskCheckBox";
         	this.diskCheckBox.Size = new System.Drawing.Size(240, 17);
         	this.diskCheckBox.TabIndex = 13;
@@ -223,13 +222,37 @@
         	// 
         	// diskPanel
         	// 
+        	this.diskPanel.Controls.Add(this.comicstyleDropDown);
+        	this.diskPanel.Controls.Add(this.lblComicStyle);
         	this.diskPanel.Controls.Add(this.browseButton);
         	this.diskPanel.Controls.Add(this.pathTextBox);
         	this.diskPanel.Controls.Add(this.label5);
-        	this.diskPanel.Location = new System.Drawing.Point(15, 529);
+        	this.diskPanel.Location = new System.Drawing.Point(6, 391);
         	this.diskPanel.Name = "diskPanel";
-        	this.diskPanel.Size = new System.Drawing.Size(438, 50);
+        	this.diskPanel.Size = new System.Drawing.Size(438, 87);
         	this.diskPanel.TabIndex = 14;
+        	// 
+        	// comicstyleDropDown
+        	// 
+        	this.comicstyleDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        	this.comicstyleDropDown.FormattingEnabled = true;
+        	this.comicstyleDropDown.Items.AddRange(new object[] {
+        	        	        	"CoversOnly",
+        	        	        	"AnyPage",
+        	        	        	"Entire"});
+        	this.comicstyleDropDown.Location = new System.Drawing.Point(75, 45);
+        	this.comicstyleDropDown.Name = "comicstyleDropDown";
+        	this.comicstyleDropDown.Size = new System.Drawing.Size(112, 21);
+        	this.comicstyleDropDown.TabIndex = 22;
+        	// 
+        	// lblComicStyle
+        	// 
+        	this.lblComicStyle.AutoSize = true;
+        	this.lblComicStyle.Location = new System.Drawing.Point(7, 45);
+        	this.lblComicStyle.Name = "lblComicStyle";
+        	this.lblComicStyle.Size = new System.Drawing.Size(62, 13);
+        	this.lblComicStyle.TabIndex = 21;
+        	this.lblComicStyle.Text = "Comic Style";
         	// 
         	// browseButton
         	// 
@@ -263,7 +286,7 @@
         	// 
         	// xCountNumUpDown
         	// 
-        	this.xCountNumUpDown.Location = new System.Drawing.Point(378, 160);
+        	this.xCountNumUpDown.Location = new System.Drawing.Point(369, 22);
         	this.xCountNumUpDown.Maximum = new decimal(new int[] {
         	        	        	50,
         	        	        	0,
@@ -286,7 +309,7 @@
         	// label6
         	// 
         	this.label6.AutoSize = true;
-        	this.label6.Location = new System.Drawing.Point(12, 162);
+        	this.label6.Location = new System.Drawing.Point(3, 24);
         	this.label6.Name = "label6";
         	this.label6.Size = new System.Drawing.Size(285, 13);
         	this.label6.TabIndex = 16;
@@ -295,7 +318,7 @@
         	// label7
         	// 
         	this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-        	this.label7.Location = new System.Drawing.Point(12, 183);
+        	this.label7.Location = new System.Drawing.Point(3, 45);
         	this.label7.Name = "label7";
         	this.label7.Size = new System.Drawing.Size(441, 30);
         	this.label7.TabIndex = 12;
@@ -305,7 +328,7 @@
         	// label8
         	// 
         	this.label8.AutoSize = true;
-        	this.label8.Location = new System.Drawing.Point(12, 224);
+        	this.label8.Location = new System.Drawing.Point(3, 86);
         	this.label8.Name = "label8";
         	this.label8.Size = new System.Drawing.Size(38, 13);
         	this.label8.TabIndex = 18;
@@ -316,10 +339,10 @@
         	this.speedDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         	this.speedDropdown.FormattingEnabled = true;
         	this.speedDropdown.Items.AddRange(new object[] {
-        	        	        	"Tranquilo",
-        	        	        	"Moderato",
-        	        	        	"Prestissimo"});
-        	this.speedDropdown.Location = new System.Drawing.Point(56, 221);
+        	        	        	"Slow",
+        	        	        	"Moderate",
+        	        	        	"Fast"});
+        	this.speedDropdown.Location = new System.Drawing.Point(47, 83);
         	this.speedDropdown.Name = "speedDropdown";
         	this.speedDropdown.Size = new System.Drawing.Size(94, 21);
         	this.speedDropdown.TabIndex = 20;
@@ -327,7 +350,7 @@
         	// label9
         	// 
         	this.label9.AutoSize = true;
-        	this.label9.Location = new System.Drawing.Point(115, 640);
+        	this.label9.Location = new System.Drawing.Point(112, 542);
         	this.label9.Name = "label9";
         	this.label9.Size = new System.Drawing.Size(187, 13);
         	this.label9.TabIndex = 21;
@@ -337,7 +360,7 @@
         	// linkLabel1
         	// 
         	this.linkLabel1.AutoSize = true;
-        	this.linkLabel1.Location = new System.Drawing.Point(67, 619);
+        	this.linkLabel1.Location = new System.Drawing.Point(64, 521);
         	this.linkLabel1.Name = "linkLabel1";
         	this.linkLabel1.Size = new System.Drawing.Size(335, 13);
         	this.linkLabel1.TabIndex = 22;
@@ -349,7 +372,7 @@
         	// label12
         	// 
         	this.label12.AutoSize = true;
-        	this.label12.Location = new System.Drawing.Point(162, 224);
+        	this.label12.Location = new System.Drawing.Point(153, 86);
         	this.label12.Name = "label12";
         	this.label12.Size = new System.Drawing.Size(40, 13);
         	this.label12.TabIndex = 23;
@@ -363,19 +386,10 @@
         	        	        	"Dark",
         	        	        	"Light",
         	        	        	"Random"});
-        	this.themeDropdown.Location = new System.Drawing.Point(208, 221);
+        	this.themeDropdown.Location = new System.Drawing.Point(199, 83);
         	this.themeDropdown.Name = "themeDropdown";
         	this.themeDropdown.Size = new System.Drawing.Size(94, 21);
         	this.themeDropdown.TabIndex = 24;
-        	// 
-        	// pictureBox1
-        	// 
-        	this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-        	this.pictureBox1.Location = new System.Drawing.Point(0, 10);
-        	this.pictureBox1.Name = "pictureBox1";
-        	this.pictureBox1.Size = new System.Drawing.Size(321, 130);
-        	this.pictureBox1.TabIndex = 17;
-        	this.pictureBox1.TabStop = false;
         	// 
         	// ConfigWindow
         	// 
@@ -383,14 +397,13 @@
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.CancelButton = this.cancelButton;
-        	this.ClientSize = new System.Drawing.Size(466, 662);
+        	this.ClientSize = new System.Drawing.Size(466, 563);
         	this.Controls.Add(this.themeDropdown);
         	this.Controls.Add(this.label12);
         	this.Controls.Add(this.linkLabel1);
         	this.Controls.Add(this.label9);
         	this.Controls.Add(this.speedDropdown);
         	this.Controls.Add(this.label8);
-        	this.Controls.Add(this.pictureBox1);
         	this.Controls.Add(this.xCountNumUpDown);
         	this.Controls.Add(this.label7);
         	this.Controls.Add(this.label6);
@@ -413,10 +426,11 @@
         	this.diskPanel.ResumeLayout(false);
         	this.diskPanel.PerformLayout();
         	((System.ComponentModel.ISupportInitialize)(this.xCountNumUpDown)).EndInit();
-        	((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.Label lblComicStyle;
+        private System.Windows.Forms.ComboBox comicstyleDropDown;
 
         #endregion
 
@@ -440,7 +454,6 @@
         private System.Windows.Forms.NumericUpDown xCountNumUpDown;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox speedDropdown;
         private System.Windows.Forms.Label label9;
