@@ -7,8 +7,9 @@ using System.IO;
 
 namespace Org.Kuhn.Yapss {
     class FileImageSource : IImageSource {
-        public FileImageSource(string rootPath) {
+        public FileImageSource(string rootPath, Comicstyle Style) {
             this.rootPath = rootPath;
+            ComicImager = new Org.Kuhn.Yapss.imagesource.ComicImageSource(Style);
         }
         public Image GetImage(int minX, int minY) {
             if (files == null)
@@ -32,7 +33,7 @@ namespace Org.Kuhn.Yapss {
             	nextfile = files[random.Next(files.Length)];
             	if (ComicImager.isComic(nextfile))
             	    {
-            			image = ComicImager.GetCover(nextfile);
+            			image = ComicImager.GetImage(nextfile);
             	    }
             	else
             		{
@@ -88,6 +89,6 @@ namespace Org.Kuhn.Yapss {
         private string nextfile;
         private Random random = new Random();
         private System.Collections.Generic.List<string> colFiles = new System.Collections.Generic.List<string>();
-        private Yapss.imagesource.ComicImageSource ComicImager = new Org.Kuhn.Yapss.imagesource.ComicImageSource();
+        private Yapss.imagesource.ComicImageSource ComicImager;
     }
 }

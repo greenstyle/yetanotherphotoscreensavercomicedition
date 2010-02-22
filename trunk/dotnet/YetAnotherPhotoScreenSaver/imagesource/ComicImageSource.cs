@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using SevenZip;
 using System.Net;
+
 /*
  * Created by SharpDevelop.
  * User: Chad
@@ -20,9 +22,10 @@ namespace Org.Kuhn.Yapss.imagesource
 	/// </summary>
 	public class ComicImageSource 
 	{
-		public ComicImageSource()
+		public ComicImageSource(Comicstyle style)
 		{
-            imageExtensions = new System.Collections.Generic.List<string>();
+            comicstyle = style;
+			imageExtensions = new System.Collections.Generic.List<string>();
 			imageExtensions.Add(".JPG");
 			imageExtensions.Add(".BMP");
 			imageExtensions.Add(".GIF");
@@ -31,63 +34,35 @@ namespace Org.Kuhn.Yapss.imagesource
             comicExtensions.Add(".CBR");
             comicExtensions.Add(".CBZ");
 		 }
-		public Image GetCover(string filename)
+		public Image GetImage(string filename)
 		{
             ComicInfo("Opening " + filename);
             currentFile = filename;
             Image oPic = null;
-			try
-			{
-                try {
+            try {
                     oExt = new SevenZipExtractor(filename);
                 }
                 catch(Exception ex)
                 {
-                    ComicError("Connot open " + filename);
+                    ComicError("Cannot open " + filename);
                     ComicError(ex.Message);
                     return null;
                 }
-                
-	    		string sname = "";
-		    	int xfile = 0;
-                System.Collections.SortedList filelist = new System.Collections.SortedList();
-                foreach (string newname in oExt.ArchiveFileNames)
-                {
-                    if (IsImage(newname))
-                    {
-                        filelist.Add(newname, newname);
-                    }
+
+                switch (comicstyle) {
+                	case Comicstyle.AnyPage:
+                		oPic = GetAny();
+						break;
+					case Comicstyle.Entire:
+						oPic = GetEntire();
+                		break;
+                	default:
+                		oPic = GetCover();
+                		break;
                 }
-                sname = Convert.ToString(filelist.GetByIndex(0));
-                if (oExt.ArchiveFileNames.Contains("ComicInfo.xml"))
-                    {
-                    MemoryStream xmlStream = new MemoryStream();
-                    oExt.ExtractFile("ComicInfo.xml",xmlStream);
-                    xmlStream.Position = 0;
-                    xfile = coverfromxml(xmlStream);
-                    if (xfile != -1)
-                        {sname = Convert.ToString(filelist.GetByIndex(xfile));}
-                    }
-			Stream iStream = new System.IO.MemoryStream();
-            try
-            {
-                oExt.ExtractFile(sname, iStream);
-            }
-            catch (Exception ex)
-            {
-                ComicError("Connot open " + filename);
-                ComicError(ex.Message);
-                return null;
-            }
-			oPic = System.Drawing.Bitmap.FromStream(iStream);
-			}
-			catch(Exception e)
-			{
-				oPic = null;
-                Log.Instance.Write(filename + Environment.NewLine + e.Message + Environment.NewLine);
-			}
-		return oPic;
-			
+                	
+                
+			return oPic;
 		}
 		private Boolean IsImage(string filename)
 		{
@@ -186,10 +161,118 @@ namespace Org.Kuhn.Yapss.imagesource
         }
         public System.Collections.Generic.List<string> ComicExtensions()
             {return comicExtensions;}
+        private Image GetCover(){
+        	Image oPic;
+  			string sname = "";
+			int xfile = 0;
+			System.Collections.SortedList filelist = new System.Collections.SortedList();
+			foreach (string newname in oExt.ArchiveFileNames)
+                {
+                    if (IsImage(newname))
+                    {
+                        filelist.Add(newname, newname);
+                    }
+                } 
+                  sname = Convert.ToString(filelist.GetByIndex(0));
+                if (oExt.ArchiveFileNames.Contains("ComicInfo.xml"))
+                    {
+                    MemoryStream xmlStream = new MemoryStream();
+                    oExt.ExtractFile("ComicInfo.xml",xmlStream);
+                    xmlStream.Position = 0;
+                    xfile = coverfromxml(xmlStream);
+                    if (xfile != -1)
+                        {sname = Convert.ToString(filelist.GetByIndex(xfile));}
+                    }
+      			Stream iStream = new System.IO.MemoryStream();
+            try
+            {
+                oExt.ExtractFile(sname, iStream);
+            }
+            catch (Exception ex)
+            {
+                ComicError("Connot open " + currentFile);
+                ComicError(ex.Message);
+                return null;
+            }
+			oPic = System.Drawing.Bitmap.FromStream(iStream);
+			return oPic;
+        }
+        	
+
+        private Image GetAny(){
+        	Image oPic;
+        	string sname;
+			System.Collections.SortedList filelist = new System.Collections.SortedList();
+			foreach (string newname in oExt.ArchiveFileNames)
+                {
+                    if (IsImage(newname))
+                    {
+                        filelist.Add(newname, newname);
+                    }
+                } 
+                sname = Convert.ToString(filelist.GetByIndex(0));
+                Random anyimageindex = new Random();
+                sname = Convert.ToString(filelist.GetByIndex(anyimageindex.Next(filelist.Count)));
+      			Stream iStream = new System.IO.MemoryStream();
+            try
+            {
+                oExt.ExtractFile(sname, iStream);
+            }
+            catch (Exception ex)
+            {
+                ComicError("Connot extract " + sname + " from " + currentFile);
+                ComicError(ex.Message);
+                return null;
+            }
+			oPic = System.Drawing.Bitmap.FromStream(iStream);
+			return oPic;
+        }
+        private Image GetEntire(){
+        	ComicInfo("Starting GetEntire");
+        	Image oPic = null;
+        	ComicInfo(imageQueue.Count + " images in queue");
+        	if (imageQueue.Count == 0){
+        		Image oQPic;
+        		SortedList<string, string> filelist = new SortedList<string, string>();
+				foreach (string newname in oExt.ArchiveFileNames)
+                	{
+                    	if (IsImage(newname))
+                    	{
+                        	ComicInfo("Loading " + newname + " into list");
+                    		filelist.Add(newname, newname);
+                    	}
+                	} 
+				ComicInfo("Creating MemoryStream");
+				
+				foreach(string sname in filelist.Values)
+				{
+            		try
+            		{
+                		Stream iStream = new System.IO.MemoryStream();
+            			ComicInfo("Extracting " + sname);
+            			oExt.ExtractFile(sname, iStream);
+            			ComicInfo("converting " + sname + " to Pic");
+                		oQPic = System.Drawing.Bitmap.FromStream(iStream);
+                		ComicInfo("adding " + sname + " to Queue");
+                		imageQueue.Enqueue(oQPic);
+            		}
+            		catch (Exception ex)
+            		{
+                		ComicError("Connot open " + currentFile);
+                		ComicError(ex.Message);
+            		} 
+				}
+			
+        	}
+        	oPic = imageQueue.Dequeue();
+        return oPic;
+        }
         SevenZipExtractor oExt;
 		System.Collections.Generic.List<string> imageExtensions;
         System.Collections.Generic.List<string> comicExtensions;
         string currentFile;
+        Comicstyle comicstyle;
+        Queue<Image> imageQueue = new Queue<Image>();
 	}
     
 }

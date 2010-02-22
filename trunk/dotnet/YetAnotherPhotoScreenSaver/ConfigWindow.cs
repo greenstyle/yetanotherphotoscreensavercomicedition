@@ -29,6 +29,7 @@ namespace Org.Kuhn.Yapss {
                     break;
             }
             config.Theme = (Theme)Enum.Parse(typeof(Theme), themeDropdown.Text);
+            config.Comicstyle = (Comicstyle)Enum.Parse(typeof(Comicstyle), comicstyleDropDown.Text);
             config.IsEnabledFlickrImageSource = flickrCheckbox.Checked;
             config.FlickrImageSourceTags = tagsTextBox.Text;
             config.IsFlickrImageSourceTagAndLogic = tagLogicDropdown.SelectedIndex == 1;
@@ -50,6 +51,7 @@ namespace Org.Kuhn.Yapss {
                 speedDropdown.SelectedIndex = 2;
             }
             themeDropdown.Text = Enum.GetName(typeof(Theme), config.Theme);
+            comicstyleDropDown.Text = Enum.GetName(typeof(Comicstyle), config.Comicstyle);
             flickrCheckbox.Checked = flickrPanel.Enabled = config.IsEnabledFlickrImageSource;
             tagsTextBox.Text = config.FlickrImageSourceTags;
             tagLogicDropdown.SelectedIndex = config.IsFlickrImageSourceTagAndLogic ? 1 : 0;
@@ -96,7 +98,7 @@ namespace Org.Kuhn.Yapss {
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
             try {
-                System.Diagnostics.Process.Start("http://shrinkster.com/sxt");
+                System.Diagnostics.Process.Start("http://code.google.com/p/yetanotherphotoscreensavercomicedition/");
             }
             catch (Exception ex) {
                 MessageBox.Show("Error launching web browser.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
