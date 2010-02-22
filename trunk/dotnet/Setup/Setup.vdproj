@@ -283,7 +283,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:YetAnotherPhotoScreenSaverCE, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:YetAnotherPhotoScreenSaverCE, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_1B3D4C926B4947439DF751D1EAAEA4CB"
@@ -428,14 +428,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
-        "ProductCode" = "8:{7885106D-6E8D-4893-8377-CC65E81C207C}"
-        "PackageCode" = "8:{793E5544-C0F2-41E0-B51F-5960D330298E}"
+        "ProductCode" = "8:{C1A91514-CEBE-43A3-AFD9-237BF38A23D2}"
+        "PackageCode" = "8:{F46D284A-21AB-4AF5-AB30-AE53C6852654}"
         "UpgradeCode" = "8:{BC1343B2-BDDB-4454-84CD-CC32A5AA1AE4}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.6.1"
+        "ProductVersion" = "8:1.6.3"
         "Manufacturer" = "8:clcii"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
