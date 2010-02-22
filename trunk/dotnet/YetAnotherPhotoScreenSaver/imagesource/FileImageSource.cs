@@ -31,7 +31,7 @@ namespace Org.Kuhn.Yapss {
             while (image == null)
                 try {
             	nextfile = files[random.Next(files.Length)];
-            	if (ComicImager.isComic(nextfile))
+            	if (ComicImager.isComic(nextfile)|ComicImager.isQueued())
             	    {
             			image = ComicImager.GetImage(nextfile);
             	    }

@@ -267,6 +267,9 @@ namespace Org.Kuhn.Yapss.imagesource
         	oPic = imageQueue.Dequeue();
         return oPic;
         }
+        public Boolean isQueued(){
+        	return imageQueue.Count > 0;
+        }
         SevenZipExtractor oExt;
 		System.Collections.Generic.List<string> imageExtensions;
         System.Collections.Generic.List<string> comicExtensions;
