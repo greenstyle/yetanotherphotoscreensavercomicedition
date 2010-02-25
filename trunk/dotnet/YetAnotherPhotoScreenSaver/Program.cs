@@ -145,12 +145,17 @@ namespace Org.Kuhn.Yapss {
         }
 
         private static void ShowTaskbar() {
+        	bool success = false;
+        	while (success == false)
+        	{
             try {
                 ShowWindow(FindWindow(TASKBAR_WINDOW, ""), SW_SHOW);
+                success = true;
             }
             catch (Exception ex) {
                 Log.Instance.Write("Failed showing taskbar", ex);
             }
+        	}
         }
     }
 }
