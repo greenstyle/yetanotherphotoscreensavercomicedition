@@ -47,6 +47,7 @@ namespace Org.Kuhn.Yapss {
         }
 
         public void Run() {
+        	Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
             HideTaskbar();
             Log.Instance.IsEnabled = config.IsLoggingEnabled;
             Log.Instance.Write("Starting screen saver");
@@ -67,6 +68,7 @@ namespace Org.Kuhn.Yapss {
 
             // build window for each screen
             foreach (Screen screen in Screen.AllScreens) {
+            	//Screen screen = Screen.PrimaryScreen;
                 Window wnd = new Window(screen.Bounds, xSize, theme, imageSource);
                 windows.Add(wnd);
                 wnd.End += DisplayWindowEndEventHandler;
@@ -157,5 +159,12 @@ namespace Org.Kuhn.Yapss {
             }
         	}
         }
+         static void Application_ApplicationExit(object sender, EventArgs e)
+        {
+            ShowTaskbar();
+        }
+        
     }
+
+	
 }

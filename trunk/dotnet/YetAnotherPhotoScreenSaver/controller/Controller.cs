@@ -30,8 +30,12 @@ namespace Org.Kuhn.Yapss {
             // no empty squares, so use a large image
             int w = 0, h = 0;
             while (w == 0 || h == 0 || (float)w / (float)h > 2.0 || (float)w / (float)h < 0.5) {
-                w = random.Next(2, layout.Width / 2 + 1);
-                h = random.Next(2, layout.Width / 2 + 1);
+                w = random.Next(1, layout.Width / 2 + 1);
+                
+              h = random.Next(1, layout.Width / 2 + 1);
+               // h = random.Next(1, layout.Height / 2 + 1);
+                Log.Instance.Write("Layout= " + layout.Width + "x" + layout.Height);
+                Log.Instance.Write("Current Loc= " + w + "x" + h);
             }
 
             // find locations overwriting oldest cells
