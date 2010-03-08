@@ -22,13 +22,13 @@
         "Entry"
         {
         "MsmKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
-        "OwnerKey" = "8:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
+        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
-        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
+        "OwnerKey" = "8:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,13 +52,13 @@
         "Entry"
         {
         "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
-        "OwnerKey" = "8:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
+        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
-        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
+        "OwnerKey" = "8:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,13 +82,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
+        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
+        "OwnerKey" = "8:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -452,14 +452,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
-        "ProductCode" = "8:{C1A91514-CEBE-43A3-AFD9-237BF38A23D2}"
-        "PackageCode" = "8:{3151ACF2-ADBE-4679-A3C3-A5A1F1341606}"
+        "ProductCode" = "8:{63EDEBA1-3074-40FA-AFAD-3BA2A2E99237}"
+        "PackageCode" = "8:{B423BC3B-E85A-4F64-9168-C9409CE8D144}"
         "UpgradeCode" = "8:{BC1343B2-BDDB-4454-84CD-CC32A5AA1AE4}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.6.3"
+        "ProductVersion" = "8:1.6.5"
         "Manufacturer" = "8:clcii"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
