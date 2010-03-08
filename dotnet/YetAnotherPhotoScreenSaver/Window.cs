@@ -21,7 +21,8 @@ namespace Org.Kuhn.Yapss {
             WindowState = FormWindowState.Maximized;
             TopMost = true;
             Cursor.Hide();
-
+            xSize = (xSize<Height) ? xSize:Height;
+               
             // calculate ySize and offsets
             if (theme == Theme.Dark) {
                 ySize = xSize;
