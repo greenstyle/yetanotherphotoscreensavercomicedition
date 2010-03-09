@@ -138,33 +138,31 @@ namespace Org.Kuhn.Yapss {
         private static extern int ShowWindow(int hwnd, int command);
 
         private static void HideTaskbar() {
-            try {
-                ShowWindow(FindWindow(TASKBAR_WINDOW, ""), SW_HIDE);
-            }
-            catch (Exception ex) {
-                Log.Instance.Write("Failed hiding taskbar", ex);
-            }
+            //try {
+            //    ShowWindow(FindWindow(TASKBAR_WINDOW, ""), SW_HIDE);
+           // }
+           // catch (Exception ex) {
+           //     Log.Instance.Write("Failed hiding taskbar", ex);
+           // }
         }
 
         private static void ShowTaskbar() {
-        	bool success = false;
-        	while (success == false)
-        	{
-            try {
-                ShowWindow(FindWindow(TASKBAR_WINDOW, ""), SW_SHOW);
-                success = true;
-            }
-            catch (Exception ex) {
-                Log.Instance.Write("Failed showing taskbar", ex);
-            }
-        	}
+
+        	//bool success = false;
+        	//while (success == false)
+        	//{
+            //try {
+           //   ShowWindow(FindWindow(TASKBAR_WINDOW, ""), SW_SHOW);
+           //     success = true;
+           // }
+           // catch (Exception ex) {
+           //     Log.Instance.Write("Failed showing taskbar", ex);
+           // }
+        	//}
         }
          static void Application_ApplicationExit(object sender, EventArgs e)
         {
             ShowTaskbar();
         }
-        
     }
-
-	
 }
