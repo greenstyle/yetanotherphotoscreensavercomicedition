@@ -121,4 +121,8 @@ namespace Org.Kuhn.Yapss {
 		AnyPage,
 		Entire
 	}
+	public enum TransitionStyle{
+		None,
+		Fade
+	}
 }
