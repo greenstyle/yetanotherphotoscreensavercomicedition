@@ -99,6 +99,7 @@
     <Compile Include="imagesource\ComicImageSource.cs" />
     <Compile Include="imagesource\RSSFeedImageSource.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="transitions\transition.cs" />
     <Compile Include="Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +162,7 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+    <Folder Include="transitions" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\YAPSSCEicon.ico" />

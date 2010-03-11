@@ -114,13 +114,17 @@ namespace Org.Kuhn.Yapss {
                         w - padding * 2, h - padding * 2);
                     sourceRect = new Rectangle(Point.Empty, instruction.image.Size);
                 }
-                bufferedGraphics.Graphics.DrawImage(
-                        instruction.image,
-                        destRect,
-                        sourceRect,
-                        GraphicsUnit.Pixel
-                        );
-                Invalidate(targetAreaRect);                
+                transitions.transition trans = new Org.Kuhn.Yapss.transitions.transition(bufferedGraphics.Graphics);
+                trans.set(instruction.image, destRect, sourceRect, GraphicsUnit.Pixel);
+                trans.transitionout(this, targetAreaRect, TransitionStyle.None);
+                trans.transitionin(this,targetAreaRect, TransitionStyle.Fade);
+                //bufferedGraphics.Graphics.DrawImage(
+                //        instruction.image,
+                //        destRect,
+                //        sourceRect,
+                //        GraphicsUnit.Pixel
+                //        );
+                //Invalidate(targetAreaRect);                
             }
         }
 
