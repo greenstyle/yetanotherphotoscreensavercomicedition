@@ -7,30 +7,33 @@ using System.IO;
 
 namespace Org.Kuhn.Yapss {
     class FileImageSource : IImageSource {
-        public FileImageSource(string rootPath, Comicstyle Style) {
+        public FileImageSource(string rootPath, Comicstyle comicstyle) {
             this.rootPath = rootPath;
-            ComicImager = new Org.Kuhn.Yapss.imagesource.ComicImageSource(Style);
+            ComicImager = new Org.Kuhn.Yapss.imagesource.ComicImageSource(comicstyle);
         }
         public Image GetImage(int minX, int minY) {
-            if (files == null)
+            if (files.Count == 0)
                 try {
-            			colFiles.AddRange(Directory.GetFiles(rootPath, "*.jpg", SearchOption.AllDirectories));
+                    
+                    colFiles.AddRange(Directory.GetFiles(rootPath, "*.jpg", SearchOption.AllDirectories));
                         foreach (string sExt in ComicImager.ComicExtensions()) 
                         {
                             colFiles.AddRange(Directory.GetFiles(rootPath, "*"+ sExt, SearchOption.AllDirectories));    
                         }
-                    	files = colFiles.ToArray();
+                    	files.AddRange(colFiles.ToArray());
                     Log.Instance.Write("Files Loaded = " + Convert.ToString( colFiles.Count));
                 }
                 catch (Exception ex) {
                     throw new ImageSourceFailedException("Failed loading file list", ex);
                 }
-            if (files.Length == 0)
+            if (files.Count == 0)
                 throw new ImageSourceFailedException("No image files found");
             Image image = null;
             while (image == null)
                 try {
-            	nextfile = files[random.Next(files.Length)];
+                    int nextfileid = random.Next(files.Count);
+            	nextfile = files[nextfileid];
+                files.RemoveAt(nextfileid);
             	if (ComicImager.isComic(nextfile)|ComicImager.isQueued())
             	    {
             			image = ComicImager.GetImage(nextfile);
@@ -85,7 +88,8 @@ namespace Org.Kuhn.Yapss {
             }
         }
         private string rootPath;
-        private string[] files;
+
+        private List<String> files =new List<string>();
         private string nextfile;
         private Random random = new Random();
         private System.Collections.Generic.List<string> colFiles = new System.Collections.Generic.List<string>();
