@@ -11,6 +11,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
+using System.Media;
+
 using System.IO;
 using System.Windows.Forms;
 
@@ -21,9 +24,9 @@ namespace Org.Kuhn.Yapss.transitions
 	/// </summary>
 	public class transition
 	{
-		public transition(Graphics graphics)
+		public transition(BufferedGraphics bufferedGraphics)
 		{
-			graphicsbf = graphics;		
+			bufferedgraphics = bufferedGraphics;		
 		}
 		public void set(Image setimage, Rectangle setdestRect, Rectangle setsourceRect, GraphicsUnit setgraphicsunit){
 			image = setimage;
@@ -31,36 +34,83 @@ namespace Org.Kuhn.Yapss.transitions
 			sourceRect = setsourceRect;
 			graphicsunit = setgraphicsunit;
 		}
-		public void transitionin(Form frm, Rectangle targetArea, TransitionStyle transitionstyle){
-			switch (transitionstyle) {
-				case TransitionStyle.Fade:
-					Bitmap bmpImage = new Bitmap(image);
-					Bitmap backImage = new Bitmap(image.Width, image.Height);
-					frm.DrawToBitmap(backImage, targetArea);
-					//for (int t=0;t<=100;t++) {
-						//int opacity = 100-t;
-						//MessageBox.Show("test");
-					Bitmap newImage = Fade(bmpImage, backImage,  50);
-					graphicsbf.DrawImage(
-                			newImage,
-                			destRect,
-                			sourceRect,
-                			graphicsunit
-                			 );
-						frm.Invalidate(targetArea);
-					//	}
-				break;
-				default:
-				graphicsbf.DrawImage(
-                			image,
-                			destRect,
-                			sourceRect,
-                			graphicsunit
-                			 );
-				frm.Invalidate(targetArea);
-					break;
-			}
-			
+        public void transitionin(Form frm, Rectangle targetArea, TransitionStyle transitionstyle, BackGroundStyle backgroundstyle)
+        {
+            
+            {
+                //Image image = setimage;
+                
+                //targetarea = targetArea;
+                Brush backbrush = backgroundstyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White;
+
+                switch (transitionstyle)
+                {
+                    case TransitionStyle.Fade:
+                        Bitmap bmpImage = new Bitmap(image);
+
+                        //Brush b = new TextureBrush(image,WrapMode.Clamp,destRect);
+
+                        //using Graphics g = frm.CreateGraphics();
+
+
+                        Bitmap backImage = new Bitmap(image.Width, image.Height);
+
+                        //int t = 50;
+                        //frm.DrawToBitmap(backImage, targetArea);
+                        for (int t = 0; t <= 100; t += 10)
+                        {
+                            //	ImageAttributes attr = new ImageAttributes();
+                            //attr.SetColorKey(Color.White, Color.White);
+
+                            //int opacity = 100-t;
+                            //MessageBox.Show("test");
+                            Bitmap newImage = Fade(bmpImage, backImage, t);
+                            //lock(bufferedgraphics)
+                            //{
+
+                            lock (bufferedgraphics)
+                            {
+                                if (t == 0)
+                                {
+                                    bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
+                                }
+                                bufferedgraphics.Graphics.DrawImage(
+                                    newImage,
+                                    destRect,
+                                    sourceRect,
+                                    graphicsunit
+                                     );
+                                //SolidBrush semiTransBrush = new SolidBrush(Color.FromArgb(90, 255, 255, 50));
+                                //Brush title = Brushes.White;
+                                //bufferedgraphics.Graphics.DrawString("Test asdfasdfsadfsadf", new Font("Arial", 14), semiTransBrush, targetArea);
+                                newImage.Dispose();
+                            }
+                            frm.Invalidate(destRect);
+
+                        }
+                        
+                        //bufferedgraphics.Graphics.Dispose();
+                        //frm.Invalidate(targetarea);
+                        //Application.DoEvents();
+                        //System.Threading.Thread.Sleep(10);
+                        //	}
+                        break;
+                    default:
+                        lock (bufferedgraphics)
+                        {
+                            bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
+                            bufferedgraphics.Graphics.DrawImage(
+                                        image,
+                                        destRect,
+                                        sourceRect,
+                                        graphicsunit
+                                         );
+                            frm.Invalidate(targetArea);
+                        }
+                        break;
+
+                }
+            }
 		}
 		
 		public void transitionout(Form frm, Rectangle targetArea, TransitionStyle transitionstyle){
@@ -111,12 +161,18 @@ namespace Org.Kuhn.Yapss.transitions
 }
         
 		
-		private Graphics graphicsbf;
+        
+        private BufferedGraphics bufferedgraphics;
+		private Graphics graphics;
 		private Image image;
 		private Rectangle destRect;
 		private Rectangle sourceRect;
-		private Rectangle targetArea;
+		private Rectangle targetarea;
 		private GraphicsUnit graphicsunit;
 	}
 
 }
+	public enum TransitionStyle{
+		None,
+		Fade
+	}

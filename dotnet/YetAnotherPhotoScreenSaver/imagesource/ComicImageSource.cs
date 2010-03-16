@@ -279,3 +279,8 @@ namespace Org.Kuhn.Yapss.imagesource
 	}
     
 }
+	public enum Comicstyle{
+		CoversOnly,
+		AnyPage,
+		Entire
+	}

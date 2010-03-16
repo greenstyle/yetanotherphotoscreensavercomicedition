@@ -19,7 +19,9 @@ namespace Org.Kuhn.Yapss {
             isFlickrImageSourceTagAndLogic = (int)reg.GetValue("isFlickrImageSourceTagAndLogic", isFlickrImageSourceTagAndLogic) == 1;
             flickrImageSourceUserName = (string)reg.GetValue("flickrImageSourceUserName", flickrImageSourceUserName);
             flickrImageSourceText = (string)reg.GetValue("flickrImageSourceText", flickrImageSourceText);
-            theme = (Theme)Enum.Parse(typeof(Theme), (string)reg.GetValue("theme", Enum.GetName(typeof(Theme), theme)));
+            backgroundstyle = (BackGroundStyle)Enum.Parse(typeof(BackGroundStyle), (string)reg.GetValue("backgroundstyle", Enum.GetName(typeof(BackGroundStyle), backgroundstyle)));
+            imagestyle = (ImageStyle)Enum.Parse(typeof(ImageStyle), (string)reg.GetValue("imagestyle", Enum.GetName(typeof(ImageStyle), imagestyle)));
+            //theme = (Theme)Enum.Parse(typeof(Theme), (string)reg.GetValue("theme", Enum.GetName(typeof(Theme), theme)));
             comicstyle = (Comicstyle)Enum.Parse(typeof(Comicstyle), (string)reg.GetValue("comicstyle", Enum.GetName(typeof(Comicstyle), comicstyle)));
             isLoggingEnabled = (int)reg.GetValue("isLoggingEnabled", isLoggingEnabled) == 1;
             reg.Close();
@@ -36,7 +38,9 @@ namespace Org.Kuhn.Yapss {
             reg.SetValue("isFlickrImageSourceTagAndLogic", isFlickrImageSourceTagAndLogic, RegistryValueKind.DWord);
             reg.SetValue("flickrImageSourceUserName", flickrImageSourceUserName, RegistryValueKind.String);
             reg.SetValue("flickrImageSourceText", flickrImageSourceText, RegistryValueKind.String);
-            reg.SetValue("theme", Enum.GetName(typeof(Theme), theme), RegistryValueKind.String);
+            reg.SetValue("backgroundstyle", Enum.GetName(typeof(BackGroundStyle), backgroundstyle), RegistryValueKind.String);
+            reg.SetValue("imagestyle", Enum.GetName(typeof(ImageStyle), imagestyle), RegistryValueKind.String);
+            //reg.SetValue("theme", Enum.GetName(typeof(Theme), theme), RegistryValueKind.String);
             reg.SetValue("comicstyle", Enum.GetName(typeof(Comicstyle), Comicstyle), RegistryValueKind.String);
             reg.SetValue("isLoggingEnabled", isLoggingEnabled, RegistryValueKind.DWord);
             reg.Close();
@@ -81,10 +85,20 @@ namespace Org.Kuhn.Yapss {
             get { return flickrImageSourceText; }
             set { flickrImageSourceText = value; }
         }
-        public Theme Theme {
-            get { return theme; }
-            set { theme = value; }
+        //public Theme Theme {
+        //    get { return theme; }
+        //    set { theme = value; }
+        //}
+        public BackGroundStyle BackGroundStyle{
+            get { return backgroundstyle; }
+            set { backgroundstyle = value; }
         }
+        public ImageStyle ImageStyle
+        {
+            get { return imagestyle; }
+            set { imagestyle = value; }
+        }
+        
 		public Comicstyle Comicstyle{
 			get { return comicstyle;}
 			set { comicstyle = value;}
@@ -104,25 +118,29 @@ namespace Org.Kuhn.Yapss {
         private bool isFlickrImageSourceTagAndLogic = false;
         private string flickrImageSourceUserName = "";
         private string flickrImageSourceText = "";
-        private Theme theme = Theme.Dark;
+        private BackGroundStyle backgroundstyle = BackGroundStyle.Black;
+        private ImageStyle imagestyle = ImageStyle.Whole;
+        //private Theme theme = Theme.Dark;
         private Comicstyle comicstyle = Comicstyle.CoversOnly;
         private bool isLoggingEnabled = false;
 
         private static readonly string KEY = "Software\\YetAnotherPhotoScreenSaverCE";  
     }
 
-    public enum Theme {
-        Light,
-        Dark,
+    //public enum Theme {
+    //    Light,
+    //    Dark,
+    //    Random
+    //} 
+    public enum BackGroundStyle { 
+        Black,
+        White,
         Random
-    } 
-	public enum Comicstyle{
-		CoversOnly,
-		AnyPage,
-		Entire
-	}
-	public enum TransitionStyle{
-		None,
-		Fade
-	}
+    }
+    public enum ImageStyle { 
+        Whole,
+        CenterFill,
+        Random
+    }
+
 }

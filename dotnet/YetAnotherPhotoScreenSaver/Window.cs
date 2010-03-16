@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 using System.Drawing;
+using Org.Kuhn.Yapss.transitions;
 
 namespace Org.Kuhn.Yapss {
     class Window : Form {
-        public Window(Rectangle bounds, int xSize, Theme theme, IImageSource imageSource) {
+        public Window(Rectangle bounds, int xSize, BackGroundStyle backgroundstyle, ImageStyle imagestyle, IImageSource imageSource) {
             Log.Instance.Write("Creating screen saver window at bounds " + bounds);
             this.bounds = bounds;
             this.xSize = xSize;
-            this.theme = theme;
+            this.backgroundstyle = backgroundstyle;
+            this.imagestyle = imagestyle;
+            //this.theme = theme;
             this.imageSource = imageSource;
         }
 
@@ -24,7 +28,7 @@ namespace Org.Kuhn.Yapss {
             xSize = (xSize<Height) ? xSize:Height;
                
             // calculate ySize and offsets
-            if (theme == Theme.Dark) {
+            if (imagestyle == ImageStyle.CenterFill) {
                 ySize = xSize;
             }
             else {
@@ -44,7 +48,7 @@ namespace Org.Kuhn.Yapss {
             }
 
             // draw the start state
-            bufferedGraphics.Graphics.FillRectangle(theme == Theme.Dark ? Brushes.Black : Brushes.White, Bounds);
+            bufferedGraphics.Graphics.FillRectangle(backgroundstyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White, Bounds);
             string banner = "Yet Another Photo Screen Saver Comic Edition\n";
             banner += "This software is free and open source\n";
             banner += "http://code.google.com/p/yetanotherphotoscreensavercomicedition/\n";
@@ -65,16 +69,15 @@ namespace Org.Kuhn.Yapss {
         }
 
         public void Draw(Instruction instruction) {
-            lock (bufferedGraphics) {
+            //lock (bufferedGraphics) {
                 Rectangle targetAreaRect = new Rectangle(
                         xOff + instruction.x * xSize,
                         yOff + instruction.y * ySize,
                         instruction.w * xSize,
                         instruction.h * ySize
                         );
-                Rectangle sourceRect;
-                Rectangle destRect;
-                if (theme == Theme.Dark) {
+                targetarearect = targetAreaRect;
+                if (imagestyle == ImageStyle.CenterFill) {
                     destRect = targetAreaRect;
                     double ratio = (double)instruction.image.Width / (double)instruction.image.Height;
                     double targetRatio = (double)instruction.w / (double)instruction.h;
@@ -101,7 +104,6 @@ namespace Org.Kuhn.Yapss {
                     }
                 }
                 else {
-                    bufferedGraphics.Graphics.FillRectangle(Brushes.White, targetAreaRect);
                     float scale = Math.Min(
                         (float)(instruction.w * xSize) / (float)instruction.image.Width,
                         (float)(instruction.h * ySize) / (float)instruction.image.Height);
@@ -114,10 +116,19 @@ namespace Org.Kuhn.Yapss {
                         w - padding * 2, h - padding * 2);
                     sourceRect = new Rectangle(Point.Empty, instruction.image.Size);
                 }
-                transitions.transition trans = new Org.Kuhn.Yapss.transitions.transition(bufferedGraphics.Graphics);
+
+                trans = new Org.Kuhn.Yapss.transitions.transition(bufferedGraphics);
                 trans.set(instruction.image, destRect, sourceRect, GraphicsUnit.Pixel);
-                trans.transitionout(this, targetAreaRect, TransitionStyle.None);
-                trans.transitionin(this,targetAreaRect, TransitionStyle.Fade);
+                //trans.transitionout(this, targetAreaRect, TransitionStyle.None);
+                //ParameterizedThreadStart ts = new ParameterizedThreadStart(Fadein);
+
+                //Thread transitionthread = new Thread(delegate() { Fadein(instruction.image); });
+                //transitionthread.Start();
+
+                //Thread transitionthread = new Thread(delegate(){
+                trans.transitionin(this, targetAreaRect, TransitionStyle.None, backgroundstyle);//});
+
+                //transitionthread.Start();
                 //bufferedGraphics.Graphics.DrawImage(
                 //        instruction.image,
                 //        destRect,
@@ -125,8 +136,14 @@ namespace Org.Kuhn.Yapss {
                 //        GraphicsUnit.Pixel
                 //        );
                 //Invalidate(targetAreaRect);                
-            }
+            //}
         }
+        private void Fadein(Image image ) {
+            trans.transitionin(this, targetarearect, TransitionStyle.Fade, backgroundstyle);
+            
+        }
+
+        public delegate void ThreadStart();
 
         protected override void OnPaint(PaintEventArgs e) {
             base.OnPaint(e);
@@ -171,9 +188,16 @@ namespace Org.Kuhn.Yapss {
         private DateTime lastMove = DateTime.Now;       
         private Rectangle bounds;
         private int xSize, ySize, xOff, yOff;
-        private Theme theme;
+        private BackGroundStyle backgroundstyle;
+        private ImageStyle imagestyle;
+        //private Theme theme;
+        private Rectangle targetarearect;
         private IImageSource imageSource;
         private IController controller;
         private BufferedGraphics bufferedGraphics;
+        public transition trans;
+        public Rectangle sourceRect;
+        public Rectangle destRect;
+
     }
 }
