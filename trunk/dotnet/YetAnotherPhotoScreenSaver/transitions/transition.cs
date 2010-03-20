@@ -150,32 +150,7 @@ namespace Org.Kuhn.Yapss.transitions
 		
 		}
 		
-        public static Bitmap Fade(Bitmap image1, Bitmap image2, int opacity)
-        {
-            Bitmap newBmp = new Bitmap(Math.Min(image1.Width,image2.Width),Math.Min(image1.Height,image2.Height));
-            for (int i = 0; i < image1.Width && i < image2.Width; i++)
-            {
-                for (int j = 0; j < image1.Height && j < image2.Height; j++)
-                {
-                    Color image1Pixel = image1.GetPixel(i, j), image2Pixel = image2.GetPixel(i, j);
-                    Color newColor = Color.FromArgb((image1Pixel.R*opacity + image2Pixel.R*(100 - opacity))/100,
-                                                    (image1Pixel.G*opacity + image2Pixel.G*(100 - opacity))/100,
-                                                    (image1Pixel.B*opacity + image2Pixel.B*(100 - opacity))/100);
-                    newBmp.SetPixel(i, j, newColor);
-                }
-            }
-            return newBmp;
-        }
 
-        private void fadeimages(Image startimage, Rectangle rect, Color color, int trans)
-        {
-            Image result = startimage;
-            decimal perc = ((decimal)trans / 100) * 255;
-            int AlphaColor = Convert.ToInt32(perc);
-            Color veryTransparentColor = Color.FromArgb(AlphaColor, color.R, color.G, color.B);
-            bufferedgraphics.Graphics.DrawImage(result, rect);
-            bufferedgraphics.Graphics.FillRectangle(new SolidBrush(veryTransparentColor), rect);
-        }
 
 		
 		public static Bitmap Copy(Bitmap srcBitmap, Rectangle section)
