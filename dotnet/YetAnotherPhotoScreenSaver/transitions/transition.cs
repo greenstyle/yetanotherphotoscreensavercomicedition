@@ -46,54 +46,22 @@ namespace Org.Kuhn.Yapss.transitions
                 switch (transitionstyle)
                 {
                     case TransitionStyle.Fade:
-                        Bitmap bmpImage = new Bitmap(image);
-
-                        //Brush b = new TextureBrush(image,WrapMode.Clamp,destRect);
-
-                        //using Graphics g = frm.CreateGraphics();
-
-
-                        Bitmap backImage = new Bitmap(image.Width, image.Height);
-
-                        //int t = 50;
-                        //frm.DrawToBitmap(backImage, targetArea);
-                        for (int t = 0; t <= 100; t += 10)
+                        Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
+                        for (int t = 0; t <= 100; t += 5)
                         {
-                            //	ImageAttributes attr = new ImageAttributes();
-                            //attr.SetColorKey(Color.White, Color.White);
-
-                            //int opacity = 100-t;
-                            //MessageBox.Show("test");
-                            Bitmap newImage = Fade(bmpImage, backImage, t);
-                            //lock(bufferedgraphics)
-                            //{
-
                             lock (bufferedgraphics)
                             {
-                                if (t == 0)
-                                {
-                                    bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
-                                }
-                                bufferedgraphics.Graphics.DrawImage(
-                                    newImage,
-                                    destRect,
-                                    sourceRect,
-                                    graphicsunit
-                                     );
-                                //SolidBrush semiTransBrush = new SolidBrush(Color.FromArgb(90, 255, 255, 50));
-                                //Brush title = Brushes.White;
-                                //bufferedgraphics.Graphics.DrawString("Test asdfasdfsadfsadf", new Font("Arial", 14), semiTransBrush, targetArea);
-                                newImage.Dispose();
+                                bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
+                                decimal perc = ((decimal)(100 - t) / 100) * 255;
+                                int AlphaColor = Convert.ToInt32(perc);
+                                Color veryTransparentColor = Color.FromArgb(AlphaColor, color.R, color.G, color.B);
+                                bufferedgraphics.Graphics.DrawImage( image,destRect,sourceRect,graphicsunit);
+                                bufferedgraphics.Graphics.FillRectangle(new SolidBrush(veryTransparentColor), destRect);
                             }
-                            frm.Invalidate(destRect);
 
+                            frm.Invalidate(targetArea);
+                            Application.DoEvents();
                         }
-                        
-                        //bufferedgraphics.Graphics.Dispose();
-                        //frm.Invalidate(targetarea);
-                        //Application.DoEvents();
-                        //System.Threading.Thread.Sleep(10);
-                        //	}
                         break;
                     default:
                         lock (bufferedgraphics)
@@ -112,11 +80,27 @@ namespace Org.Kuhn.Yapss.transitions
                 }
             }
 		}
-		
-		public void transitionout(Form frm, Rectangle targetArea, TransitionStyle transitionstyle){
-			switch (transitionstyle) {
+
+        public void transitionout(Form frm, Rectangle targetArea, TransitionStyle transitionstyle, BackGroundStyle backgroundstyle)
+        {
+            Brush backbrush = backgroundstyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White;
+            switch (transitionstyle) {
 				case TransitionStyle.Fade:
-					//bufferedGraphics.Graphics.FillRectangle(theme == Theme.Dark ? Brushes.Black : Brushes.White, Bounds);
+                    Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
+                    for (int t = 100; t >= 0; t -= 5)
+                    {
+                        lock (bufferedgraphics)
+                        {
+                            decimal perc = ((decimal)(100 - 95) / 100) * 255;
+                            int AlphaColor = Convert.ToInt32(perc);
+                            Color veryTransparentColor = Color.FromArgb(AlphaColor, color.R, color.G, color.B);
+                            
+                            bufferedgraphics.Graphics.FillRectangle(new SolidBrush(veryTransparentColor), destRect);
+                        }
+
+                        frm.Invalidate(targetArea);
+                        Application.DoEvents();
+                    }
 					break;
 				case TransitionStyle.None:
 					break;
@@ -143,6 +127,17 @@ namespace Org.Kuhn.Yapss.transitions
             }
             return newBmp;
         }
+
+        private void fadeimages(Image startimage, Rectangle rect, Color color, int trans)
+        {
+            Image result = startimage;
+            decimal perc = ((decimal)trans / 100) * 255;
+            int AlphaColor = Convert.ToInt32(perc);
+            Color veryTransparentColor = Color.FromArgb(AlphaColor, color.R, color.G, color.B);
+            bufferedgraphics.Graphics.DrawImage(result, rect);
+            bufferedgraphics.Graphics.FillRectangle(new SolidBrush(veryTransparentColor), rect);
+        }
+
 		
 		public static Bitmap Copy(Bitmap srcBitmap, Rectangle section)
 {
@@ -163,11 +158,9 @@ namespace Org.Kuhn.Yapss.transitions
 		
         
         private BufferedGraphics bufferedgraphics;
-		private Graphics graphics;
 		private Image image;
 		private Rectangle destRect;
 		private Rectangle sourceRect;
-		private Rectangle targetarea;
 		private GraphicsUnit graphicsunit;
 	}
 

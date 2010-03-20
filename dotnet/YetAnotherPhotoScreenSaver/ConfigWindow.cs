@@ -30,6 +30,8 @@ namespace Org.Kuhn.Yapss {
             }
             config.BackGroundStyle = (BackGroundStyle)Enum.Parse(typeof(BackGroundStyle), bgColorDropdown.Text);
             config.ImageStyle = (ImageStyle)Enum.Parse(typeof(ImageStyle), ImageStyledropdown.Text);
+            config.TransitionIn = (TransitionStyle)Enum.Parse(typeof(TransitionStyle), transitionindropdown.Text);
+            config.TransitionOut = (TransitionStyle)Enum.Parse(typeof(TransitionStyle), transitionoutdropdown.Text);
             //config.Theme = (Theme)Enum.Parse(typeof(Theme), bgColorDropdown.Text);
             config.Comicstyle = (Comicstyle)Enum.Parse(typeof(Comicstyle), comicstyleDropDown.Text);
             config.IsEnabledFlickrImageSource = flickrCheckbox.Checked;
@@ -55,6 +57,8 @@ namespace Org.Kuhn.Yapss {
             bgColorDropdown.Text = Enum.GetName(typeof(BackGroundStyle), config.BackGroundStyle);
             ImageStyledropdown.Text = Enum.GetName(typeof(ImageStyle), config.ImageStyle);
             comicstyleDropDown.Text = Enum.GetName(typeof(Comicstyle), config.Comicstyle);
+            transitionindropdown.Text = Enum.GetName(typeof(TransitionStyle), config.TransitionIn);
+            transitionoutdropdown.Text = Enum.GetName(typeof(TransitionStyle), config.TransitionOut);
             flickrCheckbox.Checked = flickrPanel.Enabled = config.IsEnabledFlickrImageSource;
             tagsTextBox.Text = config.FlickrImageSourceTags;
             tagLogicDropdown.SelectedIndex = config.IsFlickrImageSourceTagAndLogic ? 1 : 0;

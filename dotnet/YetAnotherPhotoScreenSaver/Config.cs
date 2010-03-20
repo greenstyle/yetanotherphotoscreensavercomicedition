@@ -21,6 +21,8 @@ namespace Org.Kuhn.Yapss {
             flickrImageSourceText = (string)reg.GetValue("flickrImageSourceText", flickrImageSourceText);
             backgroundstyle = (BackGroundStyle)Enum.Parse(typeof(BackGroundStyle), (string)reg.GetValue("backgroundstyle", Enum.GetName(typeof(BackGroundStyle), backgroundstyle)));
             imagestyle = (ImageStyle)Enum.Parse(typeof(ImageStyle), (string)reg.GetValue("imagestyle", Enum.GetName(typeof(ImageStyle), imagestyle)));
+            transitionin = (TransitionStyle)Enum.Parse(typeof(TransitionStyle), (string)reg.GetValue("transitionin", Enum.GetName(typeof(TransitionStyle), transitionin)));
+            transitionout = (TransitionStyle)Enum.Parse(typeof(TransitionStyle), (string)reg.GetValue("transitionout", Enum.GetName(typeof(TransitionStyle), transitionout)));
             //theme = (Theme)Enum.Parse(typeof(Theme), (string)reg.GetValue("theme", Enum.GetName(typeof(Theme), theme)));
             comicstyle = (Comicstyle)Enum.Parse(typeof(Comicstyle), (string)reg.GetValue("comicstyle", Enum.GetName(typeof(Comicstyle), comicstyle)));
             isLoggingEnabled = (int)reg.GetValue("isLoggingEnabled", isLoggingEnabled) == 1;
@@ -40,6 +42,8 @@ namespace Org.Kuhn.Yapss {
             reg.SetValue("flickrImageSourceText", flickrImageSourceText, RegistryValueKind.String);
             reg.SetValue("backgroundstyle", Enum.GetName(typeof(BackGroundStyle), backgroundstyle), RegistryValueKind.String);
             reg.SetValue("imagestyle", Enum.GetName(typeof(ImageStyle), imagestyle), RegistryValueKind.String);
+            reg.SetValue("transitionin", Enum.GetName(typeof(TransitionStyle), transitionin), RegistryValueKind.String);
+            reg.SetValue("transitionout", Enum.GetName(typeof(TransitionStyle), transitionout), RegistryValueKind.String);
             //reg.SetValue("theme", Enum.GetName(typeof(Theme), theme), RegistryValueKind.String);
             reg.SetValue("comicstyle", Enum.GetName(typeof(Comicstyle), Comicstyle), RegistryValueKind.String);
             reg.SetValue("isLoggingEnabled", isLoggingEnabled, RegistryValueKind.DWord);
@@ -103,6 +107,16 @@ namespace Org.Kuhn.Yapss {
 			get { return comicstyle;}
 			set { comicstyle = value;}
 		}
+        public TransitionStyle TransitionIn {
+            get { return transitionin; }
+            set { transitionin = value; }
+        }
+        public TransitionStyle TransitionOut
+        {
+            get { return transitionout; }
+            set { transitionout = value; }
+        }
+
         public bool IsLoggingEnabled {
             get { return isLoggingEnabled; }
             set { isLoggingEnabled = value; }
@@ -120,9 +134,12 @@ namespace Org.Kuhn.Yapss {
         private string flickrImageSourceText = "";
         private BackGroundStyle backgroundstyle = BackGroundStyle.Black;
         private ImageStyle imagestyle = ImageStyle.Whole;
+        private TransitionStyle transitionin = TransitionStyle.Fade;
+        private TransitionStyle transitionout = TransitionStyle.Fade;
         //private Theme theme = Theme.Dark;
         private Comicstyle comicstyle = Comicstyle.CoversOnly;
         private bool isLoggingEnabled = false;
+       
 
         private static readonly string KEY = "Software\\YetAnotherPhotoScreenSaverCE";  
     }
