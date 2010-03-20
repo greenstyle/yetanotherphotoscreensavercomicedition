@@ -67,13 +67,13 @@ namespace Org.Kuhn.Yapss {
             int xSize = Screen.PrimaryScreen.Bounds.Width / config.XCount;
 
             // build window for each screen
-            foreach (Screen screen in Screen.AllScreens) {
-            	//Screen screen = Screen.PrimaryScreen;
+            //foreach (Screen screen in Screen.AllScreens) {
+            	Screen screen = Screen.PrimaryScreen;
                 Window wnd = new Window(screen.Bounds, xSize, theme, imageSource);
                 windows.Add(wnd);
                 wnd.End += DisplayWindowEndEventHandler;
                 wnd.Show();
-            }
+            //}
 
             // start the background drawing thread
             thread = new Thread(ThreadProc);
@@ -138,31 +138,38 @@ namespace Org.Kuhn.Yapss {
         private static extern int ShowWindow(int hwnd, int command);
 
         private static void HideTaskbar() {
-            //try {
-            //    ShowWindow(FindWindow(TASKBAR_WINDOW, ""), SW_HIDE);
-           // }
-           // catch (Exception ex) {
-           //     Log.Instance.Write("Failed hiding taskbar", ex);
-           // }
+            try {
+                ShowWindow(FindWindow(TASKBAR_WINDOW, ""), SW_HIDE);
+            }
+            catch (Exception ex) {
+                Log.Instance.Write("Failed hiding taskbar", ex);
+            }
         }
 
         private static void ShowTaskbar() {
-
-        	//bool success = false;
-        	//while (success == false)
-        	//{
-            //try {
-           //   ShowWindow(FindWindow(TASKBAR_WINDOW, ""), SW_SHOW);
-           //     success = true;
-           // }
-           // catch (Exception ex) {
-           //     Log.Instance.Write("Failed showing taskbar", ex);
-           // }
-        	//}
+        	bool success = false;
+        	while (success == false)
+        	{
+            try {
+        		int taskbarid=0;
+        			while ( taskbarid ==0)
+        		{
+        			taskbarid = FindWindow(TASKBAR_WINDOW, "");
+        		}
+                ShowWindow(FindWindow(TASKBAR_WINDOW, ""), SW_SHOW);
+                success = true;
+            }
+            catch (Exception ex) {
+                Log.Instance.Write("Failed showing taskbar", ex);
+            }
+        	}
         }
          static void Application_ApplicationExit(object sender, EventArgs e)
         {
             ShowTaskbar();
         }
+        
     }
+
+	
 }

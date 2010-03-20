@@ -33,10 +33,13 @@ namespace Org.Kuhn.Yapss {
                 try {
                     int nextfileid = random.Next(files.Count);
             	nextfile = files[nextfileid];
-                files.RemoveAt(nextfileid);
+            	if (ComicImager.isQueued() == false){files.RemoveAt(nextfileid);}
+                //files.RemoveAt(nextfileid);
             	if (ComicImager.isComic(nextfile)|ComicImager.isQueued())
             	    {
             			image = ComicImager.GetImage(nextfile);
+            			
+            			
             	    }
             	else
             		{

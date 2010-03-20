@@ -8,14 +8,19 @@ using Org.Kuhn.Yapss.transitions;
 
 namespace Org.Kuhn.Yapss {
     class Window : Form {
-        public Window(Rectangle bounds, int xSize, BackGroundStyle backgroundstyle, ImageStyle imagestyle, IImageSource imageSource) {
+        public Window(Rectangle bounds, int xSize, Config config, IImageSource imageSource) {
             Log.Instance.Write("Creating screen saver window at bounds " + bounds);
             this.bounds = bounds;
             this.xSize = xSize;
-            this.backgroundstyle = backgroundstyle;
-            this.imagestyle = imagestyle;
+            this.config = config;
+            this.backgroundstyle = config.BackGroundStyle;
+            this.imagestyle = config.ImageStyle;
             //this.theme = theme;
             this.imageSource = imageSource;
+            this.SetStyle(
+                ControlStyles.AllPaintingInWmPaint |
+                ControlStyles.UserPaint |
+                ControlStyles.OptimizedDoubleBuffer, true);
         }
 
         protected override void OnLoad(EventArgs e) {
@@ -119,31 +124,9 @@ namespace Org.Kuhn.Yapss {
 
                 trans = new Org.Kuhn.Yapss.transitions.transition(bufferedGraphics);
                 trans.set(instruction.image, destRect, sourceRect, GraphicsUnit.Pixel);
-                //trans.transitionout(this, targetAreaRect, TransitionStyle.None);
-                //ParameterizedThreadStart ts = new ParameterizedThreadStart(Fadein);
-
-                //Thread transitionthread = new Thread(delegate() { Fadein(instruction.image); });
-                //transitionthread.Start();
-
-                //Thread transitionthread = new Thread(delegate(){
-                trans.transitionin(this, targetAreaRect, TransitionStyle.None, backgroundstyle);//});
-
-                //transitionthread.Start();
-                //bufferedGraphics.Graphics.DrawImage(
-                //        instruction.image,
-                //        destRect,
-                //        sourceRect,
-                //        GraphicsUnit.Pixel
-                //        );
-                //Invalidate(targetAreaRect);                
-            //}
+                trans.transitionout(this, targetAreaRect, config.TransitionOut, backgroundstyle);
+                trans.transitionin(this, targetAreaRect, config.TransitionIn, backgroundstyle);//});
         }
-        private void Fadein(Image image ) {
-            trans.transitionin(this, targetarearect, TransitionStyle.Fade, backgroundstyle);
-            
-        }
-
-        public delegate void ThreadStart();
 
         protected override void OnPaint(PaintEventArgs e) {
             base.OnPaint(e);
@@ -184,6 +167,7 @@ namespace Org.Kuhn.Yapss {
 
         public event EventHandler End;
 
+        private Config config;
         private int moveCount = 0;
         private DateTime lastMove = DateTime.Now;       
         private Rectangle bounds;
