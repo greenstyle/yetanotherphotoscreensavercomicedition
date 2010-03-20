@@ -453,7 +453,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
         "ProductCode" = "8:{5F3653B2-01FD-44FA-8793-058D2D415B5E}"
-        "PackageCode" = "8:{42E70339-580C-4A7D-83DD-BF6300D3D7CD}"
+        "PackageCode" = "8:{EE0CA0E9-F6A9-4426-B22A-588E29A86279}"
         "UpgradeCode" = "8:{BC1343B2-BDDB-4454-84CD-CC32A5AA1AE4}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -469,8 +469,8 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
-        "ARPIconIndex" = "3:0"
+        "ARPPRODUCTICON" = "8:_40E4D3EC573546D887CCAEAAEC619298"
+        "ARPIconIndex" = "3:32512"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:0"
@@ -848,7 +848,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
             {
-            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\obj\\DebugConfig\\YetAnotherPhotoScreenSaverCE.exe"
+            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\obj\\Release\\YetAnotherPhotoScreenSaverCE.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_41D9B5244DC54C6398016386CF0172A2"
