@@ -48,32 +48,33 @@ namespace Org.Kuhn.Yapss {
 
         public void Run() {
         	Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
+           
             HideTaskbar();
             Log.Instance.IsEnabled = config.IsLoggingEnabled;
             Log.Instance.Write("Starting screen saver");
 
-            Theme theme = config.Theme == Theme.Random ?
-                (DateTime.Now.Second % 2 == 0 ? Theme.Dark : Theme.Light)
-                : config.Theme;
+            //Theme theme = config.Theme == Theme.Random ?
+            //    (DateTime.Now.Second % 2 == 0 ? Theme.Dark : Theme.Light)
+            //    : config.Theme;
 
             List<IImageSource> imageSources = new List<IImageSource>();
             if (config.IsEnabledFileImageSource)
             	imageSources.Add(new FileImageSource(config.FileImageSourcePath, config.Comicstyle));
             if (config.IsEnabledFlickrImageSource)
-                imageSources.Add(new FlickrImageSource(config.FlickrImageSourceTags, config.IsFlickrImageSourceTagAndLogic, config.FlickrImageSourceUserName, config.FlickrImageSourceText, theme == Theme.Dark));
+                imageSources.Add(new FlickrImageSource(config.FlickrImageSourceTags, config.IsFlickrImageSourceTagAndLogic, config.FlickrImageSourceUserName, config.FlickrImageSourceText,  config.ImageStyle == ImageStyle.CenterFill));
             IImageSource imageSource = new RoundRobinImageSource(imageSources, new ColorSquareImageSource());
 
             // base x size on width of primary screen
             int xSize = Screen.PrimaryScreen.Bounds.Width / config.XCount;
 
             // build window for each screen
-            //foreach (Screen screen in Screen.AllScreens) {
-            	Screen screen = Screen.PrimaryScreen;
-                Window wnd = new Window(screen.Bounds, xSize, theme, imageSource);
+            foreach (Screen screen in Screen.AllScreens) {
+            	//Screen screen = Screen.PrimaryScreen;
+                Window wnd = new Window(screen.Bounds, xSize, config, imageSource);
                 windows.Add(wnd);
                 wnd.End += DisplayWindowEndEventHandler;
                 wnd.Show();
-            //}
+            }
 
             // start the background drawing thread
             thread = new Thread(ThreadProc);
@@ -164,7 +165,8 @@ namespace Org.Kuhn.Yapss {
             }
         	}
         }
-         static void Application_ApplicationExit(object sender, EventArgs e)
+         
+        static void Application_ApplicationExit(object sender, EventArgs e)
         {
             ShowTaskbar();
         }
