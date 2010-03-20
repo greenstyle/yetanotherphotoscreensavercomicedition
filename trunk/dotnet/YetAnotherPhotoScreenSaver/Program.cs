@@ -48,12 +48,23 @@ namespace Org.Kuhn.Yapss {
 
         public void Run() {
         	Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
-           
+            Config myconfig = config;
             HideTaskbar();
             Log.Instance.IsEnabled = config.IsLoggingEnabled;
             Log.Instance.Write("Starting screen saver");
 
-            //Theme theme = config.Theme == Theme.Random ?
+            Random rnd = new Random();
+            
+            
+            myconfig.BackGroundStyle = config.BackGroundStyle == BackGroundStyle.Random ?
+                (rnd.Next(1,3) == 1 ? BackGroundStyle.Black : BackGroundStyle.White)
+                : config.BackGroundStyle;
+            myconfig.ImageStyle = config.ImageStyle == ImageStyle.Random ?
+                (rnd.Next(1,3) == 1 ? ImageStyle.CenterFill : ImageStyle.Whole)
+                : config.ImageStyle;
+
+
+             //Theme theme = config.Theme == Theme.Random ?
             //    (DateTime.Now.Second % 2 == 0 ? Theme.Dark : Theme.Light)
             //    : config.Theme;
 
@@ -61,7 +72,7 @@ namespace Org.Kuhn.Yapss {
             if (config.IsEnabledFileImageSource)
             	imageSources.Add(new FileImageSource(config.FileImageSourcePath, config.Comicstyle));
             if (config.IsEnabledFlickrImageSource)
-                imageSources.Add(new FlickrImageSource(config.FlickrImageSourceTags, config.IsFlickrImageSourceTagAndLogic, config.FlickrImageSourceUserName, config.FlickrImageSourceText,  config.ImageStyle == ImageStyle.CenterFill));
+                imageSources.Add(new FlickrImageSource(config.FlickrImageSourceTags, config.IsFlickrImageSourceTagAndLogic, config.FlickrImageSourceUserName, config.FlickrImageSourceText,  myconfig.ImageStyle == ImageStyle.CenterFill));
             IImageSource imageSource = new RoundRobinImageSource(imageSources, new ColorSquareImageSource());
 
             // base x size on width of primary screen
@@ -70,7 +81,7 @@ namespace Org.Kuhn.Yapss {
             // build window for each screen
             foreach (Screen screen in Screen.AllScreens) {
             	//Screen screen = Screen.PrimaryScreen;
-                Window wnd = new Window(screen.Bounds, xSize, config, imageSource);
+                Window wnd = new Window(screen.Bounds, xSize, myconfig, imageSource);
                 windows.Add(wnd);
                 wnd.End += DisplayWindowEndEventHandler;
                 wnd.Show();
@@ -139,31 +150,9 @@ namespace Org.Kuhn.Yapss {
         private static extern int ShowWindow(int hwnd, int command);
 
         private static void HideTaskbar() {
-            try {
-                ShowWindow(FindWindow(TASKBAR_WINDOW, ""), SW_HIDE);
-            }
-            catch (Exception ex) {
-                Log.Instance.Write("Failed hiding taskbar", ex);
-            }
         }
 
         private static void ShowTaskbar() {
-        	bool success = false;
-        	while (success == false)
-        	{
-            try {
-        		int taskbarid=0;
-        			while ( taskbarid ==0)
-        		{
-        			taskbarid = FindWindow(TASKBAR_WINDOW, "");
-        		}
-                ShowWindow(FindWindow(TASKBAR_WINDOW, ""), SW_SHOW);
-                success = true;
-            }
-            catch (Exception ex) {
-                Log.Instance.Write("Failed showing taskbar", ex);
-            }
-        	}
         }
          
         static void Application_ApplicationExit(object sender, EventArgs e)
