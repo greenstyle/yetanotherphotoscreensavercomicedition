@@ -59,11 +59,11 @@
             this.ImageStyledropdown = new System.Windows.Forms.ComboBox();
             this.labelimagestyle = new System.Windows.Forms.Label();
             this.transitionsPanel = new System.Windows.Forms.Panel();
-            this.labelTransitions = new System.Windows.Forms.Label();
-            this.transitionindropdown = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.transitionoutdropdown = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.transitionindropdown = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.labelTransitions = new System.Windows.Forms.Label();
             this.flickrPanel.SuspendLayout();
             this.diskPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xCountNumUpDown)).BeginInit();
@@ -434,36 +434,6 @@
             this.transitionsPanel.Size = new System.Drawing.Size(428, 31);
             this.transitionsPanel.TabIndex = 27;
             // 
-            // labelTransitions
-            // 
-            this.labelTransitions.AutoSize = true;
-            this.labelTransitions.Location = new System.Drawing.Point(13, 107);
-            this.labelTransitions.Name = "labelTransitions";
-            this.labelTransitions.Size = new System.Drawing.Size(58, 13);
-            this.labelTransitions.TabIndex = 28;
-            this.labelTransitions.Text = "Transitions";
-            // 
-            // transitionindropdown
-            // 
-            this.transitionindropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.transitionindropdown.FormattingEnabled = true;
-            this.transitionindropdown.Items.AddRange(new object[] {
-            "None",
-            "Fade"});
-            this.transitionindropdown.Location = new System.Drawing.Point(179, 7);
-            this.transitionindropdown.Name = "transitionindropdown";
-            this.transitionindropdown.Size = new System.Drawing.Size(94, 21);
-            this.transitionindropdown.TabIndex = 22;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(157, 10);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(16, 13);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "In";
-            // 
             // transitionoutdropdown
             // 
             this.transitionoutdropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -484,6 +454,38 @@
             this.label12.Size = new System.Drawing.Size(24, 13);
             this.label12.TabIndex = 23;
             this.label12.Text = "Out";
+            // 
+            // transitionindropdown
+            // 
+            this.transitionindropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.transitionindropdown.FormattingEnabled = true;
+            this.transitionindropdown.Items.AddRange(new object[] {
+            "None",
+            "Fade",
+            "PageTurn",
+            "Zoom"});
+            this.transitionindropdown.Location = new System.Drawing.Point(179, 7);
+            this.transitionindropdown.Name = "transitionindropdown";
+            this.transitionindropdown.Size = new System.Drawing.Size(94, 21);
+            this.transitionindropdown.TabIndex = 22;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(157, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(16, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "In";
+            // 
+            // labelTransitions
+            // 
+            this.labelTransitions.AutoSize = true;
+            this.labelTransitions.Location = new System.Drawing.Point(13, 107);
+            this.labelTransitions.Name = "labelTransitions";
+            this.labelTransitions.Size = new System.Drawing.Size(58, 13);
+            this.labelTransitions.TabIndex = 28;
+            this.labelTransitions.Text = "Transitions";
             // 
             // ConfigWindow
             // 

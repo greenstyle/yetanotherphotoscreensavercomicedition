@@ -57,10 +57,10 @@ namespace Org.Kuhn.Yapss {
             
             
             myconfig.BackGroundStyle = config.BackGroundStyle == BackGroundStyle.Random ?
-                (rnd.Next(1,3) == 1 ? BackGroundStyle.Black : BackGroundStyle.White)
+                (rnd.Next(1,10) % 2 == 0 ? BackGroundStyle.Black : BackGroundStyle.White)
                 : config.BackGroundStyle;
             myconfig.ImageStyle = config.ImageStyle == ImageStyle.Random ?
-                (rnd.Next(1,3) == 1 ? ImageStyle.CenterFill : ImageStyle.Whole)
+                (rnd.Next(1,10) % 2 == 0 ? ImageStyle.CenterFill : ImageStyle.Whole)
                 : config.ImageStyle;
 
 
