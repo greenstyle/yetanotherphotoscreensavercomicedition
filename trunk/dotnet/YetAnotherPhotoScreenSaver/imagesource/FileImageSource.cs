@@ -45,11 +45,13 @@ namespace Org.Kuhn.Yapss {
             		{
             			image = Image.FromFile(nextfile);
             		}
-                    
-                    Rotate(image);
+            	if (image != null) 
+            	{
+            		Rotate(image);
                     if (image.Width < minX || image.Height < minY)
                         image = null;
-                }
+            	}
+            	}
                 catch (Exception ex) {
                     Log.Instance.Write("Failed loading disk image", ex);
                 }
