@@ -33,9 +33,9 @@ namespace Org.Kuhn.Yapss {
                 w = random.Next(1, layout.Width / 2 + 1);
                 
               h = random.Next(1, layout.Width / 2 + 1);
-               // h = random.Next(1, layout.Height / 2 + 1);
-                Log.Instance.Write("Layout= " + layout.Width + "x" + layout.Height);
-                Log.Instance.Write("Current Loc= " + w + "x" + h);
+              //h = random.Next(1, layout.Height / 2 + 1);
+              //Log.Instance.Write("Layout= " + layout.Width + "x" + layout.Height);
+              //Log.Instance.Write("Current Loc= " + w + "x" + h);
             }
 
             // find locations overwriting oldest cells

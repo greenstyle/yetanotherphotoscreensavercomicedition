@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.Windows.Forms.Button OpenLogButton;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigWindow));
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -64,11 +65,23 @@
             this.transitionindropdown = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.labelTransitions = new System.Windows.Forms.Label();
+            this.DebugCheckBox = new System.Windows.Forms.CheckBox();
+            OpenLogButton = new System.Windows.Forms.Button();
             this.flickrPanel.SuspendLayout();
             this.diskPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xCountNumUpDown)).BeginInit();
             this.transitionsPanel.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // OpenLogButton
+            // 
+            OpenLogButton.Location = new System.Drawing.Point(204, 527);
+            OpenLogButton.Name = "OpenLogButton";
+            OpenLogButton.Size = new System.Drawing.Size(62, 23);
+            OpenLogButton.TabIndex = 30;
+            OpenLogButton.Text = "Open Log";
+            OpenLogButton.UseVisualStyleBackColor = true;
+            OpenLogButton.Click += new System.EventHandler(this.OpenLogButton_Click);
             // 
             // saveButton
             // 
@@ -431,7 +444,7 @@
             this.transitionsPanel.Controls.Add(this.label8);
             this.transitionsPanel.Location = new System.Drawing.Point(6, 119);
             this.transitionsPanel.Name = "transitionsPanel";
-            this.transitionsPanel.Size = new System.Drawing.Size(428, 31);
+            this.transitionsPanel.Size = new System.Drawing.Size(282, 31);
             this.transitionsPanel.TabIndex = 27;
             // 
             // transitionoutdropdown
@@ -487,6 +500,16 @@
             this.labelTransitions.TabIndex = 28;
             this.labelTransitions.Text = "Transitions";
             // 
+            // DebugCheckBox
+            // 
+            this.DebugCheckBox.AutoSize = true;
+            this.DebugCheckBox.Location = new System.Drawing.Point(99, 531);
+            this.DebugCheckBox.Name = "DebugCheckBox";
+            this.DebugCheckBox.Size = new System.Drawing.Size(99, 17);
+            this.DebugCheckBox.TabIndex = 29;
+            this.DebugCheckBox.Text = "Debug Logging";
+            this.DebugCheckBox.UseVisualStyleBackColor = true;
+            // 
             // ConfigWindow
             // 
             this.AcceptButton = this.saveButton;
@@ -494,6 +517,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(456, 607);
+            this.Controls.Add(OpenLogButton);
+            this.Controls.Add(this.DebugCheckBox);
             this.Controls.Add(this.labelTransitions);
             this.Controls.Add(this.transitionsPanel);
             this.Controls.Add(this.ImageStyledropdown);
@@ -576,5 +601,6 @@
         private System.Windows.Forms.ComboBox transitionindropdown;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labelTransitions;
+        private System.Windows.Forms.CheckBox DebugCheckBox;
     }
 }
