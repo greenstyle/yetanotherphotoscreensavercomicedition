@@ -26,7 +26,10 @@ namespace Org.Kuhn.Yapss {
                 lock (this) {
                     StreamWriter writer = null;
                     try {
-                        writer = File.AppendText("yapss.log");
+                    	string logfilepath  = Path.Combine( 
+                    	       System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), 
+                    	       "yapss.log");
+                        writer = File.AppendText(logfilepath);
                         writer.Write(DateTime.Now.ToString());
                         writer.Write(" ");
                         writer.WriteLine(message);
