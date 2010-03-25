@@ -87,6 +87,7 @@ namespace Org.Kuhn.Yapss.transitions
                             {
                                 decimal perc = (decimal) t / 100;
                                 Rectangle fill = new Rectangle(destRect.X, destRect.Y,Convert.ToInt16(destRect.Width *perc), destRect.Height);
+                                
                                 bufferedgraphics.Graphics.DrawImage(image, fill, sourceRect, graphicsunit);
                             }
 
