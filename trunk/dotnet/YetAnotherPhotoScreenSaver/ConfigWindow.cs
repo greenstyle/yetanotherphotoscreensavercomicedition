@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Diagnostics;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Org.Kuhn.Yapss {
     public partial class ConfigWindow : Form {
@@ -41,6 +43,7 @@ namespace Org.Kuhn.Yapss {
             config.FlickrImageSourceText = textTextBox.Text;
             config.IsEnabledFileImageSource = diskCheckBox.Checked;
             config.FileImageSourcePath = pathTextBox.Text;
+            config.IsLoggingEnabled = DebugCheckBox.Checked;
         }
 
         private void ConfigWindow_Load(object sender, EventArgs e) {
@@ -66,6 +69,7 @@ namespace Org.Kuhn.Yapss {
             textTextBox.Text = config.FlickrImageSourceText;
             diskCheckBox.Checked = diskPanel.Enabled = config.IsEnabledFileImageSource;
             pathTextBox.Text = folderBrowserDialog.SelectedPath = config.FileImageSourcePath;
+            DebugCheckBox.Checked = config.IsLoggingEnabled;
         }
 
         private void browseButton_Click(object sender, EventArgs e) {
@@ -112,5 +116,20 @@ namespace Org.Kuhn.Yapss {
                 Log.Instance.Write("Failed launching web browser", ex);
             }
         }
+
+        private void OpenLogButton_Click(object sender, EventArgs e)
+        {
+         string logfilepath  = Path.Combine( 
+         System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), 
+         "yapss.log");
+         ProcessStartInfo procStart = new ProcessStartInfo(logfilepath);
+         procStart.UseShellExecute = true;
+         Process proc = new Process();
+         proc.StartInfo = procStart;
+         proc.Start();
+    
+        }
+
+
     }
 }
