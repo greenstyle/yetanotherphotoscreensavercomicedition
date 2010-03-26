@@ -75,6 +75,10 @@ namespace Org.Kuhn.Yapss {
 
         public void Draw(Instruction instruction) {
             //lock (bufferedGraphics) {
+            try
+            {
+                if (instruction.image == null) { System.Diagnostics.Debug.Print("Null Image"); };
+
                 Rectangle targetAreaRect = new Rectangle(
                         xOff + instruction.x * xSize,
                         yOff + instruction.y * ySize,
@@ -82,11 +86,13 @@ namespace Org.Kuhn.Yapss {
                         instruction.h * ySize
                         );
                 targetarearect = targetAreaRect;
-                if (imagestyle == ImageStyle.CenterFill) {
+                if (imagestyle == ImageStyle.CenterFill)
+                {
                     destRect = targetAreaRect;
                     double ratio = (double)instruction.image.Width / (double)instruction.image.Height;
                     double targetRatio = (double)instruction.w / (double)instruction.h;
-                    if (ratio > targetRatio) {
+                    if (ratio > targetRatio)
+                    {
                         int diff = instruction.image.Width - (int)((double)instruction.image.Height * targetRatio);
                         sourceRect = new Rectangle(
                             diff / 2,
@@ -95,7 +101,8 @@ namespace Org.Kuhn.Yapss {
                             instruction.image.Height
                             );
                     }
-                    else if (ratio < targetRatio) {
+                    else if (ratio < targetRatio)
+                    {
                         int diff = instruction.image.Height - (int)((double)instruction.image.Width / targetRatio);
                         sourceRect = new Rectangle(
                             0,
@@ -104,11 +111,13 @@ namespace Org.Kuhn.Yapss {
                             instruction.image.Height - diff
                             );
                     }
-                    else {
+                    else
+                    {
                         sourceRect = new Rectangle(Point.Empty, instruction.image.Size);
                     }
                 }
-                else {
+                else
+                {
                     float scale = Math.Min(
                         (float)(instruction.w * xSize) / (float)instruction.image.Width,
                         (float)(instruction.h * ySize) / (float)instruction.image.Height);
@@ -121,11 +130,21 @@ namespace Org.Kuhn.Yapss {
                         w - padding * 2, h - padding * 2);
                     sourceRect = new Rectangle(Point.Empty, instruction.image.Size);
                 }
-
+                System.Diagnostics.Debug.Print("Start transistion");
                 trans = new Org.Kuhn.Yapss.transitions.transition(bufferedGraphics);
+                System.Diagnostics.Debug.Print("Set transistion");
                 trans.set(instruction.image, destRect, sourceRect, GraphicsUnit.Pixel);
+                System.Diagnostics.Debug.Print("transistion Out");
+                if (instruction.image == null) { System.Diagnostics.Debug.Print("Null Image"); };
                 trans.transitionout(this, targetAreaRect, config.TransitionOut, backgroundstyle);
+                System.Diagnostics.Debug.Print("transistion In");
                 trans.transitionin(this, targetAreaRect, config.TransitionIn, backgroundstyle);//});
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Write("Draw Error");
+                Log.Instance.Write(ex.Message);
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e) {
