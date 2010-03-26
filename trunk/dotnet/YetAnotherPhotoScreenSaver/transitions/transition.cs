@@ -29,125 +29,149 @@ namespace Org.Kuhn.Yapss.transitions
 			bufferedgraphics = bufferedGraphics;		
 		}
 		public void set(Image setimage, Rectangle setdestRect, Rectangle setsourceRect, GraphicsUnit setgraphicsunit){
-			image = setimage;
-			destRect = setdestRect;
-			sourceRect = setsourceRect;
-			graphicsunit = setgraphicsunit;
+            try
+            {
+                image = setimage;
+                destRect = setdestRect;
+                sourceRect = setsourceRect;
+                graphicsunit = setgraphicsunit;
+            }
+            catch(Exception ex) {
+                Log.Instance.Write("Error setting up transition");
+                Log.Instance.Write(ex.Message);
+               
+            }
 		}
         public void transitionin(Form frm, Rectangle targetArea, TransitionStyle transitionstyle, BackGroundStyle backgroundstyle)
         {
             {
-                Brush backbrush = backgroundstyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White;
-                Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
-                switch (transitionstyle)
+                try
                 {
-                    case TransitionStyle.Zoom:
-                        for (int t = 0; t <= 100; t += 5)
-                        {
-                            lock (bufferedgraphics)
+                    Brush backbrush = backgroundstyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White;
+                    Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
+                    switch (transitionstyle)
+                    {
+                        case TransitionStyle.Zoom:
+                            for (int t = 0; t <= 100; t += 5)
                             {
-                                decimal perc = (decimal)t / 100;
-                                Rectangle fill = new Rectangle();//Convert.ToInt16((destRect.X + (destRect.Width/2)) + Convert.ToInt16((destRect.Width/2) * perc))), Convert.ToInt16((destRect.Y + (destRect.Height/2)) + Convert.ToInt16(((destRect.Height/2) * perc)) , Convert.ToInt16(destRect.Width/2) + Convert.ToInt16((destRect.Width/2) * perc), Convert.ToInt16(destRect.Height/2)+ Convert.ToInt16((destRect.Height/2) * perc));
-                                fill.X = Convert.ToInt16((destRect.X + (destRect.Width / 2)) - Convert.ToInt16((destRect.Width / 2) * perc));
-                                fill.Y = Convert.ToInt16((destRect.Y + (destRect.Height / 2)) - Convert.ToInt16((destRect.Height / 2) * perc));
-                                fill.Width = Convert.ToInt16( destRect.Width * perc);
-                                fill.Height = Convert.ToInt16(destRect.Height * perc);
-                                bufferedgraphics.Graphics.DrawImage(image, fill, sourceRect, graphicsunit);
+                                lock (bufferedgraphics)
+                                {
+                                    decimal perc = (decimal)t / 100;
+                                    Rectangle fill = new Rectangle();//Convert.ToInt16((destRect.X + (destRect.Width/2)) + Convert.ToInt16((destRect.Width/2) * perc))), Convert.ToInt16((destRect.Y + (destRect.Height/2)) + Convert.ToInt16(((destRect.Height/2) * perc)) , Convert.ToInt16(destRect.Width/2) + Convert.ToInt16((destRect.Width/2) * perc), Convert.ToInt16(destRect.Height/2)+ Convert.ToInt16((destRect.Height/2) * perc));
+                                    fill.X = Convert.ToInt16((destRect.X + (destRect.Width / 2)) - Convert.ToInt16((destRect.Width / 2) * perc));
+                                    fill.Y = Convert.ToInt16((destRect.Y + (destRect.Height / 2)) - Convert.ToInt16((destRect.Height / 2) * perc));
+                                    fill.Width = Convert.ToInt16(destRect.Width * perc);
+                                    fill.Height = Convert.ToInt16(destRect.Height * perc);
+                                    bufferedgraphics.Graphics.DrawImage(image, fill, sourceRect, graphicsunit);
+                                }
+                                frm.Invalidate(targetArea);
+                                Application.DoEvents();
                             }
-                            frm.Invalidate(targetArea);
-                            Application.DoEvents();
-                        }
-                        lock (bufferedgraphics)
-                        {
-                            bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
-                            bufferedgraphics.Graphics.DrawImage(image, destRect, sourceRect, graphicsunit);
-                        }
-                        frm.Invalidate(targetArea);
-                    break;
-                    case TransitionStyle.Fade:
-                        for (int t = 0; t <= 100; t += 5)
-                        {
                             lock (bufferedgraphics)
                             {
                                 bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
-                                decimal perc = ((decimal)(100 - t) / 100) * 255;
-                                int AlphaColor = Convert.ToInt32(perc);
-                                Color veryTransparentColor = Color.FromArgb(AlphaColor, color.R, color.G, color.B);
-                                bufferedgraphics.Graphics.DrawImage( image,destRect,sourceRect,graphicsunit);
-                                bufferedgraphics.Graphics.FillRectangle(new SolidBrush(veryTransparentColor), destRect);
+                                bufferedgraphics.Graphics.DrawImage(image, destRect, sourceRect, graphicsunit);
                             }
                             frm.Invalidate(targetArea);
-                            Application.DoEvents();
-                        }
-                        break;
-                    case TransitionStyle.PageTurn:
-                        for (int t = 0; t <= 100; t += 5)
-                        {
+                            break;
+                        case TransitionStyle.Fade:
+                            for (int t = 0; t <= 100; t += 5)
+                            {
+                                lock (bufferedgraphics)
+                                {
+                                    bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
+                                    decimal perc = ((decimal)(100 - t) / 100) * 255;
+                                    int AlphaColor = Convert.ToInt32(perc);
+                                    Color veryTransparentColor = Color.FromArgb(AlphaColor, color.R, color.G, color.B);
+                                    bufferedgraphics.Graphics.DrawImage(image, destRect, sourceRect, graphicsunit);
+                                    bufferedgraphics.Graphics.FillRectangle(new SolidBrush(veryTransparentColor), destRect);
+                                }
+                                frm.Invalidate(targetArea);
+                                Application.DoEvents();
+                            }
+                            break;
+                        case TransitionStyle.PageTurn:
+                            for (int t = 0; t <= 100; t += 5)
+                            {
+                                lock (bufferedgraphics)
+                                {
+                                    decimal perc = (decimal)t / 100;
+                                    Rectangle fill = new Rectangle(destRect.X, destRect.Y, Convert.ToInt16(destRect.Width * perc), destRect.Height);
+
+                                    bufferedgraphics.Graphics.DrawImage(image, fill, sourceRect, graphicsunit);
+                                }
+
+                                frm.Invalidate(targetArea);
+                                Application.DoEvents();
+                            }
                             lock (bufferedgraphics)
                             {
-                                decimal perc = (decimal) t / 100;
-                                Rectangle fill = new Rectangle(destRect.X, destRect.Y,Convert.ToInt16(destRect.Width *perc), destRect.Height);
-                                
-                                bufferedgraphics.Graphics.DrawImage(image, fill, sourceRect, graphicsunit);
+                                bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
+                                bufferedgraphics.Graphics.DrawImage(image, destRect, sourceRect, graphicsunit);
                             }
-
                             frm.Invalidate(targetArea);
-                            Application.DoEvents();
-                        }
-                        lock (bufferedgraphics)
-                        {
-                            bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
-                            bufferedgraphics.Graphics.DrawImage(image, destRect, sourceRect, graphicsunit);
-                        }
-                        frm.Invalidate(targetArea);
-                        
-                        break;
-                    default:
-                        lock (bufferedgraphics)
-                        {
-                            bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
-                            bufferedgraphics.Graphics.DrawImage(
-                                        image,
-                                        destRect,
-                                        sourceRect,
-                                        graphicsunit
-                                         );
-                            frm.Invalidate(targetArea);
-                        }
-                        break;
 
+                            break;
+                        default:
+                            lock (bufferedgraphics)
+                            {
+                                bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
+                                bufferedgraphics.Graphics.DrawImage(
+                                            image,
+                                            destRect,
+                                            sourceRect,
+                                            graphicsunit
+                                             );
+                                frm.Invalidate(targetArea);
+                            }
+                            break;
+                    }
                 }
+                catch (Exception ex)
+                {
+                    Log.Instance.Write("Transtion in Error");
+                    Log.Instance.Write(ex.Message);
+                }
+                
             }
 		}
 
         public void transitionout(Form frm, Rectangle targetArea, TransitionStyle transitionstyle, BackGroundStyle backgroundstyle)
         {
-            Brush backbrush = backgroundstyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White;
-            Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
-            switch (transitionstyle) {
-				case TransitionStyle.Fade:
-                    
-                    for (int t = 100; t >= 0; t -= 1)
-                    {
-                        lock (bufferedgraphics)
-                        {
-                            decimal perc = ((100-(decimal)t) / 100) ;
-                            int AlphaColor = Convert.ToInt16(perc * 255);
-                            Color veryTransparentColor = Color.FromArgb(AlphaColor, color.R, color.G, color.B);
-                            bufferedgraphics.Graphics.FillRectangle(new SolidBrush(veryTransparentColor), targetArea);
-                        }
+            try
+            {
 
-                        frm.Invalidate(targetArea);
-                        Application.DoEvents();
-                    }
-					break;
-                
-				case TransitionStyle.None:
-					break;
-				default:
-					break;
-			}
-			//frm.Invalidate(targetArea);
+                Brush backbrush = backgroundstyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White;
+                Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
+                switch (transitionstyle)
+                {
+                    case TransitionStyle.Fade:
+
+                        for (int t = 100; t >= 0; t -= 1)
+                        {
+                            lock (bufferedgraphics)
+                            {
+                                decimal perc = ((100 - (decimal)t) / 100);
+                                int AlphaColor = Convert.ToInt16(perc * 255);
+                                Color veryTransparentColor = Color.FromArgb(AlphaColor, color.R, color.G, color.B);
+                                bufferedgraphics.Graphics.FillRectangle(new SolidBrush(veryTransparentColor), targetArea);
+                            }
+
+                            frm.Invalidate(targetArea);
+                            Application.DoEvents();
+                        }
+                        break;
+
+                    case TransitionStyle.None:
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex) {
+                Log.Instance.Write("Transistion Out Error:");
+                Log.Instance.Write(ex.Message);
+            }  //frm.Invalidate(targetArea);
 		
 		}
 		

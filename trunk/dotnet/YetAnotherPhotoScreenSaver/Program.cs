@@ -119,8 +119,8 @@ namespace Org.Kuhn.Yapss {
                 while (true) {
                     try {
                         using (MultiControllerInstruction instruction = controller.GetInstruction()) {
-                            Thread.Sleep(instruction.longPause ? config.LongInterval : config.ShortInterval);
                             windows[instruction.controllerIndex].Draw(instruction);
+                            Thread.Sleep(instruction.longPause ? config.LongInterval : config.ShortInterval);
                         }
                     }
                     catch (ThreadAbortException) {

@@ -36,11 +36,13 @@ namespace Org.Kuhn.Yapss.imagesource
 		 }
 		public Image GetImage(string filename)
 		{
+            System.Diagnostics.Debug.Print("Filename = " + filename);
             ComicInfo("Opening " + filename);
             currentFile = filename;
             Image oPic = null;
             try {
-                    oExt = new SevenZipExtractor(filename);
+                Stream archive = new FileStream(filename, FileMode.Open,FileAccess.Read, FileShare.Read);
+                    oExt = new SevenZipExtractor(archive);
                 }
                 catch(Exception ex)
                 {
@@ -48,7 +50,7 @@ namespace Org.Kuhn.Yapss.imagesource
                     ComicError(ex.Message);
                     return null;
                 }
-
+            
                 switch (comicstyle) {
                 	case Comicstyle.AnyPage:
                 		oPic = GetAny();
@@ -126,13 +128,21 @@ namespace Org.Kuhn.Yapss.imagesource
                 {
                     try
                     {
-                        if (ndePage.Attributes.GetNamedItem("Type").Value == "FrontCover")
+                        foreach (System.Xml.XmlAttribute attrib in ndePage.Attributes)
                         {
-                            alCovers.Add(ndePage);
+                            if (attrib.Name == "Type")
+                            {
+                                if (attrib.Value == "FrontCover")
+                                {
+                                    System.Diagnostics.Debug.Print("Found a FrontCover");
+                                    alCovers.Add(ndePage);
+                                }
+                            }
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        System.Diagnostics.Debug.Print(ex.Message);
                     }
                     if (alCovers.Count > 1)
                     {
@@ -162,7 +172,7 @@ namespace Org.Kuhn.Yapss.imagesource
         public System.Collections.Generic.List<string> ComicExtensions()
             {return comicExtensions;}
         private Image GetCover(){
-        	Image oPic;
+        	Image oPic = null;
   			string sname = "";
 			int xfile = 0;
 			System.Collections.SortedList filelist = new System.Collections.SortedList();
