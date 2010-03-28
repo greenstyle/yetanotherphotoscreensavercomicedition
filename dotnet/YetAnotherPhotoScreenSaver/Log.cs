@@ -5,7 +5,9 @@ using System.Text;
 namespace Org.Kuhn.Yapss {
     class Log {
         private Log() {
-
+			System.Diagnostics.Debug.Print(LogFilePath);
+			System.IO.Directory.CreateDirectory(Path.GetDirectoryName(logFilePath));
+			
         }
 
         public static Log Instance {
@@ -26,10 +28,7 @@ namespace Org.Kuhn.Yapss {
                 lock (this) {
                     StreamWriter writer = null;
                     try {
-                    	string logfilepath  = Path.Combine( 
-                    	       System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), 
-                    	       "yapss.log");
-                        writer = File.AppendText(logfilepath);
+                        writer = File.AppendText(logFilePath);
                         writer.Write(DateTime.Now.ToString());
                         writer.Write(" ");
                         writer.WriteLine(message);
@@ -53,5 +52,14 @@ namespace Org.Kuhn.Yapss {
 
         private static Log instance = new Log();
         private bool enabled = false;
+        private string logFilePath = Path.Combine(
+                    			Path.Combine(
+                    			System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData),"YAPSSCE\\"),
+                    	       "yapssce.log");
+        
+        
+		public string LogFilePath {
+			get { return logFilePath; }
+		}
     }
 }
