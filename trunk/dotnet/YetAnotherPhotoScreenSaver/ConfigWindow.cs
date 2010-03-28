@@ -119,10 +119,7 @@ namespace Org.Kuhn.Yapss {
 
         private void OpenLogButton_Click(object sender, EventArgs e)
         {
-         string logfilepath  = Path.Combine( 
-         System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), 
-         "yapss.log");
-         ProcessStartInfo procStart = new ProcessStartInfo(logfilepath);
+         ProcessStartInfo procStart = new ProcessStartInfo(Log.Instance.LogFilePath);
          procStart.UseShellExecute = true;
          Process proc = new Process();
          proc.StartInfo = procStart;
