@@ -9,7 +9,7 @@ namespace Org.Kuhn.Yapss {
     class FileImageSource : IImageSource {
         public FileImageSource(string rootPath, Comicstyle comicstyle) {
             this.rootPath = rootPath;
-            ComicImager = new Org.Kuhn.Yapss.imagesource.ComicImageSource(comicstyle);
+            ComicImager = new Org.Kuhn.Yapss.ComicImageSource(comicstyle);
         }
         public Image GetImage(int minX, int minY) {
             if (files.Count == 0)
@@ -98,6 +98,6 @@ namespace Org.Kuhn.Yapss {
         private string nextfile;
         private Random random = new Random();
         private System.Collections.Generic.List<string> colFiles = new System.Collections.Generic.List<string>();
-        private Yapss.imagesource.ComicImageSource ComicImager;
+        private Yapss.ComicImageSource ComicImager;
     }
 }
