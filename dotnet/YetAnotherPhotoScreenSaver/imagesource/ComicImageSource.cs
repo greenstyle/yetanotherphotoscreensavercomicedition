@@ -15,7 +15,7 @@ using System.Net;
  * Time: 11:15 AM
  */
 
-namespace Org.Kuhn.Yapss.imagesource
+namespace Org.Kuhn.Yapss
 {
 	/// <summary>
 	/// Description of ComicImageSource.
