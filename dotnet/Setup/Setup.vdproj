@@ -16,19 +16,13 @@
         "Entry"
         {
         "MsmKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
-        "OwnerKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
         "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
-        "OwnerKey" = "8:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
+        "OwnerKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -39,14 +33,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
+        "MsmKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
-        "OwnerKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,13 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
-        "OwnerKey" = "8:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,19 +58,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_40E4D3EC573546D887CCAEAAEC619298"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
+        "OwnerKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -453,7 +429,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
         "ProductCode" = "8:{5F3653B2-01FD-44FA-8793-058D2D415B5E}"
-        "PackageCode" = "8:{E2DC3984-DF27-448E-B441-A06B696C27BF}"
+        "PackageCode" = "8:{17521389-96F5-451A-963C-D5B092E19FEA}"
         "UpgradeCode" = "8:{BC1343B2-BDDB-4454-84CD-CC32A5AA1AE4}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -469,7 +445,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_40E4D3EC573546D887CCAEAAEC619298"
+        "ARPPRODUCTICON" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
         "ARPIconIndex" = "3:32512"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -818,40 +794,12 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_40E4D3EC573546D887CCAEAAEC619298"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6FCF799ED8A64AD99FBDE23F85A43DBA"
             {
             "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\obj\\Release\\YetAnotherPhotoScreenSaverCE.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4FF7D5978A214B34B6A017CAD5C6119C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:Release|Any CPU"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{424C7159-5E29-41BE-8FCB-3B724114D029}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9D0F3992EC0640169CC6A7EEF8FF6FDF"
-            {
-            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\obj\\Release\\YetAnotherPhotoScreenSaverCE.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_41D9B5244DC54C6398016386CF0172A2"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
