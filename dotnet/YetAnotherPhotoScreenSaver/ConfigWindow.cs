@@ -73,8 +73,15 @@ namespace Org.Kuhn.Yapss {
         }
 
         private void browseButton_Click(object sender, EventArgs e) {
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-                pathTextBox.Text = folderBrowserDialog.SelectedPath;
+            dialogue.multifolder dlg = new dialogue.multifolder(config.FileImageSourcePath);
+            dlg.ShowDialog();
+            if (dlg.Result() == DialogResult.OK)
+            {
+                config.FileImageSourcePath = dlg.FileImageSourcePath();
+                pathTextBox.Text = folderBrowserDialog.SelectedPath = config.FileImageSourcePath;
+            }
+            //if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            //    pathTextBox.Text = folderBrowserDialog.SelectedPath;
         }
 
         private void saveButton_Click(object sender, EventArgs e) {
