@@ -14,14 +14,20 @@ namespace Org.Kuhn.Yapss {
         public Image GetImage(int minX, int minY) {
             if (files.Count == 0)
                 try {
-                    
-                    colFiles.AddRange(Directory.GetFiles(rootPath, "*.jpg", SearchOption.AllDirectories));
+                    foreach (string curroothpath in rootPath.Split(';'))
+                    {
+                        System.Diagnostics.Debug.Print(curroothpath);
+                        colFiles.AddRange(Directory.GetFiles(curroothpath, "*.jpg", SearchOption.AllDirectories));
                         foreach (string sExt in ComicImager.ComicExtensions()) 
                         {
-                            colFiles.AddRange(Directory.GetFiles(rootPath, "*"+ sExt, SearchOption.AllDirectories));    
+                            colFiles.AddRange(Directory.GetFiles(curroothpath, "*" + sExt, SearchOption.AllDirectories));    
                         }
                     	files.AddRange(colFiles.ToArray());
                     Log.Instance.Write("Files Loaded = " + Convert.ToString( colFiles.Count));
+                    System.Diagnostics.Debug.Print("Files Loaded = " + Convert.ToString(colFiles.Count));
+                    }
+                    Log.Instance.Write("Total Files Loaded = " + Convert.ToString(files.Count));
+                    System.Diagnostics.Debug.Print("Files Loaded = " + Convert.ToString(files.Count));
                 }
                 catch (Exception ex) {
                     throw new ImageSourceFailedException("Failed loading file list", ex);

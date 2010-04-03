@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{424C7159-5E29-41BE-8FCB-3B724114D029}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -95,6 +95,12 @@
     <Compile Include="controller\MultiController.cs" />
     <Compile Include="controller\IController.cs" />
     <Compile Include="controller\IMultiController.cs" />
+    <Compile Include="dialogue\multifolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogue\multifolder.Designer.cs">
+      <DependentUpon>multifolder.cs</DependentUpon>
+    </Compile>
     <Compile Include="imagesource\ColorSquareImageSource.cs" />
     <Compile Include="imagesource\ComicImageSource.cs" />
     <Compile Include="imagesource\RSSFeedImageSource.cs" />
@@ -112,6 +118,9 @@
     <EmbeddedResource Include="ConfigWindow.resx">
       <DependentUpon>ConfigWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogue\multifolder.resx">
+      <DependentUpon>multifolder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -162,7 +171,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-    <Folder Include="transitions" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\YAPSSCEicon.ico" />

@@ -289,9 +289,9 @@
             // 
             // pathTextBox
             // 
-            this.pathTextBox.Location = new System.Drawing.Point(0, 16);
+            this.pathTextBox.Location = new System.Drawing.Point(6, 16);
             this.pathTextBox.Name = "pathTextBox";
-            this.pathTextBox.Size = new System.Drawing.Size(357, 20);
+            this.pathTextBox.Size = new System.Drawing.Size(351, 20);
             this.pathTextBox.TabIndex = 15;
             // 
             // label5
@@ -299,9 +299,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(275, 13);
+            this.label5.Size = new System.Drawing.Size(280, 13);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Use photos and comics in the folder (includes subfolders)";
+            this.label5.Text = "Use photos and comics in the folders (includes subfolders)";
             // 
             // folderBrowserDialog
             // 

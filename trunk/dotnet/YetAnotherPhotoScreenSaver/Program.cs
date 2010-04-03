@@ -70,7 +70,11 @@ namespace Org.Kuhn.Yapss {
 
             List<IImageSource> imageSources = new List<IImageSource>();
             if (config.IsEnabledFileImageSource)
-            	imageSources.Add(new FileImageSource(config.FileImageSourcePath, config.Comicstyle));
+                //foreach (string fileimagesourcepath in config.FileImageSourcePath.Split(';'))
+                //{
+                imageSources.Add(new FileImageSource(config.FileImageSourcePath, config.Comicstyle));
+                //}
+            	
             if (config.IsEnabledFlickrImageSource)
                 imageSources.Add(new FlickrImageSource(config.FlickrImageSourceTags, config.IsFlickrImageSourceTagAndLogic, config.FlickrImageSourceUserName, config.FlickrImageSourceText,  myconfig.ImageStyle == ImageStyle.CenterFill));
             IImageSource imageSource = new RoundRobinImageSource(imageSources, new ColorSquareImageSource());
