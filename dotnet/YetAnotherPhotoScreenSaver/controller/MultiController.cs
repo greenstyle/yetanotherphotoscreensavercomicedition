@@ -9,7 +9,7 @@ namespace Org.Kuhn.Yapss {
             this.peeks = new Instruction[controllers.Count];
         }
         public MultiControllerInstruction GetInstruction() {
-            // this is the weirdest f****** code i've ever written.
+            // this is the weirdest code i've ever written.
             MultiControllerInstruction instruction;
             if (peeks[index] != null) {
                 instruction = new MultiControllerInstruction(index, peeks[index]);

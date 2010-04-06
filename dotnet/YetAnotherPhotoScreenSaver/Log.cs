@@ -7,7 +7,6 @@ namespace Org.Kuhn.Yapss {
         private Log() {
 			System.Diagnostics.Debug.Print(LogFilePath);
 			System.IO.Directory.CreateDirectory(Path.GetDirectoryName(logFilePath));
-			
         }
 
         public static Log Instance {
@@ -31,7 +30,9 @@ namespace Org.Kuhn.Yapss {
                         writer = File.AppendText(logFilePath);
                         writer.Write(DateTime.Now.ToString());
                         writer.Write(" ");
+                        if (System.Diagnostics.Debugger.IsAttached) { System.Diagnostics.Debug.Print(message); }
                         writer.WriteLine(message);
+                        
                         if (ex != null) {
                             writer.WriteLine(ex.ToString());
                         }

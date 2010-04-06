@@ -13,7 +13,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Media;
-
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
@@ -73,6 +73,8 @@ namespace Org.Kuhn.Yapss.transitions
                                 bufferedgraphics.Graphics.DrawImage(image, destRect, sourceRect, graphicsunit);
                             }
                             frm.Invalidate(targetArea);
+                            Application.DoEvents();
+
                             break;
                         case TransitionStyle.Fade:
                             for (int t = 0; t <= 100; t += 5)
