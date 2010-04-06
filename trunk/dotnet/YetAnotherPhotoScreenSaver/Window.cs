@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.Drawing;
+using System.Diagnostics;
 using Org.Kuhn.Yapss.transitions;
 
 namespace Org.Kuhn.Yapss {
@@ -68,16 +69,34 @@ namespace Org.Kuhn.Yapss {
         }
 
         protected override void OnClosed(EventArgs e) {
-            bufferedGraphics.Dispose();
-            Cursor.Show(); 
+            CloseOutProcs();
             base.OnClosed(e);
+
+        }
+
+        private void CloseOutProcs() {
+
+            Log.Instance.Write("Window Close Called");
+
+            Log.Instance.Write("Disposing BufferedGraphics");
+            lock (bufferedGraphics)
+            {
+                bufferedGraphics.Dispose();
+            }
+            Log.Instance.Write("Showing Cursor");
+            Cursor.Show();
+            Log.Instance.Write("Closing Base");
+            
+        
         }
 
         public void Draw(Instruction instruction) {
             //lock (bufferedGraphics) {
+            
+            Log.Instance.Write("Starting Draw Instructions");
             try
             {
-                if (instruction.image == null) { System.Diagnostics.Debug.Print("Null Image"); };
+                if (instruction.image == null) { Log.Instance.Write("Null Image"); };
 
                 Rectangle targetAreaRect = new Rectangle(
                         xOff + instruction.x * xSize,
@@ -130,14 +149,16 @@ namespace Org.Kuhn.Yapss {
                         w - padding * 2, h - padding * 2);
                     sourceRect = new Rectangle(Point.Empty, instruction.image.Size);
                 }
-                System.Diagnostics.Debug.Print("Start transistion");
+                Log.Instance.Write("Start transistion");
                 trans = new Org.Kuhn.Yapss.transitions.transition(bufferedGraphics);
-                System.Diagnostics.Debug.Print("Set transistion");
+                Log.Instance.Write("Set transistion");
+
+
                 trans.set(instruction.image, destRect, sourceRect, GraphicsUnit.Pixel);
-                System.Diagnostics.Debug.Print("transistion Out");
-                if (instruction.image == null) { System.Diagnostics.Debug.Print("Null Image"); };
+                Log.Instance.Write("transistion Out");
+                if (instruction.image == null) { Log.Instance.Write("Null Image"); };
                 trans.transitionout(this, targetAreaRect, config.TransitionOut, backgroundstyle);
-                System.Diagnostics.Debug.Print("transistion In");
+                Log.Instance.Write("transistion In");
                 trans.transitionin(this, targetAreaRect, config.TransitionIn, backgroundstyle);//});
             }
             catch (Exception ex)
@@ -201,6 +222,5 @@ namespace Org.Kuhn.Yapss {
         public transition trans;
         public Rectangle sourceRect;
         public Rectangle destRect;
-
     }
 }

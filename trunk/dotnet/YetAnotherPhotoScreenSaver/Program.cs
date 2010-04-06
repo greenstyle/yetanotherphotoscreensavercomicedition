@@ -13,6 +13,7 @@ namespace Org.Kuhn.Yapss {
         [STAThread()]
         static void Main(string[] args) {
             try {
+        		
                 foreach (Process process in Process.GetProcesses())
                     if (process.Id != Process.GetCurrentProcess().Id && process.ProcessName.Equals("YetAnotherPhotoScreenSaverCE"))
                         return;
@@ -47,9 +48,10 @@ namespace Org.Kuhn.Yapss {
         }
 
         public void Run() {
+            Cursor.Hide();
         	Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
             Config myconfig = config;
-            HideTaskbar();
+            //HideTaskbar();
             Log.Instance.IsEnabled = config.IsLoggingEnabled;
             Log.Instance.Write("Starting screen saver");
 
@@ -83,14 +85,22 @@ namespace Org.Kuhn.Yapss {
             int xSize = Screen.PrimaryScreen.Bounds.Width / config.XCount;
 
             // build window for each screen
-            foreach (Screen screen in Screen.AllScreens) {
+            // order screens by x coordinates
+            SortedList<int,Screen> orderedscreens = new SortedList<int,Screen>();
+            foreach (Screen screen in Screen.AllScreens){
+                orderedscreens.Add(screen.Bounds.X, screen);
+            }
+
+
+            foreach (Screen screen in orderedscreens.Values) {
+                Log.Instance.Write(screen.DeviceName + "@ X:" + screen.Bounds.X + "Y:" + screen.Bounds.Y);
             	//Screen screen = Screen.PrimaryScreen;
                 Window wnd = new Window(screen.Bounds, xSize, myconfig, imageSource);
                 windows.Add(wnd);
                 wnd.End += DisplayWindowEndEventHandler;
                 wnd.Show();
             }
-
+            
             // start the background drawing thread
             thread = new Thread(ThreadProc);
             thread.IsBackground = true;
@@ -98,16 +108,45 @@ namespace Org.Kuhn.Yapss {
         }
 
         public void Stop() {
-            ShowTaskbar();
-            thread.Abort();
-            foreach (Window wnd in windows)
-                wnd.Close();
+            Cursor.Show();
+            Log.Instance.Write("Windows = " + Convert.ToString(windows.Count));
+            for (int intwnd = windows.Count - 1; intwnd >= 0; intwnd--)
+            {
+                Log.Instance.Write("Hiding Window " + intwnd);
+                Window win = windows[intwnd];
+                win.Hide();
+            }
+            stopcall = true;
+            while (stopped == false) { }
+
+            try
+            {
+                //thread.Abort();
+                thread.Join();
+            }
+            catch (ThreadAbortException ex) { 
+            }
+            
+            int iwnd=0;
+            Log.Instance.Write("Windows = " + Convert.ToString(windows.Count));
+            for (int intwnd=windows.Count-1; intwnd>=0; intwnd--)
+            {
+           	Log.Instance.Write("CLOSING " + intwnd);
+            Window win = windows[intwnd];
+            	win.Close();
+            }
+            //foreach (Window wnd in windows){
+            //	Log.Instance.Print("CLOSING " + iwnd);
+           // 	iwnd++;
+            //	wnd.Close();}
         }
         
 
         private Config config;
         private IList<Window> windows = new List<Window>();
         private Thread thread;
+        private Boolean stopcall = false;
+        private Boolean stopped = false;
 
         private void ThreadProc() {
             Log.Instance.Write("Drawing thread started");
@@ -120,7 +159,7 @@ namespace Org.Kuhn.Yapss {
 
             // begin the controller loop, aborted by thread termination only
             using (AsyncMultiController controller = new AsyncMultiController(new MultiController(controllers), 20)) {
-                while (true) {
+                while (stopcall ==false) {
                     try {
                         using (MultiControllerInstruction instruction = controller.GetInstruction()) {
                             windows[instruction.controllerIndex].Draw(instruction);
@@ -134,11 +173,15 @@ namespace Org.Kuhn.Yapss {
                         Log.Instance.Write("Exception on drawing thread", ex);
                     }
                 }
+   
             }
+            stopped = true;
         }
 
         private void DisplayWindowEndEventHandler(object sender, EventArgs args) {
-            End(this, EventArgs.Empty);
+            //Stop();
+        	End(this, EventArgs.Empty);
+            
         }
 
         public event EventHandler End;
