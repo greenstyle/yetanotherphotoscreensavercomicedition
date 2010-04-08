@@ -16,13 +16,13 @@
         "Entry"
         {
         "MsmKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
-        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
+        "OwnerKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
-        "OwnerKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
+        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -40,13 +40,13 @@
         "Entry"
         {
         "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
-        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
+        "OwnerKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9590DDA5C3A2CDEA861AD1BC98F4341C"
-        "OwnerKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
+        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -198,7 +198,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\YetAnotherPhotoScreenSaver-Setup.msi"
+        "OutputFilename" = "8:Release\\YAPSS-Setup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -428,14 +428,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
-        "ProductCode" = "8:{5F3653B2-01FD-44FA-8793-058D2D415B5E}"
-        "PackageCode" = "8:{17521389-96F5-451A-963C-D5B092E19FEA}"
+        "ProductCode" = "8:{F9E8BFFF-268D-47E2-8FC1-98D531862C01}"
+        "PackageCode" = "8:{BA2A8CED-431E-45D8-97AF-E88F43AD261E}"
         "UpgradeCode" = "8:{BC1343B2-BDDB-4454-84CD-CC32A5AA1AE4}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.6.7"
+        "ProductVersion" = "8:1.6.8"
         "Manufacturer" = "8:clcii"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
