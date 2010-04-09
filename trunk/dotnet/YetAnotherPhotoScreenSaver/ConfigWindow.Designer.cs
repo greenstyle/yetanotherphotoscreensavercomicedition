@@ -453,7 +453,9 @@
             this.transitionoutdropdown.FormattingEnabled = true;
             this.transitionoutdropdown.Items.AddRange(new object[] {
             "None",
-            "Fade"});
+            "Fade",
+            "PageTurn",
+            "Zoom"});
             this.transitionoutdropdown.Location = new System.Drawing.Point(61, 7);
             this.transitionoutdropdown.Name = "transitionoutdropdown";
             this.transitionoutdropdown.Size = new System.Drawing.Size(94, 21);

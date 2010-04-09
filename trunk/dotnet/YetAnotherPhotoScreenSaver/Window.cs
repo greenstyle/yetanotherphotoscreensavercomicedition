@@ -158,6 +158,7 @@ namespace Org.Kuhn.Yapss {
                 Log.Instance.Write("transistion Out");
                 if (instruction.image == null) { Log.Instance.Write("Null Image"); };
                 trans.transitionout(this, targetAreaRect, config.TransitionOut, backgroundstyle);
+                //trans.transitionout(this, targetAreaRect, TransitionStyle.Zoom, backgroundstyle);
                 Log.Instance.Write("transistion In");
                 trans.transitionin(this, targetAreaRect, config.TransitionIn, backgroundstyle);//});
             }

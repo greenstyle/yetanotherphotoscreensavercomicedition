@@ -87,14 +87,16 @@ namespace Org.Kuhn.Yapss {
             // build window for each screen
             // order screens by x coordinates
             SortedList<int,Screen> orderedscreens = new SortedList<int,Screen>();
-            foreach (Screen screen in Screen.AllScreens){
-                orderedscreens.Add(screen.Bounds.X, screen);
+            foreach (Screen pscreen in Screen.AllScreens){
+            //Screen pscreen = Screen.PrimaryScreen;
+                orderedscreens.Add(pscreen.Bounds.X, pscreen);
             }
 
 
             foreach (Screen screen in orderedscreens.Values) {
                 Log.Instance.Write(screen.DeviceName + "@ X:" + screen.Bounds.X + "Y:" + screen.Bounds.Y);
             	//Screen screen = Screen.PrimaryScreen;
+
                 Window wnd = new Window(screen.Bounds, xSize, myconfig, imageSource);
                 windows.Add(wnd);
                 wnd.End += DisplayWindowEndEventHandler;
@@ -109,12 +111,15 @@ namespace Org.Kuhn.Yapss {
 
         public void Stop() {
             Cursor.Show();
+            
             Log.Instance.Write("Windows = " + Convert.ToString(windows.Count));
             for (int intwnd = windows.Count - 1; intwnd >= 0; intwnd--)
             {
                 Log.Instance.Write("Hiding Window " + intwnd);
                 Window win = windows[intwnd];
+                
                 win.Hide();
+                
             }
             stopcall = true;
             while (stopped == false) { }
