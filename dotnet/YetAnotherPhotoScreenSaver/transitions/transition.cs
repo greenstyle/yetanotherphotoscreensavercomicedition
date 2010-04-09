@@ -158,8 +158,9 @@ namespace Org.Kuhn.Yapss.transitions
                 {
                     origimg = new Bitmap(targetArea.Width, targetArea.Height, bufferedgraphics.Graphics);
                 }
-                Graphics g = Graphics.FromImage(origimg);
-                g.CopyFromScreen(targetArea.X, targetArea.Y, 0, 0, targetArea.Size);
+                //Graphics g = Graphics.FromImage(origimg);
+                
+                //g.CopyFromScreen(targetArea.X, targetArea.Y, 0, 0, targetArea.Size);
                 //frmimg.BackgroundImage = origimg;
                 
                 switch (transitionstyle)
