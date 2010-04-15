@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             System.Windows.Forms.Button OpenLogButton;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigWindow));
+            this.speedtrackbar = new EConTech.Windows.MACUI.MACTrackBar();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.previewButton = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.labelspeed = new System.Windows.Forms.Label();
-            this.speedDropdown = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lableBackground = new System.Windows.Forms.Label();
@@ -66,6 +66,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.labelTransitions = new System.Windows.Forms.Label();
             this.DebugCheckBox = new System.Windows.Forms.CheckBox();
+            this.labelslow = new System.Windows.Forms.Label();
+            this.labelmedium = new System.Windows.Forms.Label();
+            this.labelfast = new System.Windows.Forms.Label();
             OpenLogButton = new System.Windows.Forms.Button();
             this.flickrPanel.SuspendLayout();
             this.diskPanel.SuspendLayout();
@@ -82,6 +85,32 @@
             OpenLogButton.Text = "Open Log";
             OpenLogButton.UseVisualStyleBackColor = true;
             OpenLogButton.Click += new System.EventHandler(this.OpenLogButton_Click);
+            // 
+            // speedtrackbar
+            // 
+            this.speedtrackbar.BackColor = System.Drawing.Color.Transparent;
+            this.speedtrackbar.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.speedtrackbar.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.speedtrackbar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(125)))), ((int)(((byte)(123)))));
+            this.speedtrackbar.IndentHeight = 6;
+            this.speedtrackbar.LargeChange = 5;
+            this.speedtrackbar.Location = new System.Drawing.Point(81, 72);
+            this.speedtrackbar.Maximum = 100;
+            this.speedtrackbar.Minimum = 0;
+            this.speedtrackbar.Name = "speedtrackbar";
+            this.speedtrackbar.Size = new System.Drawing.Size(318, 34);
+            this.speedtrackbar.TabIndex = 31;
+            this.speedtrackbar.TextTickStyle = System.Windows.Forms.TickStyle.None;
+            this.speedtrackbar.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(146)))), ((int)(((byte)(148)))));
+            this.speedtrackbar.TickFrequency = 25;
+            this.speedtrackbar.TickHeight = 5;
+            this.speedtrackbar.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.speedtrackbar.TrackerColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(130)))), ((int)(((byte)(198)))));
+            this.speedtrackbar.TrackerSize = new System.Drawing.Size(16, 16);
+            this.speedtrackbar.TrackLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(93)))), ((int)(((byte)(90)))));
+            this.speedtrackbar.TrackLineHeight = 3;
+            this.speedtrackbar.Value = 1;
+            this.speedtrackbar.ValueChanged += new EConTech.Windows.MACUI.ValueChangedHandler(this.speedtrackbar_ValueChanged);
             // 
             // saveButton
             // 
@@ -117,7 +146,7 @@
             // flickrCheckbox
             // 
             this.flickrCheckbox.AutoSize = true;
-            this.flickrCheckbox.Location = new System.Drawing.Point(6, 156);
+            this.flickrCheckbox.Location = new System.Drawing.Point(6, 176);
             this.flickrCheckbox.Name = "flickrCheckbox";
             this.flickrCheckbox.Size = new System.Drawing.Size(207, 17);
             this.flickrCheckbox.TabIndex = 4;
@@ -127,9 +156,9 @@
             // 
             // tagsTextBox
             // 
-            this.tagsTextBox.Location = new System.Drawing.Point(0, 16);
+            this.tagsTextBox.Location = new System.Drawing.Point(6, 16);
             this.tagsTextBox.Name = "tagsTextBox";
-            this.tagsTextBox.Size = new System.Drawing.Size(357, 20);
+            this.tagsTextBox.Size = new System.Drawing.Size(351, 20);
             this.tagsTextBox.TabIndex = 5;
             // 
             // label1
@@ -189,7 +218,7 @@
             this.flickrPanel.Controls.Add(this.label4);
             this.flickrPanel.Controls.Add(this.label2);
             this.flickrPanel.Controls.Add(this.label3);
-            this.flickrPanel.Location = new System.Drawing.Point(6, 179);
+            this.flickrPanel.Location = new System.Drawing.Point(6, 196);
             this.flickrPanel.Name = "flickrPanel";
             this.flickrPanel.Size = new System.Drawing.Size(438, 221);
             this.flickrPanel.TabIndex = 12;
@@ -203,7 +232,7 @@
             "Match all"});
             this.tagLogicDropdown.Location = new System.Drawing.Point(363, 15);
             this.tagLogicDropdown.Name = "tagLogicDropdown";
-            this.tagLogicDropdown.Size = new System.Drawing.Size(76, 21);
+            this.tagLogicDropdown.Size = new System.Drawing.Size(72, 21);
             this.tagLogicDropdown.TabIndex = 15;
             // 
             // label11
@@ -218,9 +247,9 @@
             // 
             // textTextBox
             // 
-            this.textTextBox.Location = new System.Drawing.Point(1, 91);
+            this.textTextBox.Location = new System.Drawing.Point(3, 91);
             this.textTextBox.Name = "textTextBox";
-            this.textTextBox.Size = new System.Drawing.Size(438, 20);
+            this.textTextBox.Size = new System.Drawing.Size(436, 20);
             this.textTextBox.TabIndex = 13;
             // 
             // label10
@@ -235,7 +264,7 @@
             // diskCheckBox
             // 
             this.diskCheckBox.AutoSize = true;
-            this.diskCheckBox.Location = new System.Drawing.Point(6, 407);
+            this.diskCheckBox.Location = new System.Drawing.Point(9, 423);
             this.diskCheckBox.Name = "diskCheckBox";
             this.diskCheckBox.Size = new System.Drawing.Size(240, 17);
             this.diskCheckBox.TabIndex = 13;
@@ -250,9 +279,9 @@
             this.diskPanel.Controls.Add(this.browseButton);
             this.diskPanel.Controls.Add(this.pathTextBox);
             this.diskPanel.Controls.Add(this.label5);
-            this.diskPanel.Location = new System.Drawing.Point(6, 430);
+            this.diskPanel.Location = new System.Drawing.Point(6, 443);
             this.diskPanel.Name = "diskPanel";
-            this.diskPanel.Size = new System.Drawing.Size(438, 87);
+            this.diskPanel.Size = new System.Drawing.Size(438, 74);
             this.diskPanel.TabIndex = 14;
             // 
             // comicstyleDropDown
@@ -309,7 +338,7 @@
             // 
             // xCountNumUpDown
             // 
-            this.xCountNumUpDown.Location = new System.Drawing.Point(369, 22);
+            this.xCountNumUpDown.Location = new System.Drawing.Point(295, 7);
             this.xCountNumUpDown.Maximum = new decimal(new int[] {
             50,
             0,
@@ -332,7 +361,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 24);
+            this.label6.Location = new System.Drawing.Point(4, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(285, 13);
             this.label6.TabIndex = 16;
@@ -341,9 +370,9 @@
             // label7
             // 
             this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label7.Location = new System.Drawing.Point(3, 45);
+            this.label7.Location = new System.Drawing.Point(6, 30);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(441, 30);
+            this.label7.Size = new System.Drawing.Size(445, 30);
             this.label7.TabIndex = 12;
             this.label7.Text = "Controls the number of images visible on the screen at one time. Adjust this sett" +
                 "ing depending on your monitor size and eyesight.";
@@ -351,24 +380,11 @@
             // labelspeed
             // 
             this.labelspeed.AutoSize = true;
-            this.labelspeed.Location = new System.Drawing.Point(3, 86);
+            this.labelspeed.Location = new System.Drawing.Point(6, 76);
             this.labelspeed.Name = "labelspeed";
             this.labelspeed.Size = new System.Drawing.Size(38, 13);
             this.labelspeed.TabIndex = 18;
             this.labelspeed.Text = "Speed";
-            // 
-            // speedDropdown
-            // 
-            this.speedDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.speedDropdown.FormattingEnabled = true;
-            this.speedDropdown.Items.AddRange(new object[] {
-            "Slow",
-            "Moderate",
-            "Fast"});
-            this.speedDropdown.Location = new System.Drawing.Point(47, 83);
-            this.speedDropdown.Name = "speedDropdown";
-            this.speedDropdown.Size = new System.Drawing.Size(94, 21);
-            this.speedDropdown.TabIndex = 20;
             // 
             // label9
             // 
@@ -395,7 +411,7 @@
             // lableBackground
             // 
             this.lableBackground.AutoSize = true;
-            this.lableBackground.Location = new System.Drawing.Point(148, 86);
+            this.lableBackground.Location = new System.Drawing.Point(73, 116);
             this.lableBackground.Name = "lableBackground";
             this.lableBackground.Size = new System.Drawing.Size(65, 13);
             this.lableBackground.TabIndex = 23;
@@ -409,7 +425,7 @@
             "Black",
             "White",
             "Random"});
-            this.bgColorDropdown.Location = new System.Drawing.Point(217, 83);
+            this.bgColorDropdown.Location = new System.Drawing.Point(141, 112);
             this.bgColorDropdown.Name = "bgColorDropdown";
             this.bgColorDropdown.Size = new System.Drawing.Size(82, 21);
             this.bgColorDropdown.TabIndex = 24;
@@ -422,7 +438,7 @@
             "Whole",
             "CenterFill",
             "Random"});
-            this.ImageStyledropdown.Location = new System.Drawing.Point(369, 86);
+            this.ImageStyledropdown.Location = new System.Drawing.Point(291, 112);
             this.ImageStyledropdown.Name = "ImageStyledropdown";
             this.ImageStyledropdown.Size = new System.Drawing.Size(72, 21);
             this.ImageStyledropdown.TabIndex = 26;
@@ -430,7 +446,7 @@
             // labelimagestyle
             // 
             this.labelimagestyle.AutoSize = true;
-            this.labelimagestyle.Location = new System.Drawing.Point(301, 86);
+            this.labelimagestyle.Location = new System.Drawing.Point(231, 116);
             this.labelimagestyle.Name = "labelimagestyle";
             this.labelimagestyle.Size = new System.Drawing.Size(62, 13);
             this.labelimagestyle.TabIndex = 25;
@@ -442,7 +458,7 @@
             this.transitionsPanel.Controls.Add(this.label12);
             this.transitionsPanel.Controls.Add(this.transitionindropdown);
             this.transitionsPanel.Controls.Add(this.label8);
-            this.transitionsPanel.Location = new System.Drawing.Point(6, 119);
+            this.transitionsPanel.Location = new System.Drawing.Point(6, 139);
             this.transitionsPanel.Name = "transitionsPanel";
             this.transitionsPanel.Size = new System.Drawing.Size(282, 31);
             this.transitionsPanel.TabIndex = 27;
@@ -487,7 +503,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(157, 10);
+            this.label8.Location = new System.Drawing.Point(161, 10);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(16, 13);
             this.label8.TabIndex = 21;
@@ -496,7 +512,7 @@
             // labelTransitions
             // 
             this.labelTransitions.AutoSize = true;
-            this.labelTransitions.Location = new System.Drawing.Point(13, 107);
+            this.labelTransitions.Location = new System.Drawing.Point(13, 130);
             this.labelTransitions.Name = "labelTransitions";
             this.labelTransitions.Size = new System.Drawing.Size(58, 13);
             this.labelTransitions.TabIndex = 28;
@@ -512,6 +528,33 @@
             this.DebugCheckBox.Text = "Debug Logging";
             this.DebugCheckBox.UseVisualStyleBackColor = true;
             // 
+            // labelslow
+            // 
+            this.labelslow.AutoSize = true;
+            this.labelslow.Location = new System.Drawing.Point(74, 60);
+            this.labelslow.Name = "labelslow";
+            this.labelslow.Size = new System.Drawing.Size(30, 13);
+            this.labelslow.TabIndex = 32;
+            this.labelslow.Text = "Slow";
+            // 
+            // labelmedium
+            // 
+            this.labelmedium.AutoSize = true;
+            this.labelmedium.Location = new System.Drawing.Point(224, 60);
+            this.labelmedium.Name = "labelmedium";
+            this.labelmedium.Size = new System.Drawing.Size(44, 13);
+            this.labelmedium.TabIndex = 33;
+            this.labelmedium.Text = "Medium";
+            // 
+            // labelfast
+            // 
+            this.labelfast.AutoSize = true;
+            this.labelfast.Location = new System.Drawing.Point(378, 60);
+            this.labelfast.Name = "labelfast";
+            this.labelfast.Size = new System.Drawing.Size(27, 13);
+            this.labelfast.TabIndex = 34;
+            this.labelfast.Text = "Fast";
+            // 
             // ConfigWindow
             // 
             this.AcceptButton = this.saveButton;
@@ -519,6 +562,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(456, 607);
+            this.Controls.Add(this.labelfast);
+            this.Controls.Add(this.labelmedium);
+            this.Controls.Add(this.labelslow);
+            this.Controls.Add(this.speedtrackbar);
             this.Controls.Add(OpenLogButton);
             this.Controls.Add(this.DebugCheckBox);
             this.Controls.Add(this.labelTransitions);
@@ -529,7 +576,6 @@
             this.Controls.Add(this.lableBackground);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.speedDropdown);
             this.Controls.Add(this.labelspeed);
             this.Controls.Add(this.xCountNumUpDown);
             this.Controls.Add(this.label7);
@@ -586,7 +632,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelspeed;
-        private System.Windows.Forms.ComboBox speedDropdown;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label11;
@@ -604,5 +649,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labelTransitions;
         private System.Windows.Forms.CheckBox DebugCheckBox;
+        private System.Windows.Forms.Label labelslow;
+        private System.Windows.Forms.Label labelmedium;
+        private System.Windows.Forms.Label labelfast;
+        private EConTech.Windows.MACUI.MACTrackBar speedtrackbar;
     }
 }

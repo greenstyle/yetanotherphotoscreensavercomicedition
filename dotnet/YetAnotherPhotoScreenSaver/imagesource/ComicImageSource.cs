@@ -280,6 +280,11 @@ namespace Org.Kuhn.Yapss
         public Boolean isQueued(){
         	return imageQueue.Count > 0;
         }
+        protected void Dispose(bool disposing )  {
+            
+            oExt.Dispose();
+        }
+        
         SevenZipExtractor oExt;
 		System.Collections.Generic.List<string> imageExtensions;
         System.Collections.Generic.List<string> comicExtensions;

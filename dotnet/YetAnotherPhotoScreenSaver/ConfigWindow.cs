@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
 
+
 namespace Org.Kuhn.Yapss {
     public partial class ConfigWindow : Form {
         public ConfigWindow() {
@@ -16,20 +17,22 @@ namespace Org.Kuhn.Yapss {
 
         private void CopyConfig() {
             config.XCount = (int)xCountNumUpDown.Value;
-            switch (speedDropdown.SelectedIndex) {
-                case 0:
-                    config.LongInterval = 10000;
-                    config.ShortInterval = 3000;
-                    break;
-                case 1:
-                    config.LongInterval = 5000;
-                    config.ShortInterval = 1000;
-                    break;
-                case 2:
-                    config.LongInterval = 1;
-                    config.ShortInterval = 1;
-                    break;
-            }
+            config.LongInterval =(10000)- (speedtrackbar.Value * 100);
+            config.ShortInterval = Convert.ToInt16(config.LongInterval/3);
+          //  switch (speedDropdown.SelectedIndex) {
+          //      case 0:
+          //          config.LongInterval = 10000;
+          //          config.ShortInterval = 3000;
+          //          break;
+          //      case 1:
+          //          config.LongInterval = 5000;
+          //          config.ShortInterval = 1000;
+          //          break;
+          //      case 2:
+          //          config.LongInterval = 1;
+          //          config.ShortInterval = 1;
+          //          break;
+          //  }
             config.BackGroundStyle = (BackGroundStyle)Enum.Parse(typeof(BackGroundStyle), bgColorDropdown.Text);
             config.ImageStyle = (ImageStyle)Enum.Parse(typeof(ImageStyle), ImageStyledropdown.Text);
             config.TransitionIn = (TransitionStyle)Enum.Parse(typeof(TransitionStyle), transitionindropdown.Text);
@@ -48,15 +51,16 @@ namespace Org.Kuhn.Yapss {
 
         private void ConfigWindow_Load(object sender, EventArgs e) {
             xCountNumUpDown.Value = config.XCount;
-            if (config.LongInterval == 10000) {
-                speedDropdown.SelectedIndex = 0;
-            }
-            else if (config.LongInterval == 5000) {
-                speedDropdown.SelectedIndex = 1;
-            }
-            else {
-                speedDropdown.SelectedIndex = 2;
-            }
+            speedtrackbar.Value = 100 - (config.LongInterval/100);
+           // if (config.LongInterval == 10000) {
+           //     speedDropdown.SelectedIndex = 0;
+           // }
+           // else if (config.LongInterval == 5000) {
+           //     speedDropdown.SelectedIndex = 1;
+           // }
+            //else {
+             //   speedDropdown.SelectedIndex = 2;
+            //}
             bgColorDropdown.Text = Enum.GetName(typeof(BackGroundStyle), config.BackGroundStyle);
             ImageStyledropdown.Text = Enum.GetName(typeof(ImageStyle), config.ImageStyle);
             comicstyleDropDown.Text = Enum.GetName(typeof(Comicstyle), config.Comicstyle);
@@ -134,6 +138,10 @@ namespace Org.Kuhn.Yapss {
     
         }
 
+        private void speedtrackbar_ValueChanged(object sender, decimal value)
+        {
+
+        }
 
     }
 }

@@ -155,12 +155,14 @@ namespace Org.Kuhn.Yapss {
 
 
                 trans.set(instruction.image, destRect, sourceRect, GraphicsUnit.Pixel);
-                Log.Instance.Write("transistion Out");
+                Log.Instance.Write("transition Out");
                 if (instruction.image == null) { Log.Instance.Write("Null Image"); };
                 trans.transitionout(this, targetAreaRect, config.TransitionOut, backgroundstyle);
                 //trans.transitionout(this, targetAreaRect, TransitionStyle.Zoom, backgroundstyle);
-                Log.Instance.Write("transistion In");
+                Log.Instance.Write("transition In");
                 trans.transitionin(this, targetAreaRect, config.TransitionIn, backgroundstyle);//});
+                Log.Instance.Write("transitions Done");
+                
             }
             catch (Exception ex)
             {
