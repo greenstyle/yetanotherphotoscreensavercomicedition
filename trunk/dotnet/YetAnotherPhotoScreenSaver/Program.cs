@@ -29,8 +29,8 @@ namespace Org.Kuhn.Yapss {
                 Program program = new Program(config);
                 program.End += (obj, e) => {
                     Log.Instance.Write("Stopping screen saver");
-                    program.Stop();
-                    Application.Exit();
+                    //program.Stop();
+                    //Application.Exit();
                 };
                 program.Run();
                 Application.Run();
@@ -121,18 +121,26 @@ namespace Org.Kuhn.Yapss {
                 win.Hide();
                 
             }
-            stopcall = true;
-            while (stopped == false) { }
+            //stopcall = true;
+            //thread.Abort();
+            
 
             try
             {
+                Log.Instance.Write("Starting Abort");
+
                 //thread.Abort();
-                thread.Join();
+                stopcall = true;
+                Log.Instance.Write("Waiting to end");
+                //while (thread.IsAlive) { }
+                Log.Instance.Write("rejoining thread");
+                //thread.Join();
+                Log.Instance.Write("Join Complete");
             }
-            catch (ThreadAbortException ex) { 
+            catch (ThreadAbortException) { 
             }
             
-            int iwnd=0;
+            //int iwnd=0;
             Log.Instance.Write("Windows = " + Convert.ToString(windows.Count));
             for (int intwnd=windows.Count-1; intwnd>=0; intwnd--)
             {
