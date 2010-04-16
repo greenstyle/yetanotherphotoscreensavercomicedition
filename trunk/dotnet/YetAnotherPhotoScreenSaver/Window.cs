@@ -101,6 +101,18 @@ namespace Org.Kuhn.Yapss {
 			}
         }
 
+        private Bitmap OrigImage(Rectangle Area, Rectangle Screenbounds) {
+            Bitmap result = new Bitmap(Area.Width, Area.Height);
+            Graphics g = Graphics.FromImage(result);
+            g.CopyFromScreen(Area.X+Screenbounds.X, Area.Y+Screenbounds.Y, 0, 0, result.Size, CopyPixelOperation.SourceCopy);
+            //Form test = new Form();
+            //test.BackgroundImage = result;
+            //test.Size = Area.Size;
+            //test.Show();
+            //test.Left = Screen.AllScreens[1].Bounds.Left;
+            return result;
+        }
+
         public void Draw(Instruction instruction) {
             //lock (bufferedGraphics) {
             
@@ -160,12 +172,13 @@ namespace Org.Kuhn.Yapss {
                         w - padding * 2, h - padding * 2);
                     sourceRect = new Rectangle(Point.Empty, instruction.image.Size);
                 }
+
+                try {
                 Log.Instance.Write("Start transistion");
                 trans = new Org.Kuhn.Yapss.transitions.transition(this,bufferedGraphics, destRect, sourceRect, GraphicsUnit.Pixel);                
                 Log.Instance.Write("transition Out");
                 if (instruction.image == null) { Log.Instance.Write("Null Image"); };
-                try {
-               		trans.transitionout(instruction.image, targetAreaRect, config.TransitionOut, backgroundstyle);
+               		trans.transitionout(OrigImage(targetAreaRect,Screen.AllScreens[instruction.screen].Bounds), targetAreaRect, config.TransitionOut, backgroundstyle);
                 	
                 	Log.Instance.Write("transition In");
                 	trans.transitionin(instruction.image, targetAreaRect, config.TransitionIn, backgroundstyle);//});
@@ -185,6 +198,7 @@ namespace Org.Kuhn.Yapss {
                 Log.Instance.Write(ex.Message);
             }
         }
+        
 
         protected override void OnPaint(PaintEventArgs e) {
             base.OnPaint(e);
