@@ -161,14 +161,14 @@ namespace Org.Kuhn.Yapss {
                     sourceRect = new Rectangle(Point.Empty, instruction.image.Size);
                 }
                 Log.Instance.Write("Start transistion");
-                trans = new Org.Kuhn.Yapss.transitions.transition(bufferedGraphics,instruction.image, destRect, sourceRect, GraphicsUnit.Pixel);                
+                trans = new Org.Kuhn.Yapss.transitions.transition(this,bufferedGraphics, destRect, sourceRect, GraphicsUnit.Pixel);                
                 Log.Instance.Write("transition Out");
                 if (instruction.image == null) { Log.Instance.Write("Null Image"); };
                 try {
-               		trans.transitionout(this, targetAreaRect, config.TransitionOut, backgroundstyle);
+               		trans.transitionout(instruction.image, targetAreaRect, config.TransitionOut, backgroundstyle);
                 	
                 	Log.Instance.Write("transition In");
-                	trans.transitionin(this, targetAreaRect, config.TransitionIn, backgroundstyle);//});
+                	trans.transitionin(instruction.image, targetAreaRect, config.TransitionIn, backgroundstyle);//});
                 	Log.Instance.Write("transitions Done");
                 } catch(ThreadAbortException){//ignore}
                 } catch (Exception Ex) {

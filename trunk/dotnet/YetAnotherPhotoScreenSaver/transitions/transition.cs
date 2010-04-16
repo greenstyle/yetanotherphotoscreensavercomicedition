@@ -25,20 +25,21 @@ namespace Org.Kuhn.Yapss.transitions
 	/// </summary>
 	public class transition
 	{
-		public transition(BufferedGraphics bufferedGraphics,Image setimage, Rectangle setdestRect, Rectangle setsourceRect, GraphicsUnit setgraphicsunit)
+		public transition(Form frm, BufferedGraphics bufferedGraphics, Rectangle destRect, Rectangle sourceRect, GraphicsUnit graphicsunit)
 		{
 			bufferedgraphics = bufferedGraphics;
-			    image = setimage;
-                destRect = setdestRect;
-                sourceRect = setsourceRect;
-                graphicsunit = setgraphicsunit;
+            this.frm = frm;
+            this.destRect = destRect;
+            this.sourceRect = sourceRect;
+            this.graphicsunit = graphicsunit;
 		}
 
-        public void transitionin(Form frm, Rectangle targetArea, TransitionStyle transitionstyle, BackGroundStyle backgroundstyle)
+        public void transitionin(Image image, Rectangle targetArea, TransitionStyle transitionstyle, BackGroundStyle backgroundstyle)
         {
             {
                 try
                 {
+                    this.image = image;
                     Brush backbrush = backgroundstyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White;
                     Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
                     switch (transitionstyle)
@@ -132,7 +133,7 @@ namespace Org.Kuhn.Yapss.transitions
             }
 		}
 
-        public void transitionout(Form frm, Rectangle targetArea, TransitionStyle transitionstyle, BackGroundStyle backgroundstyle)
+        public void transitionout(Image image, Rectangle targetArea, TransitionStyle transitionstyle, BackGroundStyle backgroundstyle)
         {
             try
             {
@@ -236,9 +237,9 @@ namespace Org.Kuhn.Yapss.transitions
 
         public void Cancel(){cancel = true;}
 
-        
-		
-        
+
+
+        private Form frm;
         private BufferedGraphics bufferedgraphics;
 		private Image image;
 		private Rectangle destRect;
