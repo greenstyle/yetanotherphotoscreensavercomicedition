@@ -25,25 +25,14 @@ namespace Org.Kuhn.Yapss.transitions
 	/// </summary>
 	public class transition
 	{
-		public transition(BufferedGraphics bufferedGraphics)
+		public transition(BufferedGraphics bufferedGraphics,Image setimage, Rectangle setdestRect, Rectangle setsourceRect, GraphicsUnit setgraphicsunit)
 		{
-			bufferedgraphics = bufferedGraphics;		
-		}
-		public void set(Image setimage, Rectangle setdestRect, Rectangle setsourceRect, GraphicsUnit setgraphicsunit){
-            try
-            {
-                image = setimage;
+			bufferedgraphics = bufferedGraphics;
+			    image = setimage;
                 destRect = setdestRect;
                 sourceRect = setsourceRect;
                 graphicsunit = setgraphicsunit;
-            }
-            catch(Exception ex) {
-                Log.Instance.Write("Error setting up transition");
-                Log.Instance.Write(ex.Message);
-               
-            }
 		}
-
 
         public void transitionin(Form frm, Rectangle targetArea, TransitionStyle transitionstyle, BackGroundStyle backgroundstyle)
         {
@@ -57,6 +46,7 @@ namespace Org.Kuhn.Yapss.transitions
                         case TransitionStyle.Zoom:
                             for (int t = 0; t <= 100; t += 5)
                             {
+                            	if(cancel){break;};
                                 lock (bufferedgraphics)
                                 {
                                     decimal perc = (decimal)t / 100;
@@ -86,7 +76,8 @@ namespace Org.Kuhn.Yapss.transitions
                             Application.DoEvents();
                             for (int t = 0; t <= 100; t += 5)
                             {
-                                lock (bufferedgraphics)
+                                if(cancel){break;};
+                            	lock (bufferedgraphics)
                                 {
                                     
                                     decimal perc = ((decimal)(100 - t) / 100) * 255;
@@ -102,7 +93,8 @@ namespace Org.Kuhn.Yapss.transitions
                         case TransitionStyle.PageTurn:
                             for (int t = 0; t <= 100; t += 5)
                             {
-                                lock (bufferedgraphics)
+                                if(cancel){break;};
+                            	lock (bufferedgraphics)
                                 {
                                     decimal perc = (decimal)t / 100;
                                     Rectangle fill = new Rectangle(destRect.X, destRect.Y, Convert.ToInt16(destRect.Width * perc), destRect.Height);
@@ -169,7 +161,8 @@ namespace Org.Kuhn.Yapss.transitions
 
                         for (int t = 100; t >= 0; t--)
                         {
-                            lock (bufferedgraphics)
+                        	if(cancel){break;};
+                        	lock (bufferedgraphics)
                             {
                                 decimal perc = ((100 - (decimal)t) / 100);
                                 //decimal perc = 90;
@@ -186,7 +179,8 @@ namespace Org.Kuhn.Yapss.transitions
                     case TransitionStyle.Zoom:
                         for (int t = 100; t >= 0; t -= 5)
                         {
-                            lock (bufferedgraphics)
+                            if(cancel){break;};
+                        	lock (bufferedgraphics)
                             {
                                 decimal perc = (decimal)t / 100;
                                 Debug.Print("Perc =" + Convert.ToString(perc));
@@ -207,7 +201,8 @@ namespace Org.Kuhn.Yapss.transitions
                     case TransitionStyle.PageTurn:
                         for (int t = 100; t >= 0; t -= 5)
                         {
-                            lock (bufferedgraphics)
+                            if(cancel){break;};
+                        	lock (bufferedgraphics)
                             {
                                 decimal perc = (decimal)t / 100;
                                 Rectangle fill = new Rectangle(targetArea.X, targetArea.Y, Convert.ToInt16(targetArea.Width * perc), targetArea.Height);
@@ -239,7 +234,7 @@ namespace Org.Kuhn.Yapss.transitions
 		
 
 
-        public void Cancel(){}
+        public void Cancel(){cancel = true;}
 
         
 		
@@ -249,6 +244,7 @@ namespace Org.Kuhn.Yapss.transitions
 		private Rectangle destRect;
 		private Rectangle sourceRect;
 		private GraphicsUnit graphicsunit;
+		private bool cancel = false;
 	}
 
 }
