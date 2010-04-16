@@ -161,18 +161,22 @@ namespace Org.Kuhn.Yapss {
                     sourceRect = new Rectangle(Point.Empty, instruction.image.Size);
                 }
                 Log.Instance.Write("Start transistion");
-                trans = new Org.Kuhn.Yapss.transitions.transition(bufferedGraphics);
-                Log.Instance.Write("Set transistion");
-
-
-                trans.set(instruction.image, destRect, sourceRect, GraphicsUnit.Pixel);
+                trans = new Org.Kuhn.Yapss.transitions.transition(bufferedGraphics,instruction.image, destRect, sourceRect, GraphicsUnit.Pixel);                
                 Log.Instance.Write("transition Out");
                 if (instruction.image == null) { Log.Instance.Write("Null Image"); };
-                trans.transitionout(this, targetAreaRect, config.TransitionOut, backgroundstyle);
-                //trans.transitionout(this, targetAreaRect, TransitionStyle.Zoom, backgroundstyle);
-                Log.Instance.Write("transition In");
-                trans.transitionin(this, targetAreaRect, config.TransitionIn, backgroundstyle);//});
-                Log.Instance.Write("transitions Done");
+                try {
+               		trans.transitionout(this, targetAreaRect, config.TransitionOut, backgroundstyle);
+                	
+                	Log.Instance.Write("transition In");
+                	trans.transitionin(this, targetAreaRect, config.TransitionIn, backgroundstyle);//});
+                	Log.Instance.Write("transitions Done");
+                } catch(ThreadAbortException){//ignore}
+                } catch (Exception Ex) {
+                	Log.Instance.Write("Transition Error");
+                	Log.Instance.Write(Ex.Message);
+                } finally {
+                	
+                }
                 
             }
             catch (Exception ex)
@@ -199,6 +203,7 @@ namespace Org.Kuhn.Yapss {
             }
             if (++moveCount == 40) {
                 Log.Instance.Write("User termination event (mouse move)");
+                
                 End(this, EventArgs.Empty);
             }
         }
