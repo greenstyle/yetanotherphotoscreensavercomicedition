@@ -239,22 +239,8 @@ namespace Org.Kuhn.Yapss.transitions
 		
 
 
-		
-		public static Bitmap Copy(Bitmap srcBitmap, Rectangle section)
-{
-    // Create the new bitmap and associated graphics object
-    Bitmap bmp = new Bitmap(section.Width, section.Height);
-    Graphics g = Graphics.FromImage(bmp);
+        public void Cancel(){}
 
-    // Draw the specified section of the source bitmap to the new one
-    g.DrawImage(srcBitmap, 0, 0, section, GraphicsUnit.Pixel);
-
-    // Clean up
-    g.Dispose();
-
-    // Return the bitmap
-    return bmp;
-}
         
 		
         

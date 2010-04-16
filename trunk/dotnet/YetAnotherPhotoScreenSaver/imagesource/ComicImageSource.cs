@@ -4,6 +4,7 @@ using System.Collections;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Threading;
 using System.IO;
 using SevenZip;
 using System.Net;
@@ -44,6 +45,10 @@ namespace Org.Kuhn.Yapss
                 Stream archive = new FileStream(filename, FileMode.Open,FileAccess.Read, FileShare.Read);
                     oExt = new SevenZipExtractor(archive);
                 }
+            catch(ThreadAbortException)
+            	{
+            		//ignore
+            	}
                 catch(Exception ex)
                 {
                     ComicError("Cannot open " + filename);

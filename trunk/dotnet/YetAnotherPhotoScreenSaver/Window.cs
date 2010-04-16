@@ -30,7 +30,7 @@ namespace Org.Kuhn.Yapss {
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             TopMost = true;
-            Cursor.Hide();
+            //Cursor.Hide();
             xSize = (xSize<Height) ? xSize:Height;
                
             // calculate ySize and offsets
@@ -70,6 +70,7 @@ namespace Org.Kuhn.Yapss {
 
         protected override void OnClosed(EventArgs e) {
             CloseOutProcs();
+            Log.Instance.Write("Closing Base");
             base.OnClosed(e);
 
         }
@@ -77,17 +78,27 @@ namespace Org.Kuhn.Yapss {
         private void CloseOutProcs() {
 
             Log.Instance.Write("Window Close Called");
-
-            Log.Instance.Write("Disposing BufferedGraphics");
-            lock (bufferedGraphics)
-            {
-                bufferedGraphics.Dispose();
-            }
             Log.Instance.Write("Showing Cursor");
-            Cursor.Show();
-            Log.Instance.Write("Closing Base");
-            
-        
+            Cursor.Show();          
+			
+			if (trans !=null)
+			{
+            	Log.Instance.Write("Canceling Transition");
+            	trans.Cancel();
+            };
+			if (bufferedGraphics !=null)
+			{
+            	Log.Instance.Write("Disposing BufferedGraphics");
+            	lock (bufferedGraphics)
+            	{
+                	bufferedGraphics.Dispose();
+            	}
+			}
+			if (controller !=null)
+			{
+				Log.Instance.Write("Setting Controller to null");
+				controller = null;
+			}
         }
 
         public void Draw(Instruction instruction) {
