@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -58,9 +59,14 @@ namespace Org.Kuhn.Yapss {
                         image = null;
             	}
             	}
-                catch (Exception ex) {
-                    Log.Instance.Write("Failed loading disk image", ex);
-                }
+            catch (ThreadAbortException)
+            {
+            	//ignore}
+            }
+            catch (Exception ex) 
+            {
+                Log.Instance.Write("Failed loading disk image", ex);
+            }
             return image;
         }
         private void Rotate(Image image) {

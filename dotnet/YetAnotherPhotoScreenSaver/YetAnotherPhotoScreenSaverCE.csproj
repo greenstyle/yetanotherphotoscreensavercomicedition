@@ -134,6 +134,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="7z.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="imagesource\SevenZipSharp.dll">
     </None>
     <None Include="Properties\Settings.settings">
@@ -171,14 +174,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="7z.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="images\YAPSSCEicon.ico" />
     <Content Include="images\YAPSSCEicon.jpg" />
-    <Content Include="resources\7z.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="resources\MACTrackBarLib.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
