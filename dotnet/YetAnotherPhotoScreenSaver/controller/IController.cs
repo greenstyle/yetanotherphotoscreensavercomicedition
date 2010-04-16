@@ -14,6 +14,7 @@ namespace Org.Kuhn.Yapss {
         public int w;
         public int h;
         public bool longPause;
+        public int screen;
 
         public void Dispose() {
             image.Dispose();

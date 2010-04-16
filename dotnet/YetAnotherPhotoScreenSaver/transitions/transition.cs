@@ -99,7 +99,6 @@ namespace Org.Kuhn.Yapss.transitions
                                 {
                                     decimal perc = (decimal)t / 100;
                                     Rectangle fill = new Rectangle(destRect.X, destRect.Y, Convert.ToInt16(destRect.Width * perc), destRect.Height);
-
                                     bufferedgraphics.Graphics.DrawImage(image, fill, sourceRect, graphicsunit);
                                 }
 
@@ -146,11 +145,11 @@ namespace Org.Kuhn.Yapss.transitions
                 //frmimg.Show();
                 //frmimg.BringToFront();
                 //frmimg.Left = Screen.AllScreens[1].Bounds.X;
-                Image origimg;
-                lock (bufferedgraphics)
-                {
-                    origimg = new Bitmap(targetArea.Width, targetArea.Height, bufferedgraphics.Graphics);
-                }
+                //Image origimg;
+                //lock (bufferedgraphics)
+                //{
+                 //   origimg = new Bitmap(targetArea.Width, targetArea.Height, bufferedgraphics.Graphics);
+                //}
                 //Graphics g = Graphics.FromImage(origimg);
                 
                 //g.CopyFromScreen(targetArea.X, targetArea.Y, 0, 0, targetArea.Size);
@@ -169,7 +168,7 @@ namespace Org.Kuhn.Yapss.transitions
                                 //decimal perc = 90;
                                 int AlphaColor = Convert.ToInt16(perc * 255);
                                 Color veryTransparentColor = Color.FromArgb(AlphaColor, color.R, color.G, color.B);
-                                bufferedgraphics.Graphics.DrawImage(origimg, targetArea, targetArea, graphicsunit);
+                                bufferedgraphics.Graphics.DrawImage(image, targetArea, targetArea, graphicsunit);
                                 bufferedgraphics.Graphics.FillRectangle(new SolidBrush(veryTransparentColor), targetArea);
                             }
 
@@ -179,25 +178,29 @@ namespace Org.Kuhn.Yapss.transitions
                         break;
                     case TransitionStyle.Zoom:
                         for (int t = 100; t >= 0; t -= 5)
-                        {
-                            if(cancel){break;};
-                        	lock (bufferedgraphics)
                             {
-                                decimal perc = (decimal)t / 100;
-                                Debug.Print("Perc =" + Convert.ToString(perc));
-                                Rectangle fill = new Rectangle();//Convert.ToInt16((destRect.X + (destRect.Width/2)) + Convert.ToInt16((destRect.Width/2) * perc))), Convert.ToInt16((destRect.Y + (destRect.Height/2)) + Convert.ToInt16(((destRect.Height/2) * perc)) , Convert.ToInt16(destRect.Width/2) + Convert.ToInt16((destRect.Width/2) * perc), Convert.ToInt16(destRect.Height/2)+ Convert.ToInt16((destRect.Height/2) * perc));
-                                fill.X = Convert.ToInt16((destRect.X + (destRect.Width / 2)) - Convert.ToInt16((destRect.Width / 2) * perc));
-                                fill.Y = Convert.ToInt16((destRect.Y + (destRect.Height / 2)) - Convert.ToInt16((destRect.Height / 2) * perc));
-                                fill.Width = Convert.ToInt16(destRect.Width * perc);
-                                fill.Height = Convert.ToInt16(destRect.Height * perc);
-                                bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
-                                bufferedgraphics.Graphics.DrawImage(origimg, fill, sourceRect, graphicsunit);
+                                if (cancel) { break; };
+                                lock (bufferedgraphics)
+                                {
+                                    decimal perc = (decimal)t / 100;
+                                    Rectangle fill = new Rectangle();//Convert.ToInt16((destRect.X + (destRect.Width/2)) + Convert.ToInt16((destRect.Width/2) * perc))), Convert.ToInt16((destRect.Y + (destRect.Height/2)) + Convert.ToInt16(((destRect.Height/2) * perc)) , Convert.ToInt16(destRect.Width/2) + Convert.ToInt16((destRect.Width/2) * perc), Convert.ToInt16(destRect.Height/2)+ Convert.ToInt16((destRect.Height/2) * perc));
+                                    fill.X = Convert.ToInt16((destRect.X + (destRect.Width / 2)) - Convert.ToInt16((destRect.Width / 2) * perc));
+                                    fill.Y = Convert.ToInt16((destRect.Y + (destRect.Height / 2)) - Convert.ToInt16((destRect.Height / 2) * perc));
+                                    fill.Width = Convert.ToInt16(destRect.Width * perc);
+                                    fill.Height = Convert.ToInt16(destRect.Height * perc);
+                                    bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
+                                    bufferedgraphics.Graphics.DrawImage(image, fill, sourceRect, graphicsunit);
+                                }
+                                frm.Invalidate(targetArea);
+                                Application.DoEvents();
                             }
-                            frm.Invalidate(targetArea);
-                            Application.DoEvents();
-                        }
-                        frm.Invalidate(targetArea);
-                        Application.DoEvents();
+                        //lock (bufferedgraphics)
+                        //{
+                        //    bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
+                        //    bufferedgraphics.Graphics.DrawImage(image, destRect, sourceRect, graphicsunit);
+                        //}
+                        //frm.Invalidate(targetArea);
+                        //Application.DoEvents();
                         break;
                     case TransitionStyle.PageTurn:
                         for (int t = 100; t >= 0; t -= 5)
@@ -207,18 +210,17 @@ namespace Org.Kuhn.Yapss.transitions
                             {
                                 decimal perc = (decimal)t / 100;
                                 Rectangle fill = new Rectangle(targetArea.X, targetArea.Y, Convert.ToInt16(targetArea.Width * perc), targetArea.Height);
-
-                                bufferedgraphics.Graphics.DrawImage(origimg, fill, targetArea, graphicsunit);
+                                bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
+                                bufferedgraphics.Graphics.DrawImage(image, fill, targetArea, graphicsunit);
                             }
-
                             frm.Invalidate(targetArea);
                             Application.DoEvents();
                         }
-                        lock (bufferedgraphics)
-                        {
-                            bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
-                        }
-                        frm.Invalidate(targetArea);
+                        //lock (bufferedgraphics)
+                        //{
+                        //    bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
+                        //}
+                        //frm.Invalidate(targetArea);
                         break;
                     case TransitionStyle.None:
                         break;
@@ -229,7 +231,7 @@ namespace Org.Kuhn.Yapss.transitions
             catch (Exception ex) {
                 Log.Instance.Write("Transistion Out Error:");
                 Log.Instance.Write(ex.Message);
-            }  //frm.Invalidate(targetArea);
+                }  //frm.Invalidate(targetArea);
 		
 		}
 		

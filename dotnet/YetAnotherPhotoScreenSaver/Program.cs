@@ -86,13 +86,13 @@ namespace Org.Kuhn.Yapss {
 
             // build window for each screen
             // order screens by x coordinates
-            int screenlimit;
-            screenlimit = 1;
+            //int screenlimit=0;
+            //screenlimit = 1;
             SortedList<int,Screen> orderedscreens = new SortedList<int,Screen>();
             foreach (Screen pscreen in Screen.AllScreens){
             //Screen pscreen = Screen.PrimaryScreen;
                 orderedscreens.Add(pscreen.Bounds.X, pscreen);
-                if (orderedscreens.Count >= screenlimit){break;};
+                //if (orderedscreens.Count >= screenlimit){break;};
             }
 
 
@@ -178,6 +178,7 @@ namespace Org.Kuhn.Yapss {
                 while (stopcall ==false) {
                     try {
                         using (MultiControllerInstruction instruction = controller.GetInstruction()) {
+                            instruction.screen = instruction.controllerIndex;
                             windows[instruction.controllerIndex].Draw(instruction);
                             Thread.Sleep(instruction.longPause ? config.LongInterval : config.ShortInterval);
                         }
