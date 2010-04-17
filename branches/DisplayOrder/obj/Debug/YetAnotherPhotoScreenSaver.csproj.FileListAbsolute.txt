@@ -1,0 +1,23 @@
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\bin\Debug\YetAnotherPhotoScreenSaver.exe
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\bin\Debug\YetAnotherPhotoScreenSaver.pdb
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\bin\Debug\FlickrNet.dll
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\Org.Kuhn.Yapss.ConfigWindow.resources
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\Org.Kuhn.Yapss.Properties.Resources.resources
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\YetAnotherPhotoScreenSaver.csproj.GenerateResource.Cache
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\YetAnotherPhotoScreenSaver.exe
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\YetAnotherPhotoScreenSaver.pdb
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\bin\Debug\SevenZipSharp.dll
+C:\Users\Chad\Documents\SharpDevelop Projects\SVN\YAPPS\dotnet\YetAnotherPhotoScreenSaver\bin\Debug\7z.dll
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\YetAnotherPhotoScreenSaver.exe
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\YetAnotherPhotoScreenSaver.pdb
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\ResolveAssemblyReference.cache
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\Org.Kuhn.Yapss.ConfigWindow.resources
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\Org.Kuhn.Yapss.Properties.Resources.resources
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\obj\Debug\YetAnotherPhotoScreenSaver.csproj.GenerateResource.Cache
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\bin\Debug\imagesource\7z.dll
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\bin\Debug\imagesource\SevenZipSharp.dll
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\bin\Debug\YetAnotherPhotoScreenSaver.exe
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\bin\Debug\YetAnotherPhotoScreenSaver.pdb
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\bin\Debug\FlickrNet.dll
+C:\Stuff\Programming\YAPPSCE\YAPPSCE\dotnet\YetAnotherPhotoScreenSaver\bin\Debug\SevenZipSharp.dll
