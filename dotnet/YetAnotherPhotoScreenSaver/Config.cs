@@ -92,7 +92,6 @@ namespace Org.Kuhn.Yapss {
         }
 		public Brush BackBrush{
 			get{
-				if (backbrush == null){
     	        	switch (backgroundstyle) {
         	    	case BackGroundStyle.Black:
             			backbrush = Brushes.Black;
@@ -104,9 +103,14 @@ namespace Org.Kuhn.Yapss {
             			Random rndbrsh = new Random{};
             			if (rndbrsh.Next(1,2)==1) {backbrush = Brushes.White;}
             			break;          		
-            		} 
 				}
 				return backbrush;
+			}
+		}
+		public Color BackColor{
+			get{
+				Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
+				return color;
 			}
 		}
 		//public Theme Theme {

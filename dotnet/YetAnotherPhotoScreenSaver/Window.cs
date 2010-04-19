@@ -188,7 +188,7 @@ namespace Org.Kuhn.Yapss {
                		trans.transitionout(OrigImage(targetAreaRect,Screen.AllScreens[instruction.screen].Bounds), targetAreaRect, config.TransitionOut, backgroundstyle);
                 	
                 	Log.Instance.Write("transition In");
-                	trans.transitionin(instruction.image, targetAreaRect, config.TransitionIn, backgroundstyle);//});
+                	trans.transitionin(instruction.image, targetAreaRect, config);//});
                 	Log.Instance.Write("transitions Done");
                 } catch(ThreadAbortException){//ignore}
                 } catch (Exception Ex) {
