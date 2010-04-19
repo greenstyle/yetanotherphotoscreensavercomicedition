@@ -34,15 +34,15 @@ namespace Org.Kuhn.Yapss.transitions
             this.graphicsunit = graphicsunit;
 		}
 
-        public void transitionin(Image image, Rectangle targetArea, TransitionStyle transitionstyle, BackGroundStyle backgroundstyle)
+        public void transitionin(Image image, Rectangle targetArea, Config config)
         {
             {
                 try
                 {
                     this.image = image;
-                    Brush backbrush = backgroundstyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White;
-                    Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
-                    switch (transitionstyle)
+                    Brush backbrush = config.BackBrush;
+                    //Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
+                    switch (config.TransitionIn)
                     {
                         case TransitionStyle.Zoom:
                             for (int t = 0; t <= 100; t += 5)
@@ -83,7 +83,7 @@ namespace Org.Kuhn.Yapss.transitions
                                     
                                     decimal perc = ((decimal)(100 - t) / 100) * 255;
                                     int AlphaColor = Convert.ToInt32(perc);
-                                    Color veryTransparentColor = Color.FromArgb(AlphaColor, color.R, color.G, color.B);
+                                    Color veryTransparentColor = Color.FromArgb(AlphaColor, config.BackColor.R, config.BackColor.G, config.BackColor.B);
                                     bufferedgraphics.Graphics.DrawImage(image, destRect, sourceRect, graphicsunit);
                                     bufferedgraphics.Graphics.FillRectangle(new SolidBrush(veryTransparentColor), destRect);
                                 }
