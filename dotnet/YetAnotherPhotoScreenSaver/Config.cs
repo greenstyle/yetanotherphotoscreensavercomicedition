@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Win32;
 using System.Text;
+using System.Drawing;
 
 namespace Org.Kuhn.Yapss {
     public class Config {
@@ -89,7 +90,26 @@ namespace Org.Kuhn.Yapss {
             get { return flickrImageSourceText; }
             set { flickrImageSourceText = value; }
         }
-        //public Theme Theme {
+		public Brush BackBrush{
+			get{
+				if (backbrush == null){
+    	        	switch (backgroundstyle) {
+        	    	case BackGroundStyle.Black:
+            			backbrush = Brushes.Black;
+            			break;
+            		case BackGroundStyle.White:
+            			backbrush = Brushes.White;
+            			break;
+            		case BackGroundStyle.Random:
+            			Random rndbrsh = new Random{};
+            			if (rndbrsh.Next(1,2)==1) {backbrush = Brushes.White;}
+            			break;          		
+            		} 
+				}
+				return backbrush;
+			}
+		}
+		//public Theme Theme {
         //    get { return theme; }
         //    set { theme = value; }
         //}
@@ -139,7 +159,7 @@ namespace Org.Kuhn.Yapss {
         //private Theme theme = Theme.Dark;
         private Comicstyle comicstyle = Comicstyle.CoversOnly;
         private bool isLoggingEnabled = false;
-       
+        private Brush backbrush;
 
         private static readonly string KEY = "Software\\YetAnotherPhotoScreenSaverCE";  
     }

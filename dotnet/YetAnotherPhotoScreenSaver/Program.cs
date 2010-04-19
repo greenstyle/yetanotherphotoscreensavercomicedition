@@ -29,8 +29,8 @@ namespace Org.Kuhn.Yapss {
                 Program program = new Program(config);
                 program.End += (obj, e) => {
                     Log.Instance.Write("Stopping screen saver");
-                    //program.Stop();
-                    //Application.Exit();
+                    program.Stop();
+                    Application.Exit();
                 };
                 program.Run();
                 Application.Run();
@@ -86,7 +86,7 @@ namespace Org.Kuhn.Yapss {
 
             // build window for each screen
             // order screens by x coordinates
-            //int screenlimit=0;
+            //int screenlimit=1;
             //screenlimit = 1;
             SortedList<int,Screen> orderedscreens = new SortedList<int,Screen>();
             foreach (Screen pscreen in Screen.AllScreens){
@@ -97,7 +97,7 @@ namespace Org.Kuhn.Yapss {
 
 
             foreach (Screen screen in orderedscreens.Values) {
-                Log.Instance.Write(screen.DeviceName + "@ X:" + screen.Bounds.X + "Y:" + screen.Bounds.Y);
+                //Log.Instance.Write(screen.DeviceName + "@ X:" + screen.Bounds.X + "Y:" + screen.Bounds.Y);
             	//Screen screen = Screen.PrimaryScreen;
 
                 Window wnd = new Window(screen.Bounds, xSize, myconfig, imageSource);

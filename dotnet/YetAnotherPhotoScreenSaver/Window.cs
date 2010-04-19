@@ -52,9 +52,10 @@ namespace Org.Kuhn.Yapss {
             using (Graphics g = CreateGraphics()) {
                 bufferedGraphics = BufferedGraphicsManager.Current.Allocate(g, new Rectangle(Point.Empty, Size));
             }
-
+            Log.Instance.Write("Background = " + Enum.GetName(typeof(BackGroundStyle), backgroundstyle));
+            Log.Instance.Write("Filling bounds = x:" + Bounds.X + " Y:" + Bounds.Y);
+            bufferedGraphics.Graphics.FillRectangle(config.BackBrush, new Rectangle(0,0,bounds.Width,bounds.Height));
             // draw the start state
-            bufferedGraphics.Graphics.FillRectangle(backgroundstyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White, Bounds);
             string banner = "Yet Another Photo Screen Saver Comic Edition\n";
             banner += "This software is free and open source\n";
             banner += "http://code.google.com/p/yetanotherphotoscreensavercomicedition/\n";
@@ -63,7 +64,7 @@ namespace Org.Kuhn.Yapss {
                 SizeF sizef = bufferedGraphics.Graphics.MeasureString(banner, font);
                 bufferedGraphics.Graphics.DrawString(banner, font, Brushes.DarkGray, Math.Max(xOff, yOff), Height - sizef.Height - Math.Max(xOff, yOff));
             }
-            Invalidate();
+            Invalidate(Bounds);
 
             base.OnLoad(e);
         }
@@ -102,9 +103,15 @@ namespace Org.Kuhn.Yapss {
         }
 
         private Bitmap OrigImage(Rectangle Area, Rectangle Screenbounds) {
+			
             Bitmap result = new Bitmap(Area.Width, Area.Height);
-            Graphics g = Graphics.FromImage(result);
-            g.CopyFromScreen(Area.X+Screenbounds.X, Area.Y+Screenbounds.Y, 0, 0, result.Size, CopyPixelOperation.SourceCopy);
+            Graphics g = this.CreateGraphics();
+            Size s = Area.Size;
+            result = new Bitmap(s.Width,s.Height,g);
+            Graphics memoryGraphics = Graphics.FromImage(result);
+            //bufferedGraphics.Graphics.DrawRectangle(Pens.Blue,Area);
+            //bufferedGraphics.Graphics.r
+            memoryGraphics.CopyFromScreen(Area.X+Screenbounds.X, Area.Y+Screenbounds.Y, 0, 0, Area.Size);
             //Form test = new Form();
             //test.BackgroundImage = result;
             //test.Size = Area.Size;
