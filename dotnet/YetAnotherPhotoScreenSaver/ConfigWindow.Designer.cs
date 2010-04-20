@@ -338,7 +338,7 @@
             // 
             // xCountNumUpDown
             // 
-            this.xCountNumUpDown.Location = new System.Drawing.Point(295, 7);
+            this.xCountNumUpDown.Location = new System.Drawing.Point(369, 7);
             this.xCountNumUpDown.Maximum = new decimal(new int[] {
             50,
             0,
@@ -350,7 +350,7 @@
             0,
             0});
             this.xCountNumUpDown.Name = "xCountNumUpDown";
-            this.xCountNumUpDown.Size = new System.Drawing.Size(75, 20);
+            this.xCountNumUpDown.Size = new System.Drawing.Size(49, 20);
             this.xCountNumUpDown.TabIndex = 15;
             this.xCountNumUpDown.Value = new decimal(new int[] {
             5,
