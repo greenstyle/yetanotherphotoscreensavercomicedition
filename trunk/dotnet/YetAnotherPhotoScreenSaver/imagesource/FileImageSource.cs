@@ -10,10 +10,14 @@ namespace Org.Kuhn.Yapss {
     class FileImageSource : IImageSource {
         public FileImageSource(string rootPath, Comicstyle comicstyle) {
             this.rootPath = rootPath;
+            this.comicstyle = comicstyle;
             ComicImager = new Org.Kuhn.Yapss.ComicImageSource(comicstyle);
         }
         public Image GetImage(int minX, int minY) {
-            if (files.Count == 0)
+            Log.Instance.Write("Starting comicImager");
+            
+            Log.Instance.Write("Files = " + Convert.ToString(files.Count));
+            if (files.Count <=1)
                 try {
                     foreach (string curroothpath in rootPath.Split(';'))
                     {
@@ -37,35 +41,39 @@ namespace Org.Kuhn.Yapss {
                 throw new ImageSourceFailedException("No image files found");
             Image image = null;
             while (image == null)
-                try {
-                    int nextfileid = random.Next(files.Count);
-            	nextfile = files[nextfileid];
-            	if (ComicImager.isQueued() == false){files.RemoveAt(nextfileid);}
-                //files.RemoveAt(nextfileid);
-            	if (ComicImager.isComic(nextfile)|ComicImager.isQueued())
-            	    {
-            			image = ComicImager.GetImage(nextfile);
-            			
-            			
-            	    }
-            	else
-            		{
-            			image = Image.FromFile(nextfile);
-            		}
-            	if (image != null) 
-            	{
-            		Rotate(image);
-                    if (image.Width < minX || image.Height < minY)
-                        image = null;
-            	}
-            	}
-            catch (ThreadAbortException)
-            {
-            	//ignore}
-            }
-            catch (Exception ex) 
-            {
-                Log.Instance.Write("Failed loading disk image", ex);
+            {try
+                {
+                    if (files.Count == 0) { break; };
+                    int nextfileid = random.Next(0 ,files.Count - 1);
+                    Log.Instance.Write("nextfileid = " + Convert.ToString(nextfileid));
+                    Log.Instance.Write("Total files = " + Convert.ToString(files.Count));
+                    nextfile = files[nextfileid];
+                    if (ComicImager.isQueued() == false) { files.RemoveAt(nextfileid); }
+                    //files.RemoveAt(nextfileid);
+                    if (ComicImager.isComic(nextfile) | ComicImager.isQueued())
+                    {
+                        image = ComicImager.GetImage(nextfile);
+                    }
+                    else
+                    {
+                        image = Image.FromFile(nextfile);
+                    }
+                    if (image != null)
+                    {
+                        Rotate(image);
+                        if (image.Width < minX || image.Height < minY)
+                            image = null;
+                    }
+                }
+                catch (ThreadAbortException)
+                {
+                    //ignore}
+                }
+                catch (Exception ex)
+                {
+                    Log.Instance.Write("Failed loading disk image", ex);
+                    image = null;
+                }
             }
             return image;
         }
@@ -105,7 +113,7 @@ namespace Org.Kuhn.Yapss {
             }
         }
         private string rootPath;
-
+        private Comicstyle comicstyle;
         private List<String> files =new List<string>();
         private string nextfile;
         private Random random = new Random();

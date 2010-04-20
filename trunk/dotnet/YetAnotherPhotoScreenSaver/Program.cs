@@ -86,13 +86,13 @@ namespace Org.Kuhn.Yapss {
 
             // build window for each screen
             // order screens by x coordinates
-            //int screenlimit=1;
+            int screenlimit=1;
             //screenlimit = 1;
             SortedList<int,Screen> orderedscreens = new SortedList<int,Screen>();
             foreach (Screen pscreen in Screen.AllScreens){
             //Screen pscreen = Screen.PrimaryScreen;
                 orderedscreens.Add(pscreen.Bounds.X, pscreen);
-                //if (orderedscreens.Count >= screenlimit){break;};
+                if (orderedscreens.Count >= screenlimit){break;};
             }
 
 
@@ -174,21 +174,24 @@ namespace Org.Kuhn.Yapss {
             }
 
             // begin the controller loop, aborted by thread termination only
+            int loop =0;
             using (AsyncMultiController controller = new AsyncMultiController(new MultiController(controllers), 20)) {
                 while (stopcall ==false) {
                     try {
                         using (MultiControllerInstruction instruction = controller.GetInstruction()) {
+                            loop++;
+                            Log.Instance.Write("Instruction #" + Convert.ToString(loop));
                             instruction.screen = instruction.controllerIndex;
                             windows[instruction.controllerIndex].Draw(instruction);
                             Thread.Sleep(instruction.longPause ? config.LongInterval : config.ShortInterval);
                         }
-                    }
-                    catch (ThreadAbortException) {
-                        // ignore
-                    }
-                    catch (Exception ex) {
-                        Log.Instance.Write("Exception on drawing thread", ex);
-                    }
+                        }
+                            catch (ThreadAbortException) {
+                            // ignore
+                        }
+                            catch (Exception ex) {
+                            Log.Instance.Write("Exception on drawing thread", ex);
+                        }
                 }
    
             }

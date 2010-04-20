@@ -37,8 +37,8 @@ namespace Org.Kuhn.Yapss
 		 }
 		public Image GetImage(string filename)
 		{
-            System.Diagnostics.Debug.Print("Filename = " + filename);
-            ComicInfo("Opening " + filename);
+            //System.Diagnostics.Debug.Print("Filename = " + filename);
+            //ComicInfo("Opening " + filename);
             currentFile = filename;
             Image oPic = null;
             try {
@@ -47,27 +47,38 @@ namespace Org.Kuhn.Yapss
                 }
             catch(ThreadAbortException)
             	{
-            		//ignore
+                //ignore
             	}
-                catch(Exception ex)
+            catch(Exception ex)
                 {
                     ComicError("Cannot open " + filename);
                     ComicError(ex.Message);
-                    return null;
+                    oExt = null;
+                    //return null;
                 }
-            
-                switch (comicstyle) {
-                	case Comicstyle.AnyPage:
-                		oPic = GetAny();
-						break;
-					case Comicstyle.Entire:
-						oPic = GetEntire();
-                		break;
-                	default:
-                		oPic = GetCover();
-                		break;
+            if (oExt !=null){
+                try
+                {
+                    switch (comicstyle)
+                    {
+                        case Comicstyle.AnyPage:
+                            oPic = GetAny();
+                            break;
+                        case Comicstyle.Entire:
+                            oPic = GetEntire();
+                            break;
+                        default:
+                            oPic = GetCover();
+                            break;
+                        }
+                    }
+               
+                catch (Exception ex)
+                {
+                    Log.Instance.Write(ex.Message);
+                    return oPic =null;
                 }
-                	
+            }        	
                 
 			return oPic;
 		}
