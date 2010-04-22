@@ -33,9 +33,11 @@ namespace Org.Kuhn.Yapss.transitions
             this.sourceRect = sourceRect;
             this.graphicsunit = graphicsunit;
             this.config = config;
-            transStep = Convert.ToInt16(25 * (decimal)((config.maxInterval - config.LongInterval) / config.maxInterval));//(int)(100 * ( ));                    
+            //transStep = Convert.ToInt16(25 * (decimal)((config.maxInterval - config.LongInterval) / config.maxInterval));//(int)(100 * ( ));                    
+            transStep = (int)(50 * (config.maxInterval - config.LongInterval) / config.maxInterval);
             Log.Instance.Write("maxInterval = " + Convert.ToString(config.maxInterval));
             Log.Instance.Write("LongInterval = " + Convert.ToString(config.LongInterval));
+            
             Log.Instance.Write("Transition rate = " + Convert.ToString(transStep));
 		}
 
