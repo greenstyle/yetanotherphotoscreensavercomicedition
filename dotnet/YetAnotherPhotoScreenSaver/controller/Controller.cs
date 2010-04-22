@@ -31,11 +31,7 @@ namespace Org.Kuhn.Yapss {
             int w = 0, h = 0;
             while (w == 0 || h == 0 || (float)w / (float)h > 2.0 || (float)w / (float)h < 0.5) {
                 w = random.Next(1, layout.Width );
-                
-                //h = random.Next(1, layout.Width / 2 + 1);
-               h = random.Next(1, layout.Height );
-              //Log.Instance.Write("Layout= " + layout.Width + "x" + layout.Height);
-              //Log.Instance.Write("Current Loc= " + w + "x" + h);
+                h = random.Next(1, layout.Height );
             }
 
             // find locations overwriting oldest cells

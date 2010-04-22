@@ -146,6 +146,8 @@ namespace Org.Kuhn.Yapss {
             set { isLoggingEnabled = value; }
         }
 
+        public readonly int  maxInterval = 10000;
+
         private int xCount = 9;
         private int longInterval = 5000;
         private int shortInterval = 1000;

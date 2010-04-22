@@ -163,7 +163,7 @@ namespace Org.Kuhn.Yapss {
         private Thread thread;
         private Boolean stopcall = false;
         private Boolean stopped = false;
-
+        private AsyncMultiController controller;
         private void ThreadProc() {
             Log.Instance.Write("Drawing thread started");
 
@@ -175,12 +175,12 @@ namespace Org.Kuhn.Yapss {
 
             // begin the controller loop, aborted by thread termination only
             int loop =0;
-            using (AsyncMultiController controller = new AsyncMultiController(new MultiController(controllers), 20)) {
+            using (controller = new AsyncMultiController(new MultiController(controllers), 20)) {
                 while (stopcall ==false) {
                     try {
                         using (MultiControllerInstruction instruction = controller.GetInstruction()) {
                             loop++;
-                            Log.Instance.Write("Instruction #" + Convert.ToString(loop));
+                            Log.Instance.Write("Instruction =" + Convert.ToString(loop));
                             instruction.screen = instruction.controllerIndex;
                             windows[instruction.controllerIndex].Draw(instruction);
                             Thread.Sleep(instruction.longPause ? config.LongInterval : config.ShortInterval);
@@ -200,6 +200,7 @@ namespace Org.Kuhn.Yapss {
 
         private void DisplayWindowEndEventHandler(object sender, EventArgs args) {
             //Stop();
+            controller.Quit();
         	End(this, EventArgs.Empty);
             
         }

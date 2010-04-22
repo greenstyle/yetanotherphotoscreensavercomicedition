@@ -109,21 +109,14 @@ namespace Org.Kuhn.Yapss {
             Size s = Area.Size;
             result = new Bitmap(s.Width,s.Height,g);
             Graphics memoryGraphics = Graphics.FromImage(result);
-            //bufferedGraphics.Graphics.DrawRectangle(Pens.Blue,Area);
-            //bufferedGraphics.Graphics.r
             memoryGraphics.CopyFromScreen(Area.X+Screenbounds.X, Area.Y+Screenbounds.Y, 0, 0, Area.Size);
-            //Form test = new Form();
-            //test.BackgroundImage = result;
-            //test.Size = Area.Size;
-            //test.Show();
-            //test.Left = Screen.AllScreens[1].Bounds.Left;
             return result;
         }
 
         public void Draw(Instruction instruction) {
             //lock (bufferedGraphics) {
             
-            Log.Instance.Write("Starting Draw Instructions");
+            Log.Instance.Write("Starting windows draw instruction");
             try
             {
                 if (instruction.image == null) { Log.Instance.Write("Null Image"); };
@@ -182,13 +175,12 @@ namespace Org.Kuhn.Yapss {
 
                 try {
                 Log.Instance.Write("Start transistion");
-                trans = new Org.Kuhn.Yapss.transitions.transition(this,bufferedGraphics, destRect, sourceRect, GraphicsUnit.Pixel);                
+                trans = new Org.Kuhn.Yapss.transitions.transition(this,bufferedGraphics, destRect, sourceRect, GraphicsUnit.Pixel,config);                
                 Log.Instance.Write("transition Out");
                 if (instruction.image == null) { Log.Instance.Write("Null Image"); };
-               		trans.transitionout(OrigImage(targetAreaRect,Screen.AllScreens[instruction.screen].Bounds), targetAreaRect, config.TransitionOut, backgroundstyle);
-                	
+               		trans.transitionout(OrigImage(targetAreaRect,Screen.AllScreens[instruction.screen].Bounds), targetAreaRect);
                 	Log.Instance.Write("transition In");
-                	trans.transitionin(instruction.image, targetAreaRect, config);//});
+                	trans.transitionin(instruction.image, targetAreaRect);//});
                 	Log.Instance.Write("transitions Done");
                 } catch(ThreadAbortException){//ignore}
                 } catch (Exception Ex) {

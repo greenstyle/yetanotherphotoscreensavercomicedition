@@ -25,29 +25,33 @@ namespace Org.Kuhn.Yapss.transitions
 	/// </summary>
 	public class transition
 	{
-		public transition(Form frm, BufferedGraphics bufferedGraphics, Rectangle destRect, Rectangle sourceRect, GraphicsUnit graphicsunit)
+		public transition(Form frm, BufferedGraphics bufferedGraphics, Rectangle destRect, Rectangle sourceRect, GraphicsUnit graphicsunit, Config config)
 		{
 			bufferedgraphics = bufferedGraphics;
             this.frm = frm;
             this.destRect = destRect;
             this.sourceRect = sourceRect;
             this.graphicsunit = graphicsunit;
+            this.config = config;
+            transStep = Convert.ToInt16(25 * (decimal)((config.maxInterval - config.LongInterval) / config.maxInterval));//(int)(100 * ( ));                    
+            Log.Instance.Write("maxInterval = " + Convert.ToString(config.maxInterval));
+            Log.Instance.Write("LongInterval = " + Convert.ToString(config.LongInterval));
+            Log.Instance.Write("Transition rate = " + Convert.ToString(transStep));
 		}
 
-        public void transitionin(Image image, Rectangle targetArea, Config config)
-        {
-            {
+        public void transitionin(Image image, Rectangle targetArea){
                 try
                 {
+                    Log.Instance.Write("Transistion Step = " + Convert.ToString(transStep));
                     this.image = image;
                     Brush backbrush = config.BackBrush;
-                    //Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
                     switch (config.TransitionIn)
                     {
                         case TransitionStyle.Zoom:
-                            for (int t = 0; t <= 100; t += 5)
+                            for (int t = 0; t <= 100; t += transStep)
                             {
-                            	if(cancel){break;};
+                                if (t > 100) { t = 100; };
+                                if(cancel){break;};
                                 lock (bufferedgraphics)
                                 {
                                     decimal perc = (decimal)t / 100;
@@ -75,10 +79,11 @@ namespace Org.Kuhn.Yapss.transitions
                             }
                             frm.Invalidate(targetArea);
                             Application.DoEvents();
-                            for (int t = 0; t <= 100; t += 5)
+                            for (int t = 0; t <= 100; t += transStep)
                             {
                                 if(cancel){break;};
-                            	lock (bufferedgraphics)
+                                if (t > 100) { t = 100; };
+                                lock (bufferedgraphics)
                                 {
                                     
                                     decimal perc = ((decimal)(100 - t) / 100) * 255;
@@ -92,9 +97,10 @@ namespace Org.Kuhn.Yapss.transitions
                             }
                             break;
                         case TransitionStyle.PageTurn:
-                            for (int t = 0; t <= 100; t += 5)
+                            for (int t = 0; t <= 100; t += transStep)
                             {
                                 if(cancel){break;};
+                                if (t > 100) { t = 100; };
                             	lock (bufferedgraphics)
                                 {
                                     decimal perc = (decimal)t / 100;
@@ -129,23 +135,23 @@ namespace Org.Kuhn.Yapss.transitions
                     Log.Instance.Write(ex.Message);
                 }
                 
-            }
-		}
+        }
+		
 
-        public void transitionout(Image image, Rectangle targetArea, TransitionStyle transitionstyle, BackGroundStyle backgroundstyle)
+        public void transitionout(Image image, Rectangle targetArea)
         {
             try
             {
-
-                Brush backbrush = backgroundstyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White;
-                Color color = backgroundstyle == BackGroundStyle.Black ? Color.Black : Color.White;
-                switch (transitionstyle)
+                Brush backbrush = config.BackGroundStyle == BackGroundStyle.Black ? Brushes.Black : Brushes.White;
+                Color color = config.BackGroundStyle == BackGroundStyle.Black ? Color.Black : Color.White;
+                switch (config.TransitionOut)
                 {
                     case TransitionStyle.Fade:
 
-                        for (int t = 100; t >= 0; t--)
+                        for (int t = 100; t >= 0; t-=transStep)
                         {
                         	if(cancel){break;};
+                            if (t < 0) { t = 0; };
                         	lock (bufferedgraphics)
                             {
                                 decimal perc = ((100 - (decimal)t) / 100);
@@ -161,9 +167,10 @@ namespace Org.Kuhn.Yapss.transitions
                         }
                         break;
                     case TransitionStyle.Zoom:
-                        for (int t = 100; t >= 0; t -= 5)
+                        for (int t = 100; t >= 0; t -= transStep)
                             {
                                 if (cancel) { break; };
+                                if (t < 0) { t = 0; };
                                 lock (bufferedgraphics)
                                 {
                                     decimal perc = (decimal)t / 100;
@@ -178,18 +185,12 @@ namespace Org.Kuhn.Yapss.transitions
                                 frm.Invalidate(targetArea);
                                 Application.DoEvents();
                             }
-                        //lock (bufferedgraphics)
-                        //{
-                        //    bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
-                        //    bufferedgraphics.Graphics.DrawImage(image, destRect, sourceRect, graphicsunit);
-                        //}
-                        //frm.Invalidate(targetArea);
-                        //Application.DoEvents();
                         break;
                     case TransitionStyle.PageTurn:
-                        for (int t = 100; t >= 0; t -= 5)
+                        for (int t = 100; t >= 0; t -= transStep)
                         {
                             if(cancel){break;};
+                            if (t < 0) { t = 0; };
                         	lock (bufferedgraphics)
                             {
                                 decimal perc = (decimal)t / 100;
@@ -208,11 +209,6 @@ namespace Org.Kuhn.Yapss.transitions
                             frm.Invalidate(targetArea);
                             Application.DoEvents();
                         }
-                        //lock (bufferedgraphics)
-                        //{
-                        //    bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
-                        //}
-                        //frm.Invalidate(targetArea);
                         break;
                     case TransitionStyle.None:
                         break;
@@ -223,16 +219,16 @@ namespace Org.Kuhn.Yapss.transitions
             catch (Exception ex) {
                 Log.Instance.Write("Transistion Out Error:");
                 Log.Instance.Write(ex.Message);
-                }  //frm.Invalidate(targetArea);
+                }  
 		
 		}
-		
+
 
 
         public void Cancel(){cancel = true;}
 
 
-
+        int transStep;
         private Form frm;
         private BufferedGraphics bufferedgraphics;
 		private Image image;
@@ -240,6 +236,7 @@ namespace Org.Kuhn.Yapss.transitions
 		private Rectangle sourceRect;
 		private GraphicsUnit graphicsunit;
 		private bool cancel = false;
+        private Config config;
 	}
 
 }

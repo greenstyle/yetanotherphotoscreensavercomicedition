@@ -18,7 +18,8 @@ namespace Org.Kuhn.Yapss {
         private void CopyConfig() {
             config.XCount = (int)xCountNumUpDown.Value;
             config.LongInterval =(10000)- (speedtrackbar.Value * 100);
-            config.ShortInterval = Convert.ToInt16(config.LongInterval/3);
+            config.ShortInterval =  Convert.ToInt16(config.LongInterval/3);
+            Log.Instance.Write("ShortInterval" + Convert.ToString(config.ShortInterval));
           //  switch (speedDropdown.SelectedIndex) {
           //      case 0:
           //          config.LongInterval = 10000;
