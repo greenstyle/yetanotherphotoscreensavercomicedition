@@ -16,7 +16,7 @@ namespace Org.Kuhn.Yapss {
         public Image GetImage(int minX, int minY) {
             Log.Instance.Write("Starting comicImager");
             
-            Log.Instance.Write("Files = " + Convert.ToString(files.Count));
+            //Log.Instance.Write("Files = " + Convert.ToString(files.Count));
             if (files.Count <=1)
                 try {
                     foreach (string curroothpath in rootPath.Split(';'))

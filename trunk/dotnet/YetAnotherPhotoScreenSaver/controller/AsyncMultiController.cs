@@ -32,7 +32,7 @@ namespace Org.Kuhn.Yapss {
 
             while (true) {
                 try {
-                    while (queue.Count < queueSize) {
+                    while (queue.Count < queueSize&&cancel ==false) {
                         MultiControllerInstruction instruction = controller.GetInstruction();
                         lock (queue) {
                             queue.Enqueue(instruction);
@@ -50,6 +50,8 @@ namespace Org.Kuhn.Yapss {
                 }
             }
         }
+        public void Quit() { cancel = true; }
+        private bool cancel = false;
         private IMultiController controller;
         private Thread thread;
         private AutoResetEvent evt;
