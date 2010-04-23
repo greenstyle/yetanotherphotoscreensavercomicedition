@@ -175,7 +175,12 @@ namespace Org.Kuhn.Yapss {
 
             // begin the controller loop, aborted by thread termination only
             int loop =0;
-            using (controller = new AsyncMultiController(new MultiController(controllers), 20)) {
+            float prtcachespeedextra = (float)20 * (float)(config.maxInterval -config.LongInterval)/(float)config.maxInterval; //(( config.LongInterval)) ;//* ));
+            int cachespeedextra = 20 * (int)prtcachespeedextra;
+                                       
+            int cachesize = (10 * config.XCount) + cachespeedextra;// + cachespeedextra;
+            Log.Instance.Write("Cache Size = " + Convert.ToString(cachesize));
+            using (controller = new AsyncMultiController(new MultiController(controllers), cachesize )) {
                 while (stopcall ==false) {
                     try {
                         using (MultiControllerInstruction instruction = controller.GetInstruction()) {
