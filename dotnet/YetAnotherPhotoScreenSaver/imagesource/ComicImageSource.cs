@@ -41,21 +41,21 @@ namespace Org.Kuhn.Yapss
             //ComicInfo("Opening " + filename);
             currentFile = filename;
             Image oPic = null;
-            try {
+           // try {
                 Stream archive = new FileStream(filename, FileMode.Open,FileAccess.Read, FileShare.Read);
-                    oExt = new SevenZipExtractor(archive);
-                }
-            catch(ThreadAbortException)
-            	{
+                using (oExt = new SevenZipExtractor(archive)){
+              //  }
+            //catch(ThreadAbortException)
+            //	{
                 //ignore
-            	}
-            catch(Exception ex)
-                {
-                    ComicError("Cannot open " + filename);
-                    ComicError(ex.Message);
-                    oExt = null;
-                    //return null;
-                }
+            //	}
+            //catch(Exception ex)
+                //{
+                  //  ComicError("Cannot open " + filename);
+                  //  ComicError(ex.Message);
+                 //   oExt = null;
+                //    //return null;
+                //}
             if (oExt !=null){
                 try
                 {
@@ -74,13 +74,14 @@ namespace Org.Kuhn.Yapss
                     }
                
                 catch (Exception ex)
-                {
-                    Log.Instance.Write(ex.Message);
-                    return oPic =null;
+                    {
+                        Log.Instance.Write(ex.Message);
+                        return oPic =null;
+                    }
                 }
-            }        	
-                
+            };
 			return oPic;
+
 		}
 		private Boolean IsImage(string filename)
 		{

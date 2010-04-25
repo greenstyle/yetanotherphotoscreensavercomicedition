@@ -45,6 +45,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F086BEBB8E8EA54CAFC78812AC539F5F"
+        "OwnerKey" = "8:_29A157CEBBE74D7D8982CBE127E11180"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F086BEBB8E8EA54CAFC78812AC539F5F"
+        "OwnerKey" = "8:_205B0C9308064A18B174C0D68A131E97"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F929F4D7927EE47F1F3A7906A3A6BDBB"
         "OwnerKey" = "8:_29A157CEBBE74D7D8982CBE127E11180"
         "MsmSig" = "8:_UNDEFINED"
@@ -65,6 +77,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_29A157CEBBE74D7D8982CBE127E11180"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F086BEBB8E8EA54CAFC78812AC539F5F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -266,6 +284,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F086BEBB8E8EA54CAFC78812AC539F5F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MACTrackBarLib, Version=1.0.2342.28161, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_F086BEBB8E8EA54CAFC78812AC539F5F"
+                    {
+                    "Name" = "8:MACTrackBarLib.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MACTrackBarLib.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_CEACEB21D89943BC87BFE5C57869FB2A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F929F4D7927EE47F1F3A7906A3A6BDBB"
             {
             "AssemblyRegister" = "3:1"
@@ -364,14 +413,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
-        "ProductCode" = "8:{DCFAF0C8-04D8-43D6-AB05-496E12DA2B75}"
-        "PackageCode" = "8:{70B70EF6-30D1-4A83-8462-6C5F2D128F76}"
+        "ProductCode" = "8:{F2666C95-7AA2-4B25-BB8B-DF9134A6ECBC}"
+        "PackageCode" = "8:{DB06F2F9-1057-47EA-B2E1-B04213A0E4CD}"
         "UpgradeCode" = "8:{6D0D9103-8F22-4011-B2F2-6B384C800BE8}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.6.8"
+        "ProductVersion" = "8:1.6.9"
         "Manufacturer" = "8:clcii"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -863,7 +912,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_29A157CEBBE74D7D8982CBE127E11180"
             {
-            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\obj\\Release\\YetAnotherPhotoScreenSaverCE.exe"
+            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\obj\\DebugConfig\\YetAnotherPhotoScreenSaverCE.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C7681C40063849E1BC4043F74102ED84"

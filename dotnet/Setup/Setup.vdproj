@@ -57,6 +57,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DB237E82386EEB99390291D408F58FA8"
+        "OwnerKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DB237E82386EEB99390291D408F58FA8"
+        "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_1B3D4C926B4947439DF751D1EAAEA4CB"
         "MsmSig" = "8:_UNDEFINED"
@@ -65,6 +77,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DB237E82386EEB99390291D408F58FA8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -361,6 +379,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DB237E82386EEB99390291D408F58FA8"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MACTrackBarLib, Version=1.0.2342.28161, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_DB237E82386EEB99390291D408F58FA8"
+                    {
+                    "Name" = "8:MACTrackBarLib.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MACTrackBarLib.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_41D9B5244DC54C6398016386CF0172A2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -428,14 +477,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
-        "ProductCode" = "8:{F9E8BFFF-268D-47E2-8FC1-98D531862C01}"
-        "PackageCode" = "8:{BA2A8CED-431E-45D8-97AF-E88F43AD261E}"
+        "ProductCode" = "8:{352A9C28-1054-4BBF-B912-6DBB6BB06CEE}"
+        "PackageCode" = "8:{1595D276-71F2-4ABD-91C4-A3E0B01AD768}"
         "UpgradeCode" = "8:{BC1343B2-BDDB-4454-84CD-CC32A5AA1AE4}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.6.8"
+        "ProductVersion" = "8:1.6.9"
         "Manufacturer" = "8:clcii"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
