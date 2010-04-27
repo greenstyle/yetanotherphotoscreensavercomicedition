@@ -86,25 +86,29 @@ namespace Org.Kuhn.Yapss {
 
             // build window for each screen
             // order screens by x coordinates
-            int screenlimit=1;
+            //int screenlimit=1;
             //screenlimit = 1;
+            
             SortedList<int,Screen> orderedscreens = new SortedList<int,Screen>();
             foreach (Screen pscreen in Screen.AllScreens){
             //Screen pscreen = Screen.PrimaryScreen;
                 orderedscreens.Add(pscreen.Bounds.X, pscreen);
-                if (orderedscreens.Count >= screenlimit){break;};
+               // if (orderedscreens.Count >= screenlimit){break;};
             }
-
-
+			
             foreach (Screen screen in orderedscreens.Values) {
                 //Log.Instance.Write(screen.DeviceName + "@ X:" + screen.Bounds.X + "Y:" + screen.Bounds.Y);
             	//Screen screen = Screen.PrimaryScreen;
 
                 Window wnd = new Window(screen.Bounds, xSize, myconfig, imageSource);
                 windows.Add(wnd);
-                wnd.End += DisplayWindowEndEventHandler;
+				wnd.End += DisplayWindowEndEventHandler;
+				
                 wnd.Show();
             }
+            Window wnd1 = windows[0];
+            wnd1.Focus();
+            wnd1.LostFocus+=DisplayWindowLostFocusEvenHandler;
             
             // start the background drawing thread
             thread = new Thread(ThreadProc);
@@ -211,8 +215,13 @@ namespace Org.Kuhn.Yapss {
             
         }
 
+        private void DisplayWindowLostFocusEvenHandler(object sender, EventArgs args){
+        	Log.Instance.Write("Lost Focus.  Closing windows.");
+        	DisplayWindowEndEventHandler(sender, args);
+        }
+        
         public event EventHandler End;
-
+		private int lostfocus = 0;
         private const int SW_HIDE = 0;
         private const int SW_SHOW = 1;
         private const string TASKBAR_WINDOW = "Shell_TrayWnd";
@@ -222,6 +231,7 @@ namespace Org.Kuhn.Yapss {
         
         [DllImport("user32.dll")]
         private static extern int ShowWindow(int hwnd, int command);
+
 
         private static void HideTaskbar() {
         }
