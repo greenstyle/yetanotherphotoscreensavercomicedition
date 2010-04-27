@@ -53,17 +53,20 @@ namespace Org.Kuhn.Yapss {
                     if (ComicImager.isComic(nextfile) | ComicImager.isQueued())
                     {
                         image = ComicImager.GetImage(nextfile);
+                        if (image==null){Log.Instance.Write("Image is null.  Failed to get image from ComicImager.");};
                     }
                     else
                     {
                         image = Image.FromFile(nextfile);
                     }
+                    
                     if (image != null)
                     {
                         Rotate(image);
-                        if (image.Width < minX || image.Height < minY)
-                            image = null;
+                        //if (image.Width < minX || image.Height < minY)
+                        //    image = null;
                     }
+                    if (image==null){Log.Instance.Write("Image is null.  Trying again.");};
                 }
                 catch (ThreadAbortException)
                 {

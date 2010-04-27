@@ -124,8 +124,11 @@ namespace Org.Kuhn.Yapss.transitions
                         default:
                             lock (bufferedgraphics)
                             {
-                                bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
-                                bufferedgraphics.Graphics.DrawImage(image,destRect,sourceRect,graphicsunit);
+                            	if (bufferedgraphics!=null) {
+                             		bufferedgraphics.Graphics.FillRectangle(backbrush, targetArea);
+                                	bufferedgraphics.Graphics.DrawImage(image,destRect,sourceRect,graphicsunit);
+                           		
+                            	}
                                 frm.Invalidate(targetArea);
                             }
                             break;

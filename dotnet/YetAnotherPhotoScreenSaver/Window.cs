@@ -95,11 +95,11 @@ namespace Org.Kuhn.Yapss {
                 	bufferedGraphics.Dispose();
             	}
 			}
-			if (controller !=null)
-			{
-				Log.Instance.Write("Setting Controller to null");
-				controller = null;
-			}
+			//if (controller !=null)
+			//{
+			//	Log.Instance.Write("Setting Controller to null");
+			//	controller = null;
+			//}
         }
 
         private Bitmap OrigImage(Rectangle Area, Rectangle Screenbounds) {
