@@ -5,7 +5,7 @@ using System.Text;
 namespace Org.Kuhn.Yapss {
     class Log {
         private Log() {
-			System.Diagnostics.Debug.Print(LogFilePath);
+			//System.Diagnostics.Debug.Print(LogFilePath);
 			System.IO.Directory.CreateDirectory(Path.GetDirectoryName(logFilePath));
         }
 

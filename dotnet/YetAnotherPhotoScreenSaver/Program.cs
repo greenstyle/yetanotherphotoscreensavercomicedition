@@ -12,6 +12,8 @@ namespace Org.Kuhn.Yapss {
     class Program {
         [STAThread()]
         static void Main(string[] args) {
+            
+
             try {
         		
                 foreach (Process process in Process.GetProcesses())
@@ -54,7 +56,7 @@ namespace Org.Kuhn.Yapss {
             //HideTaskbar();
             Log.Instance.IsEnabled = config.IsLoggingEnabled;
             Log.Instance.Write("Starting screen saver");
-
+            Log.Instance.Write(Application.CommonAppDataPath);
             Random rnd = new Random();
             
             
@@ -93,7 +95,8 @@ namespace Org.Kuhn.Yapss {
             foreach (Screen pscreen in Screen.AllScreens){
             //Screen pscreen = Screen.PrimaryScreen;
                 orderedscreens.Add(pscreen.Bounds.X, pscreen);
-               // if (orderedscreens.Count >= screenlimit){break;};
+                //if (orderedscreens.Count >= screenlimit){break;};
+
             }
 			
             foreach (Screen screen in orderedscreens.Values) {
