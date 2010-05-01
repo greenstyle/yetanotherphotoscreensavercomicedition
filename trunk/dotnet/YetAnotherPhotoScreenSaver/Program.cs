@@ -109,9 +109,9 @@ namespace Org.Kuhn.Yapss {
 				
                 wnd.Show();
             }
-            //Window wnd1 = windows[0];
-            //wnd1.Focus();
-            //wnd1.LostFocus+=DisplayWindowLostFocusEvenHandler;
+            Window wnd1 = windows[0];
+            wnd1.Focus();
+            wnd1.LostFocus+=DisplayWindowLostFocusEvenHandler;
             
             // start the background drawing thread
             thread = new Thread(ThreadProc);
@@ -217,7 +217,10 @@ namespace Org.Kuhn.Yapss {
         	End(this, EventArgs.Empty);
             
         }
-
+        private void DisplayWindowLostFocusEvenHandler(object sender, EventArgs args) {
+            controller.Quit();
+            End(this, EventArgs.Empty);
+        }
         
         public event EventHandler End;
 	//	private int lostfocus = 0;
