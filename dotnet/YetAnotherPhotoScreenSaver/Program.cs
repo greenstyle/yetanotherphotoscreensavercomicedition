@@ -109,9 +109,9 @@ namespace Org.Kuhn.Yapss {
 				
                 wnd.Show();
             }
-            Window wnd1 = windows[0];
-            wnd1.Focus();
-            wnd1.LostFocus+=DisplayWindowLostFocusEvenHandler;
+            //Window wnd1 = windows[0];
+            //wnd1.Focus();
+            //wnd1.LostFocus+=DisplayWindowLostFocusEvenHandler;
             
             // start the background drawing thread
             thread = new Thread(ThreadProc);
@@ -164,7 +164,7 @@ namespace Org.Kuhn.Yapss {
             //	wnd.Close();}
         }
         
-
+		
         private Config config;
         private IList<Window> windows = new List<Window>();
         private Thread thread;
@@ -218,13 +218,9 @@ namespace Org.Kuhn.Yapss {
             
         }
 
-        private void DisplayWindowLostFocusEvenHandler(object sender, EventArgs args){
-        	Log.Instance.Write("Lost Focus.  Closing windows.");
-        	DisplayWindowEndEventHandler(sender, args);
-        }
         
         public event EventHandler End;
-		private int lostfocus = 0;
+	//	private int lostfocus = 0;
         private const int SW_HIDE = 0;
         private const int SW_SHOW = 1;
         private const string TASKBAR_WINDOW = "Shell_TrayWnd";
