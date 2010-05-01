@@ -209,7 +209,7 @@ namespace Org.Kuhn.Yapss {
 
         protected override void OnMouseMove(MouseEventArgs e) {
             base.OnMouseMove(e);
-            Log.Instance.Write(Convert.ToString(e.Location));
+            Log.Instance.Write("Mouse Move =" + Convert.ToString(e.Location) + Convert.ToString(e.Button));
             if (DateTime.Now - lastMove > TimeSpan.FromSeconds(1)) {
                 moveCount = 0;
                 lastMove = DateTime.Now;
