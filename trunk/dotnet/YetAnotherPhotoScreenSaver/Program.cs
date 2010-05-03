@@ -41,7 +41,7 @@ namespace Org.Kuhn.Yapss {
                 Log.Instance.Write("Unhandled exception on main thread", ex);
             }
             finally {
-                ShowTaskbar(); // just in case of abnormal termination
+                // just in case of abnormal termination
             }
         }
 
@@ -53,7 +53,7 @@ namespace Org.Kuhn.Yapss {
             Cursor.Hide();
         	Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
             Config myconfig = config;
-            //HideTaskbar();
+
             Log.Instance.IsEnabled = config.IsLoggingEnabled;
             Log.Instance.Write("Starting screen saver");
             Log.Instance.Write(Application.CommonAppDataPath);
@@ -68,16 +68,9 @@ namespace Org.Kuhn.Yapss {
                 : config.ImageStyle;
 
 
-             //Theme theme = config.Theme == Theme.Random ?
-            //    (DateTime.Now.Second % 2 == 0 ? Theme.Dark : Theme.Light)
-            //    : config.Theme;
-
             List<IImageSource> imageSources = new List<IImageSource>();
             if (config.IsEnabledFileImageSource)
-                //foreach (string fileimagesourcepath in config.FileImageSourcePath.Split(';'))
-                //{
                 imageSources.Add(new FileImageSource(config.FileImageSourcePath, config.Comicstyle));
-                //}
             	
             if (config.IsEnabledFlickrImageSource)
                 imageSources.Add(new FlickrImageSource(config.FlickrImageSourceTags, config.IsFlickrImageSourceTagAndLogic, config.FlickrImageSourceUserName, config.FlickrImageSourceText,  myconfig.ImageStyle == ImageStyle.CenterFill));
@@ -88,8 +81,8 @@ namespace Org.Kuhn.Yapss {
 
             // build window for each screen
             // order screens by x coordinates
+
             //int screenlimit=1;
-            //screenlimit = 1;
             
             SortedList<int,Screen> orderedscreens = new SortedList<int,Screen>();
             foreach (Screen pscreen in Screen.AllScreens){
@@ -138,13 +131,12 @@ namespace Org.Kuhn.Yapss {
             try
             {
                 Log.Instance.Write("Starting Abort");
-
-                //thread.Abort();
+                thread.Abort();
                 stopcall = true;
                 Log.Instance.Write("Waiting to end");
-                //while (thread.IsAlive) { }
+                while (thread.IsAlive) { }
                 Log.Instance.Write("rejoining thread");
-                //thread.Join();
+                thread.Join();
                 Log.Instance.Write("Join Complete");
             }
             catch (ThreadAbortException) { 
@@ -154,14 +146,11 @@ namespace Org.Kuhn.Yapss {
             Log.Instance.Write("Windows = " + Convert.ToString(windows.Count));
             for (int intwnd=windows.Count-1; intwnd>=0; intwnd--)
             {
-           	Log.Instance.Write("CLOSING " + intwnd);
-            Window win = windows[intwnd];
+	           	Log.Instance.Write("CLOSING " + intwnd);
+    	        Window win = windows[intwnd];
             	win.Close();
             }
-            //foreach (Window wnd in windows){
-            //	Log.Instance.Print("CLOSING " + iwnd);
-           // 	iwnd++;
-            //	wnd.Close();}
+
         }
         
 		
@@ -180,20 +169,14 @@ namespace Org.Kuhn.Yapss {
                 controllers.Add(windows[i].Controller);
             }
 
-            // begin the controller loop, aborted by thread termination only
-            int loop =0;
-            //float prtcachespeedextra = (float)20 * (float)(config.maxInterval -config.LongInterval)/(float)config.maxInterval; //(( config.LongInterval)) ;//* ));
-            //int cachespeedextra = 20 * (int)prtcachespeedextra;
-                                       
-            //int cachesize = (10 * config.XCount) + cachespeedextra;// + cachespeedextra;
+            // begin the controller loop, aborted by stop call
+
             int cachesize = 20;
             Log.Instance.Write("Cache Size = " + Convert.ToString(cachesize));
             using (controller = new AsyncMultiController(new MultiController(controllers), cachesize )) {
                 while (stopcall ==false) {
                     try {
                         using (MultiControllerInstruction instruction = controller.GetInstruction()) {
-                            loop++;
-                            Log.Instance.Write("Instruction =" + Convert.ToString(loop));
                             instruction.screen = instruction.controllerIndex;
                             windows[instruction.controllerIndex].Draw(instruction);
                             Thread.Sleep(instruction.longPause ? config.LongInterval : config.ShortInterval);
@@ -235,15 +218,10 @@ namespace Org.Kuhn.Yapss {
         private static extern int ShowWindow(int hwnd, int command);
 
 
-        private static void HideTaskbar() {
-        }
-
-        private static void ShowTaskbar() {
-        }
          
         static void Application_ApplicationExit(object sender, EventArgs e)
         {
-            ShowTaskbar();
+            
         }
         
     }

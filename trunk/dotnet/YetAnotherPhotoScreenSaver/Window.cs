@@ -215,7 +215,7 @@ namespace Org.Kuhn.Yapss {
                 lastMove = DateTime.Now;
                 return;
             }
-            if (++moveCount == 40) {
+            if (++moveCount == 5) {
                 Log.Instance.Write("User termination event (mouse move)");
                 
                 End(this, EventArgs.Empty);
