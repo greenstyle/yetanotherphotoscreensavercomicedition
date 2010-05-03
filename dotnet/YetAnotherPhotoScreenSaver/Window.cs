@@ -174,11 +174,18 @@ namespace Org.Kuhn.Yapss {
                 }
 
                 try {
-                Log.Instance.Write("Start transistion");
-                trans = new Org.Kuhn.Yapss.transitions.transition(this,bufferedGraphics, destRect, sourceRect, GraphicsUnit.Pixel,config);                
-                Log.Instance.Write("transition Out");
-                if (instruction.image == null) { Log.Instance.Write("Null Image"); };
-               		trans.transitionout(OrigImage(targetAreaRect,Screen.AllScreens[instruction.screen].Bounds), targetAreaRect);
+                	if (instruction.image == null) { Log.Instance.Write("Null Image"); };
+                	Log.Instance.Write("Start transistion");
+                
+                	trans = new Org.Kuhn.Yapss.transitions.transition(this,bufferedGraphics, destRect, sourceRect, GraphicsUnit.Pixel,config);                
+                	
+                
+                	
+                	if (instruction.longPause == true)
+                	{
+               			Log.Instance.Write("transition Out");
+                		trans.transitionout(OrigImage(targetAreaRect,Screen.AllScreens[instruction.screen].Bounds), targetAreaRect);
+                	}
                 	Log.Instance.Write("transition In");
                 	trans.transitionin(instruction.image, targetAreaRect);//});
                 	Log.Instance.Write("transitions Done");
