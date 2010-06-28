@@ -76,13 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DB237E82386EEB99390291D408F58FA8"
+        "OwnerKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -94,7 +88,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_12663BFBA5D11E04D2C7910D1B91455C"
+        "OwnerKey" = "8:_DB237E82386EEB99390291D408F58FA8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6FCF799ED8A64AD99FBDE23F85A43DBA"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -258,7 +258,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "Version" = "8:2.0.50727"
+                "FrameworkVersion" = "8:2.0.50727"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -273,11 +273,6 @@
             "AssemblyAsmDisplayName" = "8:FlickrNet, Version=2.1.5.19851, Culture=neutral, PublicKeyToken=2491df59efa5d132"
                 "ScatterAssemblies"
                 {
-                    "_12663BFBA5D11E04D2C7910D1B91455C"
-                    {
-                    "Name" = "8:FlickrNet.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:FlickrNet.dll"
             "TargetName" = "8:"
@@ -301,7 +296,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:YetAnotherPhotoScreenSaverCE, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:YetAnotherPhotoScreenSaverCE, Version=1.6.10.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_1B3D4C926B4947439DF751D1EAAEA4CB"
@@ -335,11 +330,6 @@
             "AssemblyAsmDisplayName" = "8:SevenZipSharp, Version=1.0.3537.37869, Culture=neutral, PublicKeyToken=20de82c62b055c88, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_9590DDA5C3A2CDEA861AD1BC98F4341C"
-                    {
-                    "Name" = "8:SevenZipSharp.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:SevenZipSharp.dll"
             "TargetName" = "8:"
@@ -386,11 +376,6 @@
             "AssemblyAsmDisplayName" = "8:MACTrackBarLib, Version=1.0.2342.28161, Culture=neutral"
                 "ScatterAssemblies"
                 {
-                    "_DB237E82386EEB99390291D408F58FA8"
-                    {
-                    "Name" = "8:MACTrackBarLib.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:MACTrackBarLib.dll"
             "TargetName" = "8:"
@@ -477,14 +462,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
-        "ProductCode" = "8:{2EE9F0D5-5D6A-4B80-9F61-FE1FF75407C1}"
-        "PackageCode" = "8:{55BE4AAF-ECFA-4904-B9EA-A9D97EC693F2}"
+        "ProductCode" = "8:{384BC819-96BA-4992-8FC3-FC778CCBA7B6}"
+        "PackageCode" = "8:{CDE074F5-2319-4B3D-9BB7-16D7809C6F87}"
         "UpgradeCode" = "8:{BC1343B2-BDDB-4454-84CD-CC32A5AA1AE4}"
+        "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.6.10"
+        "ProductVersion" = "8:1.6.11"
         "Manufacturer" = "8:clcii"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -845,7 +831,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6FCF799ED8A64AD99FBDE23F85A43DBA"
             {
-            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\obj\\Release\\YetAnotherPhotoScreenSaverCE.exe"
+            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\obj\\DebugConfig\\YetAnotherPhotoScreenSaverCE.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4FF7D5978A214B34B6A017CAD5C6119C"
