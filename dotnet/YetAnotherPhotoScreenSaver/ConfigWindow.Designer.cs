@@ -43,6 +43,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.diskCheckBox = new System.Windows.Forms.CheckBox();
             this.diskPanel = new System.Windows.Forms.Panel();
+            this.EnableFileFiltercheckBox = new System.Windows.Forms.CheckBox();
+            this.fileNameTextBox = new System.Windows.Forms.TextBox();
             this.comicstyleDropDown = new System.Windows.Forms.ComboBox();
             this.lblComicStyle = new System.Windows.Forms.Label();
             this.browseButton = new System.Windows.Forms.Button();
@@ -69,8 +71,6 @@
             this.labelslow = new System.Windows.Forms.Label();
             this.labelmedium = new System.Windows.Forms.Label();
             this.labelfast = new System.Windows.Forms.Label();
-            this.fileNameTextBox = new System.Windows.Forms.TextBox();
-            this.EnableFileFiltercheckBox = new System.Windows.Forms.CheckBox();
             OpenLogButton = new System.Windows.Forms.Button();
             this.flickrPanel.SuspendLayout();
             this.diskPanel.SuspendLayout();
@@ -80,7 +80,7 @@
             // 
             // OpenLogButton
             // 
-            OpenLogButton.Location = new System.Drawing.Point(199, 563);
+            OpenLogButton.Location = new System.Drawing.Point(206, 567);
             OpenLogButton.Name = "OpenLogButton";
             OpenLogButton.Size = new System.Drawing.Size(62, 23);
             OpenLogButton.TabIndex = 30;
@@ -116,7 +116,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(370, 559);
+            this.saveButton.Location = new System.Drawing.Point(255, 537);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 25);
             this.saveButton.TabIndex = 0;
@@ -127,7 +127,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(288, 559);
+            this.cancelButton.Location = new System.Drawing.Point(174, 537);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 25);
             this.cancelButton.TabIndex = 1;
@@ -137,7 +137,7 @@
             // 
             // previewButton
             // 
-            this.previewButton.Location = new System.Drawing.Point(0, 562);
+            this.previewButton.Location = new System.Drawing.Point(94, 537);
             this.previewButton.Name = "previewButton";
             this.previewButton.Size = new System.Drawing.Size(75, 25);
             this.previewButton.TabIndex = 2;
@@ -148,7 +148,7 @@
             // flickrCheckbox
             // 
             this.flickrCheckbox.AutoSize = true;
-            this.flickrCheckbox.Location = new System.Drawing.Point(6, 176);
+            this.flickrCheckbox.Location = new System.Drawing.Point(6, 180);
             this.flickrCheckbox.Name = "flickrCheckbox";
             this.flickrCheckbox.Size = new System.Drawing.Size(207, 17);
             this.flickrCheckbox.TabIndex = 4;
@@ -158,9 +158,9 @@
             // 
             // tagsTextBox
             // 
-            this.tagsTextBox.Location = new System.Drawing.Point(6, 16);
+            this.tagsTextBox.Location = new System.Drawing.Point(13, 16);
             this.tagsTextBox.Name = "tagsTextBox";
-            this.tagsTextBox.Size = new System.Drawing.Size(351, 20);
+            this.tagsTextBox.Size = new System.Drawing.Size(344, 20);
             this.tagsTextBox.TabIndex = 5;
             // 
             // label1
@@ -175,9 +175,9 @@
             // label2
             // 
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(0, 39);
+            this.label2.Location = new System.Drawing.Point(3, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(435, 36);
+            this.label2.Size = new System.Drawing.Size(432, 36);
             this.label2.TabIndex = 7;
             this.label2.Text = "Enter one or more tags separated by commas. For example, \"portland, nature, party" +
                 "\". This field may be left blank.";
@@ -193,17 +193,17 @@
             // 
             // userIdTextBox
             // 
-            this.userIdTextBox.Location = new System.Drawing.Point(0, 164);
+            this.userIdTextBox.Location = new System.Drawing.Point(13, 164);
             this.userIdTextBox.Name = "userIdTextBox";
-            this.userIdTextBox.Size = new System.Drawing.Size(438, 20);
+            this.userIdTextBox.Size = new System.Drawing.Size(422, 20);
             this.userIdTextBox.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(-3, 187);
+            this.label4.Location = new System.Drawing.Point(3, 187);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(441, 29);
+            this.label4.Size = new System.Drawing.Size(432, 29);
             this.label4.TabIndex = 11;
             this.label4.Text = "This option can be used to show photos from only yourself or a family member. Ent" +
                 "er their user name here. Leave this field blank to show photos from all users.";
@@ -240,18 +240,18 @@
             // label11
             // 
             this.label11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label11.Location = new System.Drawing.Point(-2, 114);
+            this.label11.Location = new System.Drawing.Point(3, 114);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(441, 34);
+            this.label11.Size = new System.Drawing.Size(432, 34);
             this.label11.TabIndex = 14;
             this.label11.Text = "A free text search. Photos who\'s title, description or tags contain the text will" +
                 " be displayed. May be left blank.";
             // 
             // textTextBox
             // 
-            this.textTextBox.Location = new System.Drawing.Point(3, 91);
+            this.textTextBox.Location = new System.Drawing.Point(13, 91);
             this.textTextBox.Name = "textTextBox";
-            this.textTextBox.Size = new System.Drawing.Size(436, 20);
+            this.textTextBox.Size = new System.Drawing.Size(422, 20);
             this.textTextBox.TabIndex = 13;
             // 
             // label10
@@ -288,6 +288,25 @@
             this.diskPanel.Size = new System.Drawing.Size(438, 88);
             this.diskPanel.TabIndex = 14;
             // 
+            // EnableFileFiltercheckBox
+            // 
+            this.EnableFileFiltercheckBox.AutoSize = true;
+            this.EnableFileFiltercheckBox.Location = new System.Drawing.Point(13, 42);
+            this.EnableFileFiltercheckBox.Name = "EnableFileFiltercheckBox";
+            this.EnableFileFiltercheckBox.Size = new System.Drawing.Size(208, 17);
+            this.EnableFileFiltercheckBox.TabIndex = 24;
+            this.EnableFileFiltercheckBox.Text = "Limit files to those with this in the name";
+            this.EnableFileFiltercheckBox.UseVisualStyleBackColor = true;
+            this.EnableFileFiltercheckBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // fileNameTextBox
+            // 
+            this.fileNameTextBox.Enabled = false;
+            this.fileNameTextBox.Location = new System.Drawing.Point(13, 59);
+            this.fileNameTextBox.Name = "fileNameTextBox";
+            this.fileNameTextBox.Size = new System.Drawing.Size(236, 20);
+            this.fileNameTextBox.TabIndex = 23;
+            // 
             // comicstyleDropDown
             // 
             this.comicstyleDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -312,7 +331,7 @@
             // 
             // browseButton
             // 
-            this.browseButton.Location = new System.Drawing.Point(363, 16);
+            this.browseButton.Location = new System.Drawing.Point(360, 16);
             this.browseButton.Name = "browseButton";
             this.browseButton.Size = new System.Drawing.Size(75, 23);
             this.browseButton.TabIndex = 16;
@@ -322,9 +341,9 @@
             // 
             // pathTextBox
             // 
-            this.pathTextBox.Location = new System.Drawing.Point(10, 16);
+            this.pathTextBox.Location = new System.Drawing.Point(13, 16);
             this.pathTextBox.Name = "pathTextBox";
-            this.pathTextBox.Size = new System.Drawing.Size(347, 20);
+            this.pathTextBox.Size = new System.Drawing.Size(344, 20);
             this.pathTextBox.TabIndex = 15;
             // 
             // label5
@@ -462,7 +481,7 @@
             this.transitionsPanel.Controls.Add(this.label12);
             this.transitionsPanel.Controls.Add(this.transitionindropdown);
             this.transitionsPanel.Controls.Add(this.label8);
-            this.transitionsPanel.Location = new System.Drawing.Point(6, 139);
+            this.transitionsPanel.Location = new System.Drawing.Point(81, 146);
             this.transitionsPanel.Name = "transitionsPanel";
             this.transitionsPanel.Size = new System.Drawing.Size(282, 31);
             this.transitionsPanel.TabIndex = 27;
@@ -516,7 +535,7 @@
             // labelTransitions
             // 
             this.labelTransitions.AutoSize = true;
-            this.labelTransitions.Location = new System.Drawing.Point(13, 130);
+            this.labelTransitions.Location = new System.Drawing.Point(80, 143);
             this.labelTransitions.Name = "labelTransitions";
             this.labelTransitions.Size = new System.Drawing.Size(58, 13);
             this.labelTransitions.TabIndex = 28;
@@ -525,7 +544,7 @@
             // DebugCheckBox
             // 
             this.DebugCheckBox.AutoSize = true;
-            this.DebugCheckBox.Location = new System.Drawing.Point(94, 567);
+            this.DebugCheckBox.Location = new System.Drawing.Point(94, 571);
             this.DebugCheckBox.Name = "DebugCheckBox";
             this.DebugCheckBox.Size = new System.Drawing.Size(99, 17);
             this.DebugCheckBox.TabIndex = 29;
@@ -559,25 +578,6 @@
             this.labelfast.TabIndex = 34;
             this.labelfast.Text = "Fast";
             // 
-            // fileNameTextBox
-            // 
-            this.fileNameTextBox.Enabled = false;
-            this.fileNameTextBox.Location = new System.Drawing.Point(13, 59);
-            this.fileNameTextBox.Name = "fileNameTextBox";
-            this.fileNameTextBox.Size = new System.Drawing.Size(219, 20);
-            this.fileNameTextBox.TabIndex = 23;
-            // 
-            // EnableFileFiltercheckBox
-            // 
-            this.EnableFileFiltercheckBox.AutoSize = true;
-            this.EnableFileFiltercheckBox.Location = new System.Drawing.Point(13, 42);
-            this.EnableFileFiltercheckBox.Name = "EnableFileFiltercheckBox";
-            this.EnableFileFiltercheckBox.Size = new System.Drawing.Size(208, 17);
-            this.EnableFileFiltercheckBox.TabIndex = 24;
-            this.EnableFileFiltercheckBox.Text = "Limit files to those with this in the name";
-            this.EnableFileFiltercheckBox.UseVisualStyleBackColor = true;
-            this.EnableFileFiltercheckBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // ConfigWindow
             // 
             this.AcceptButton = this.saveButton;
@@ -589,9 +589,9 @@
             this.Controls.Add(this.labelmedium);
             this.Controls.Add(this.labelslow);
             this.Controls.Add(this.speedtrackbar);
+            this.Controls.Add(this.labelTransitions);
             this.Controls.Add(OpenLogButton);
             this.Controls.Add(this.DebugCheckBox);
-            this.Controls.Add(this.labelTransitions);
             this.Controls.Add(this.transitionsPanel);
             this.Controls.Add(this.ImageStyledropdown);
             this.Controls.Add(this.labelimagestyle);
