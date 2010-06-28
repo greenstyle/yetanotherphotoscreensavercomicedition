@@ -32,6 +32,11 @@ namespace Org.Kuhn.Yapss {
             while (w == 0 || h == 0 || (float)w / (float)h > 2.0 || (float)w / (float)h < 0.5) {
                 w = random.Next(1, layout.Width );
                 h = random.Next(1, layout.Height );
+                Log.Instance.Write("Current Instruction = w:" + Convert.ToString(w) + "h:" + Convert.ToString(h));
+                if (w == 0 || h == 0 || (float)w / (float)h > 2.0 || (float)w / (float)h < 0.5) {
+                    Log.Instance.Write("Won't work.");
+                    }
+
             }
 
             // find locations overwriting oldest cells
@@ -66,16 +71,16 @@ namespace Org.Kuhn.Yapss {
             int minDamage = int.MaxValue;
             List<Cell> minDamageList = new List<Cell>(); // misusing Cell class.. oh well
             foreach (Cell c in minAgeList) {
-                Layout tempLayout = new Layout(layout);
-                tempLayout.Set(c.x, c.y, new Cell(w, h));
-                int damage = tempLayout.EmptyCount;
-                if (damage < minDamage) {
-                    minDamage = damage;
-                    minDamageList.Clear();
-                }
-                if (damage == minDamage) {
+                //Layout tempLayout = new Layout(layout);
+                //tempLayout.Set(c.x, c.y, new Cell(w, h));
+                //int damage = tempLayout.EmptyCount;
+                //if (damage < minDamage) {
+                //    minDamage = damage;
+                //    minDamageList.Clear();
+                //}
+                //if (damage == minDamage) {
                     minDamageList.Add(c);
-                }
+                //}
             }
 
             Cell coord = minDamageList[random.Next(minDamageList.Count)];

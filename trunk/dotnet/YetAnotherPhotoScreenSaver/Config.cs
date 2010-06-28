@@ -27,6 +27,8 @@ namespace Org.Kuhn.Yapss {
             //theme = (Theme)Enum.Parse(typeof(Theme), (string)reg.GetValue("theme", Enum.GetName(typeof(Theme), theme)));
             comicstyle = (Comicstyle)Enum.Parse(typeof(Comicstyle), (string)reg.GetValue("comicstyle", Enum.GetName(typeof(Comicstyle), comicstyle)));
             isLoggingEnabled = (int)reg.GetValue("isLoggingEnabled", isLoggingEnabled) == 1;
+            filesearchfilter = (string)reg.GetValue("filesearchfilter", filesearchfilter);
+            enablefilesearchfilter = (int)reg.GetValue("enablefilesearchfilter", enablefilesearchfilter)==1;
             reg.Close();
         }
         public void Save() {
@@ -48,6 +50,8 @@ namespace Org.Kuhn.Yapss {
             //reg.SetValue("theme", Enum.GetName(typeof(Theme), theme), RegistryValueKind.String);
             reg.SetValue("comicstyle", Enum.GetName(typeof(Comicstyle), Comicstyle), RegistryValueKind.String);
             reg.SetValue("isLoggingEnabled", isLoggingEnabled, RegistryValueKind.DWord);
+            reg.SetValue("filesearchfilter", filesearchfilter, RegistryValueKind.String);
+            reg.SetValue("enablefilesearchfilter", enablefilesearchfilter, RegistryValueKind.DWord);
             reg.Close();
         }
         public int XCount {
@@ -145,6 +149,30 @@ namespace Org.Kuhn.Yapss {
             get { return isLoggingEnabled; }
             set { isLoggingEnabled = value; }
         }
+        public string FileSearchFilter
+        {
+            get { return filesearchfilter; }
+            set { filesearchfilter = value; }
+        }
+        public bool Enablefilesearchfilter
+        {
+            get { return enablefilesearchfilter; }
+            set { enablefilesearchfilter = value; }
+        }
+        public string[] FileNameSearchParms {
+            get { 
+                string[] results;
+                if(enablefilesearchfilter){
+                    results = filesearchfilter.Split(';');
+                    }
+                else
+                   {
+                    results = new string[1];
+                    results.SetValue("*",0);                    
+                    }
+                return results;
+            }
+        }
 
         public readonly int  maxInterval = 10000;
 
@@ -166,6 +194,10 @@ namespace Org.Kuhn.Yapss {
         private Comicstyle comicstyle = Comicstyle.CoversOnly;
         private bool isLoggingEnabled = false;
         private Brush backbrush;
+        private string filesearchfilter = "*";
+        private bool enablefilesearchfilter = false;
+
+
 
         private static readonly string KEY = "Software\\YetAnotherPhotoScreenSaverCE";  
     }
