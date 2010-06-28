@@ -69,6 +69,8 @@
             this.labelslow = new System.Windows.Forms.Label();
             this.labelmedium = new System.Windows.Forms.Label();
             this.labelfast = new System.Windows.Forms.Label();
+            this.fileNameTextBox = new System.Windows.Forms.TextBox();
+            this.EnableFileFiltercheckBox = new System.Windows.Forms.CheckBox();
             OpenLogButton = new System.Windows.Forms.Button();
             this.flickrPanel.SuspendLayout();
             this.diskPanel.SuspendLayout();
@@ -78,7 +80,7 @@
             // 
             // OpenLogButton
             // 
-            OpenLogButton.Location = new System.Drawing.Point(204, 527);
+            OpenLogButton.Location = new System.Drawing.Point(199, 563);
             OpenLogButton.Name = "OpenLogButton";
             OpenLogButton.Size = new System.Drawing.Size(62, 23);
             OpenLogButton.TabIndex = 30;
@@ -114,7 +116,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(376, 523);
+            this.saveButton.Location = new System.Drawing.Point(370, 559);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 25);
             this.saveButton.TabIndex = 0;
@@ -125,7 +127,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(295, 523);
+            this.cancelButton.Location = new System.Drawing.Point(288, 559);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 25);
             this.cancelButton.TabIndex = 1;
@@ -135,7 +137,7 @@
             // 
             // previewButton
             // 
-            this.previewButton.Location = new System.Drawing.Point(13, 523);
+            this.previewButton.Location = new System.Drawing.Point(0, 562);
             this.previewButton.Name = "previewButton";
             this.previewButton.Size = new System.Drawing.Size(75, 25);
             this.previewButton.TabIndex = 2;
@@ -274,6 +276,8 @@
             // 
             // diskPanel
             // 
+            this.diskPanel.Controls.Add(this.EnableFileFiltercheckBox);
+            this.diskPanel.Controls.Add(this.fileNameTextBox);
             this.diskPanel.Controls.Add(this.comicstyleDropDown);
             this.diskPanel.Controls.Add(this.lblComicStyle);
             this.diskPanel.Controls.Add(this.browseButton);
@@ -281,7 +285,7 @@
             this.diskPanel.Controls.Add(this.label5);
             this.diskPanel.Location = new System.Drawing.Point(6, 443);
             this.diskPanel.Name = "diskPanel";
-            this.diskPanel.Size = new System.Drawing.Size(438, 74);
+            this.diskPanel.Size = new System.Drawing.Size(438, 88);
             this.diskPanel.TabIndex = 14;
             // 
             // comicstyleDropDown
@@ -292,7 +296,7 @@
             "CoversOnly",
             "AnyPage",
             "Entire"});
-            this.comicstyleDropDown.Location = new System.Drawing.Point(75, 45);
+            this.comicstyleDropDown.Location = new System.Drawing.Point(323, 56);
             this.comicstyleDropDown.Name = "comicstyleDropDown";
             this.comicstyleDropDown.Size = new System.Drawing.Size(112, 21);
             this.comicstyleDropDown.TabIndex = 22;
@@ -300,7 +304,7 @@
             // lblComicStyle
             // 
             this.lblComicStyle.AutoSize = true;
-            this.lblComicStyle.Location = new System.Drawing.Point(7, 45);
+            this.lblComicStyle.Location = new System.Drawing.Point(255, 59);
             this.lblComicStyle.Name = "lblComicStyle";
             this.lblComicStyle.Size = new System.Drawing.Size(62, 13);
             this.lblComicStyle.TabIndex = 21;
@@ -318,9 +322,9 @@
             // 
             // pathTextBox
             // 
-            this.pathTextBox.Location = new System.Drawing.Point(6, 16);
+            this.pathTextBox.Location = new System.Drawing.Point(10, 16);
             this.pathTextBox.Name = "pathTextBox";
-            this.pathTextBox.Size = new System.Drawing.Size(351, 20);
+            this.pathTextBox.Size = new System.Drawing.Size(347, 20);
             this.pathTextBox.TabIndex = 15;
             // 
             // label5
@@ -389,7 +393,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(112, 581);
+            this.label9.Location = new System.Drawing.Point(106, 603);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(187, 13);
             this.label9.TabIndex = 21;
@@ -399,7 +403,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(64, 560);
+            this.linkLabel1.Location = new System.Drawing.Point(64, 590);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(335, 13);
             this.linkLabel1.TabIndex = 22;
@@ -521,7 +525,7 @@
             // DebugCheckBox
             // 
             this.DebugCheckBox.AutoSize = true;
-            this.DebugCheckBox.Location = new System.Drawing.Point(99, 531);
+            this.DebugCheckBox.Location = new System.Drawing.Point(94, 567);
             this.DebugCheckBox.Name = "DebugCheckBox";
             this.DebugCheckBox.Size = new System.Drawing.Size(99, 17);
             this.DebugCheckBox.TabIndex = 29;
@@ -555,13 +559,32 @@
             this.labelfast.TabIndex = 34;
             this.labelfast.Text = "Fast";
             // 
+            // fileNameTextBox
+            // 
+            this.fileNameTextBox.Enabled = false;
+            this.fileNameTextBox.Location = new System.Drawing.Point(13, 59);
+            this.fileNameTextBox.Name = "fileNameTextBox";
+            this.fileNameTextBox.Size = new System.Drawing.Size(219, 20);
+            this.fileNameTextBox.TabIndex = 23;
+            // 
+            // EnableFileFiltercheckBox
+            // 
+            this.EnableFileFiltercheckBox.AutoSize = true;
+            this.EnableFileFiltercheckBox.Location = new System.Drawing.Point(13, 42);
+            this.EnableFileFiltercheckBox.Name = "EnableFileFiltercheckBox";
+            this.EnableFileFiltercheckBox.Size = new System.Drawing.Size(208, 17);
+            this.EnableFileFiltercheckBox.TabIndex = 24;
+            this.EnableFileFiltercheckBox.Text = "Limit files to those with this in the name";
+            this.EnableFileFiltercheckBox.UseVisualStyleBackColor = true;
+            this.EnableFileFiltercheckBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // ConfigWindow
             // 
             this.AcceptButton = this.saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(456, 607);
+            this.ClientSize = new System.Drawing.Size(456, 625);
             this.Controls.Add(this.labelfast);
             this.Controls.Add(this.labelmedium);
             this.Controls.Add(this.labelslow);
@@ -653,5 +676,7 @@
         private System.Windows.Forms.Label labelmedium;
         private System.Windows.Forms.Label labelfast;
         private EConTech.Windows.MACUI.MACTrackBar speedtrackbar;
+        private System.Windows.Forms.CheckBox EnableFileFiltercheckBox;
+        private System.Windows.Forms.TextBox fileNameTextBox;
     }
 }

@@ -48,6 +48,8 @@ namespace Org.Kuhn.Yapss {
             config.IsEnabledFileImageSource = diskCheckBox.Checked;
             config.FileImageSourcePath = pathTextBox.Text;
             config.IsLoggingEnabled = DebugCheckBox.Checked;
+            config.FileSearchFilter = fileNameTextBox.Text;
+            config.Enablefilesearchfilter = EnableFileFiltercheckBox.Checked;
         }
 
         private void ConfigWindow_Load(object sender, EventArgs e) {
@@ -75,6 +77,9 @@ namespace Org.Kuhn.Yapss {
             diskCheckBox.Checked = diskPanel.Enabled = config.IsEnabledFileImageSource;
             pathTextBox.Text = folderBrowserDialog.SelectedPath = config.FileImageSourcePath;
             DebugCheckBox.Checked = config.IsLoggingEnabled;
+            fileNameTextBox.Text = config.FileSearchFilter;
+            EnableFileFiltercheckBox.Checked = config.Enablefilesearchfilter;
+
         }
 
         private void browseButton_Click(object sender, EventArgs e) {
@@ -142,6 +147,11 @@ namespace Org.Kuhn.Yapss {
         private void speedtrackbar_ValueChanged(object sender, decimal value)
         {
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            fileNameTextBox.Enabled = EnableFileFiltercheckBox.Checked;
         }
 
     }

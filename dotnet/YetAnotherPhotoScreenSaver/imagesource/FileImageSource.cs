@@ -8,7 +8,8 @@ using System.IO;
 
 namespace Org.Kuhn.Yapss {
     class FileImageSource : IImageSource {
-        public FileImageSource(string rootPath, Comicstyle comicstyle) {
+        public FileImageSource(string rootPath, string[] FileSearchParms, Comicstyle comicstyle) {
+            this.filesearchparms = FileSearchParms;
             this.rootPath = rootPath;
             this.comicstyle = comicstyle;
             ComicImager = new Org.Kuhn.Yapss.ComicImageSource(comicstyle);
@@ -19,15 +20,23 @@ namespace Org.Kuhn.Yapss {
             //Log.Instance.Write("Files = " + Convert.ToString(files.Count));
             if (files.Count <=1)
                 try {
+
                     foreach (string curroothpath in rootPath.Split(';'))
                     {
                         System.Diagnostics.Debug.Print(curroothpath);
-                        colFiles.AddRange(Directory.GetFiles(curroothpath, "*.jpg", SearchOption.AllDirectories));
-                        foreach (string sExt in ComicImager.ComicExtensions()) 
+                        foreach (string fileparm in filesearchparms)
                         {
-                            colFiles.AddRange(Directory.GetFiles(curroothpath, "*" + sExt, SearchOption.AllDirectories));    
+                            string newfileparm = fileparm.Trim();
+                            if (fileparm != "*") { newfileparm = "*" + fileparm + "*"; }
+                            Log.Instance.Write(newfileparm);
+                            colFiles.AddRange(Directory.GetFiles(curroothpath, newfileparm + ".jpg", SearchOption.AllDirectories));
+                            foreach (string sExt in ComicImager.ComicExtensions())
+                            {
+                                colFiles.AddRange(Directory.GetFiles(curroothpath, newfileparm + sExt, SearchOption.AllDirectories));
+                            }
                         }
                     	files.AddRange(colFiles.ToArray());
+                        
                     Log.Instance.Write("Files Loaded = " + Convert.ToString( colFiles.Count));
                     System.Diagnostics.Debug.Print("Files Loaded = " + Convert.ToString(colFiles.Count));
                     }
@@ -122,5 +131,6 @@ namespace Org.Kuhn.Yapss {
         private Random random = new Random();
         private System.Collections.Generic.List<string> colFiles = new System.Collections.Generic.List<string>();
         private Yapss.ComicImageSource ComicImager;
+        private string[] filesearchparms;
     }
 }
