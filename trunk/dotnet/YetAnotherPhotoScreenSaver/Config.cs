@@ -13,9 +13,9 @@ namespace Org.Kuhn.Yapss {
             xCount = (int)reg.GetValue("xCount", xCount);
             longInterval = (int)reg.GetValue("longInterval", longInterval);
             shortInterval = (int)reg.GetValue("shortInterval", shortInterval);
-            isEnabledFileImageSource = (int)reg.GetValue("isEnabledFileImageSource", isEnabledFileImageSource) == 1;
+            isEnabledFileImageSource = (int)reg.GetValue("isEnabledFileImageSource", Convert.ToInt32(isEnabledFileImageSource)) == 1;
             fileImageSourcePath = (string)reg.GetValue("fileImageSourcePath", fileImageSourcePath);
-            isEnabledFlickrImageSource = (int)reg.GetValue("isEnabledFlickrImageSource", isEnabledFlickrImageSource) == 1;
+            isEnabledFlickrImageSource = (int)reg.GetValue("isEnabledFlickrImageSource", Convert.ToInt32( isEnabledFlickrImageSource)) == 1;
             flickrImageSourceTags = (string)reg.GetValue("flickrImageSourceTags", flickrImageSourceTags);
             isFlickrImageSourceTagAndLogic = (int)reg.GetValue("isFlickrImageSourceTagAndLogic", isFlickrImageSourceTagAndLogic) == 1;
             flickrImageSourceUserName = (string)reg.GetValue("flickrImageSourceUserName", flickrImageSourceUserName);
@@ -26,9 +26,9 @@ namespace Org.Kuhn.Yapss {
             transitionout = (TransitionStyle)Enum.Parse(typeof(TransitionStyle), (string)reg.GetValue("transitionout", Enum.GetName(typeof(TransitionStyle), transitionout)));
             //theme = (Theme)Enum.Parse(typeof(Theme), (string)reg.GetValue("theme", Enum.GetName(typeof(Theme), theme)));
             comicstyle = (Comicstyle)Enum.Parse(typeof(Comicstyle), (string)reg.GetValue("comicstyle", Enum.GetName(typeof(Comicstyle), comicstyle)));
-            isLoggingEnabled = (int)reg.GetValue("isLoggingEnabled", isLoggingEnabled) == 1;
+            isLoggingEnabled = (int)reg.GetValue("isLoggingEnabled", Convert.ToInt32(isLoggingEnabled)) == 1;
             filesearchfilter = (string)reg.GetValue("filesearchfilter", filesearchfilter);
-            enablefilesearchfilter = (int)reg.GetValue("enablefilesearchfilter", enablefilesearchfilter)==1;
+            enablefilesearchfilter = (int)reg.GetValue("enablefilesearchfilter", Convert.ToInt32(enablefilesearchfilter)) == 1;
             reg.Close();
         }
         public void Save() {
