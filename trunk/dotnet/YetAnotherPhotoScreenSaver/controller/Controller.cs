@@ -68,7 +68,7 @@ namespace Org.Kuhn.Yapss {
             }
            
             // of those, choose a location causing the least "damage"
-            int minDamage = int.MaxValue;
+            //int minDamage = int.MaxValue;
             List<Cell> minDamageList = new List<Cell>(); // misusing Cell class.. oh well
             foreach (Cell c in minAgeList) {
                 //Layout tempLayout = new Layout(layout);

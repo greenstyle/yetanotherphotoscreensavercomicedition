@@ -158,7 +158,7 @@ namespace Org.Kuhn.Yapss {
         private IList<Window> windows = new List<Window>();
         private Thread thread;
         private Boolean stopcall = false;
-        private Boolean stopped = false;
+        //private Boolean stopped = false;
         private AsyncMultiController controller;
         private void ThreadProc() {
             Log.Instance.Write("Drawing thread started");
@@ -191,7 +191,7 @@ namespace Org.Kuhn.Yapss {
                 }
    
             }
-            stopped = true;
+            //stopped = true;
         }
 
         private void DisplayWindowEndEventHandler(object sender, EventArgs args) {

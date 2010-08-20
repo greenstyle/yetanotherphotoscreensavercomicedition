@@ -36,7 +36,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.5.3.%2a</ApplicationVersion>
+    <ApplicationVersion>1.6.11.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -228,5 +228,8 @@
     <PostBuildEvent>copy $(TargetPath) YetAnotherPhotoScreenSaverCE.scr
 </PostBuildEvent>
     <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "$(TargetName).scr"</PostBuildEvent>
   </PropertyGroup>
 </Project>
