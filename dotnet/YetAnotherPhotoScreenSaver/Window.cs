@@ -216,16 +216,21 @@ namespace Org.Kuhn.Yapss {
 
         protected override void OnMouseMove(MouseEventArgs e) {
             base.OnMouseMove(e);
-            Log.Instance.Write("Mouse Move =" + Convert.ToString(e.Location) + Convert.ToString(e.Button));
-            if (DateTime.Now - lastMove > TimeSpan.FromSeconds(1)) {
-                moveCount = 0;
-                lastMove = DateTime.Now;
-                return;
-            }
-            if (++moveCount == 5) {
-                Log.Instance.Write("User termination event (mouse move)");
+            if (e.Location != lastmouselocation| e.Button !=0)
+            {
+                lastmouselocation = e.Location;
+                Log.Instance.Write("Mouse Move =" + Convert.ToString(e.Location) + Convert.ToString(e.Button));
+
+                if (DateTime.Now - lastMove > TimeSpan.FromSeconds(5)) {
+                    moveCount = 0;
+                    lastMove = DateTime.Now;
+                    return;
+                }
+                if (++moveCount == 5) {
+                    Log.Instance.Write("User termination event (mouse move)");
                 
-                End(this, EventArgs.Empty);
+                    End(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -246,7 +251,7 @@ namespace Org.Kuhn.Yapss {
         }
 
         public event EventHandler End;
-
+        private Point lastmouselocation;
         private Config config;
         private int moveCount = 0;
         private DateTime lastMove = DateTime.Now;       
