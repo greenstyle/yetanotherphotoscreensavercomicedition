@@ -33,68 +33,68 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4D6DF0EA608B503FFBCA822C5360EF4D"
+        "MsmKey" = "8:_5654835080AD3F3E982289C353F35526"
         "OwnerKey" = "8:_29A157CEBBE74D7D8982CBE127E11180"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_4D6DF0EA608B503FFBCA822C5360EF4D"
+        "MsmKey" = "8:_5654835080AD3F3E982289C353F35526"
         "OwnerKey" = "8:_205B0C9308064A18B174C0D68A131E97"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F086BEBB8E8EA54CAFC78812AC539F5F"
+        "MsmKey" = "8:_5AC2C7A19AA0737F8A5530E7A802F7EF"
         "OwnerKey" = "8:_29A157CEBBE74D7D8982CBE127E11180"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F086BEBB8E8EA54CAFC78812AC539F5F"
+        "MsmKey" = "8:_5AC2C7A19AA0737F8A5530E7A802F7EF"
         "OwnerKey" = "8:_205B0C9308064A18B174C0D68A131E97"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F929F4D7927EE47F1F3A7906A3A6BDBB"
+        "MsmKey" = "8:_B1F059E008032AD1B16641F2280BEA20"
         "OwnerKey" = "8:_29A157CEBBE74D7D8982CBE127E11180"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F929F4D7927EE47F1F3A7906A3A6BDBB"
-        "OwnerKey" = "8:_205B0C9308064A18B174C0D68A131E97"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_B1F059E008032AD1B16641F2280BEA20"
         "OwnerKey" = "8:_205B0C9308064A18B174C0D68A131E97"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4D6DF0EA608B503FFBCA822C5360EF4D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F929F4D7927EE47F1F3A7906A3A6BDBB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F086BEBB8E8EA54CAFC78812AC539F5F"
+        "OwnerKey" = "8:_205B0C9308064A18B174C0D68A131E97"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_29A157CEBBE74D7D8982CBE127E11180"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B1F059E008032AD1B16641F2280BEA20"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5AC2C7A19AA0737F8A5530E7A802F7EF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5654835080AD3F3E982289C353F35526"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -194,7 +194,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:3.5.30729"
+                "FrameworkVersion" = "8:.NETFramework,Version=v3.5"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -206,7 +206,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:YetAnotherPhotoScreenSaverCE, Version=1.6.10.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:YetAnotherPhotoScreenSaverCE, Version=1.6.11.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_205B0C9308064A18B174C0D68A131E97"
@@ -253,13 +253,18 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4D6DF0EA608B503FFBCA822C5360EF4D"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5654835080AD3F3E982289C353F35526"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:FlickrNet, Version=2.1.5.19851, Culture=neutral, PublicKeyToken=2491df59efa5d132"
                 "ScatterAssemblies"
                 {
+                    "_5654835080AD3F3E982289C353F35526"
+                    {
+                    "Name" = "8:FlickrNet.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:FlickrNet.dll"
             "TargetName" = "8:"
@@ -279,15 +284,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F086BEBB8E8EA54CAFC78812AC539F5F"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5AC2C7A19AA0737F8A5530E7A802F7EF"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MACTrackBarLib, Version=1.0.2342.28161, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:SevenZipSharp, Version=1.0.3537.37869, Culture=neutral, PublicKeyToken=20de82c62b055c88, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_5AC2C7A19AA0737F8A5530E7A802F7EF"
+                    {
+                    "Name" = "8:SevenZipSharp.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:MACTrackBarLib.dll"
+            "SourcePath" = "8:SevenZipSharp.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_CEACEB21D89943BC87BFE5C57869FB2A"
@@ -305,15 +315,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F929F4D7927EE47F1F3A7906A3A6BDBB"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B1F059E008032AD1B16641F2280BEA20"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SevenZipSharp, Version=1.0.3537.37869, Culture=neutral, PublicKeyToken=20de82c62b055c88, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:MACTrackBarLib, Version=1.0.2342.28161, Culture=neutral"
                 "ScatterAssemblies"
                 {
+                    "_B1F059E008032AD1B16641F2280BEA20"
+                    {
+                    "Name" = "8:MACTrackBarLib.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:SevenZipSharp.dll"
+            "SourcePath" = "8:MACTrackBarLib.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_CEACEB21D89943BC87BFE5C57869FB2A"
@@ -398,15 +413,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
-        "ProductCode" = "8:{2E037348-A1F6-45F4-9BD3-A65E3A1F44F9}"
-        "PackageCode" = "8:{B739DAEF-2983-45E3-A6A0-CFDDF759298A}"
+        "ProductCode" = "8:{BD1D6A48-3D55-4C4D-B89B-E9DE2229886A}"
+        "PackageCode" = "8:{3C0A9EA9-139D-481E-A881-E62AA4F991A9}"
         "UpgradeCode" = "8:{6D0D9103-8F22-4011-B2F2-6B384C800BE8}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.6.11"
+        "ProductVersion" = "8:1.6.13"
         "Manufacturer" = "8:clcii"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -898,7 +913,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_29A157CEBBE74D7D8982CBE127E11180"
             {
-            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\obj\\DebugConfig\\YetAnotherPhotoScreenSaverCE.exe"
+            "SourcePath" = "8:..\\YetAnotherPhotoScreenSaver\\obj\\Release\\YetAnotherPhotoScreenSaverCE.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C7681C40063849E1BC4043F74102ED84"
