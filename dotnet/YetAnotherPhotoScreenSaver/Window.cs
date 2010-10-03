@@ -59,7 +59,8 @@ namespace Org.Kuhn.Yapss {
             string banner = "Yet Another Photo Screen Saver Comic Edition\n";
             banner += "This software is free and open source\n";
             banner += "http://code.google.com/p/yetanotherphotoscreensavercomicedition/\n";
-            banner += "http://shrinkster.com/sxt";
+            banner += "http://shrinkster.com/sxt\n";
+            banner += "Version" + Application.ProductVersion;
             using (Font font = new Font("Georgia", 8.25F)) {
                 SizeF sizef = bufferedGraphics.Graphics.MeasureString(banner, font);
                 bufferedGraphics.Graphics.DrawString(banner, font, Brushes.DarkGray, Math.Max(xOff, yOff), Height - sizef.Height - Math.Max(xOff, yOff));
