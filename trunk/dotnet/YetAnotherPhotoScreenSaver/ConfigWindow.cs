@@ -13,6 +13,7 @@ namespace Org.Kuhn.Yapss {
     public partial class ConfigWindow : Form {
         public ConfigWindow() {
             InitializeComponent();
+            versionlabel.Text = "Version: " + Application.ProductVersion;
         }
 
         private void CopyConfig() {

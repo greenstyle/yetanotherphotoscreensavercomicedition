@@ -71,6 +71,7 @@
             this.labelslow = new System.Windows.Forms.Label();
             this.labelmedium = new System.Windows.Forms.Label();
             this.labelfast = new System.Windows.Forms.Label();
+            this.versionlabel = new System.Windows.Forms.Label();
             OpenLogButton = new System.Windows.Forms.Button();
             this.flickrPanel.SuspendLayout();
             this.diskPanel.SuspendLayout();
@@ -578,13 +579,23 @@
             this.labelfast.TabIndex = 34;
             this.labelfast.Text = "Fast";
             // 
+            // versionlabel
+            // 
+            this.versionlabel.AutoSize = true;
+            this.versionlabel.Location = new System.Drawing.Point(168, 618);
+            this.versionlabel.Name = "versionlabel";
+            this.versionlabel.Size = new System.Drawing.Size(45, 13);
+            this.versionlabel.TabIndex = 35;
+            this.versionlabel.Text = "Version:";
+            // 
             // ConfigWindow
             // 
             this.AcceptButton = this.saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(456, 625);
+            this.ClientSize = new System.Drawing.Size(456, 640);
+            this.Controls.Add(this.versionlabel);
             this.Controls.Add(this.labelfast);
             this.Controls.Add(this.labelmedium);
             this.Controls.Add(this.labelslow);
@@ -678,5 +689,6 @@
         private EConTech.Windows.MACUI.MACTrackBar speedtrackbar;
         private System.Windows.Forms.CheckBox EnableFileFiltercheckBox;
         private System.Windows.Forms.TextBox fileNameTextBox;
+        private System.Windows.Forms.Label versionlabel;
     }
 }
