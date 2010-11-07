@@ -82,13 +82,13 @@ namespace Org.Kuhn.Yapss {
             // build window for each screen
             // order screens by x coordinates
 
-            int screenlimit=1;
+            //int screenlimit=1;
             
             SortedList<int,Screen> orderedscreens = new SortedList<int,Screen>();
             foreach (Screen pscreen in Screen.AllScreens){
             //Screen pscreen = Screen.PrimaryScreen;
                 orderedscreens.Add(pscreen.Bounds.X, pscreen);
-                if (orderedscreens.Count >= screenlimit){break;};
+                //if (orderedscreens.Count >= screenlimit){break;};
 
             }
 			

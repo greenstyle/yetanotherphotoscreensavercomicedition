@@ -270,7 +270,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:YetAnotherPhotoScreenSaverCE, Version=1.6.11.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:YetAnotherPhotoScreenSaverCE, Version=1.6.13.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_1B3D4C926B4947439DF751D1EAAEA4CB"
@@ -478,7 +478,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YetAnotherPhotoScreenSaverComicEdition"
         "ProductCode" = "8:{24D1EC98-3989-45D7-B5CE-B67B588D7C4A}"
-        "PackageCode" = "8:{0850F3C9-0518-48DF-8358-E4CC54064F9F}"
+        "PackageCode" = "8:{E55171B9-800B-4EC4-B61F-C3931BB53258}"
         "UpgradeCode" = "8:{BC1343B2-BDDB-4454-84CD-CC32A5AA1AE4}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
